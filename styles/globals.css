@@ -108,13 +108,6 @@ h1, h2, h3, h4, h5 {
 .accent { color: var(--accent) }
 .btn-accent { background: var(--accent); color: black }
 
-/* Merriweather tuning for screen: slightly looser tracking, medium-heavy weights for headlines */
-body.merri h1, body.merri h2, body.merri h3 { letter-spacing: -0.015em; }
-body.merri h1 { font-weight: 700; font-variation-settings: 'wght' 700; }
-body.merri h2 { font-weight: 600; }
-body.merri p { letter-spacing: 0.002em; }
-
-
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
