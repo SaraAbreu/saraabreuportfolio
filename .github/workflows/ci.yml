@@ -2,27 +2,33 @@ name: CI
 
 on:
   push:
-    branches: [ main, 'feature/**' ]
+    branches: [main, feature/*, clean-feature/*]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 18
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'npm'
+          node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Run linter
+        run: npm run lint
+
       - name: Run tests
-        run: npm test -- --ci --reporters=default
+        run: npm test
 
       - name: Build
-        run: npm run build --if-present
+        run: npm run build

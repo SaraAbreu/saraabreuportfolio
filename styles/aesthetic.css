@@ -1,0 +1,138 @@
+/* Editorial + Minimal + Warm overrides */
+
+:root {
+  --editorial-accent: #d4af37;
+}
+
+/* Display title style */
+.display {
+  font-family: var(--font-serif, 'Playfair Display');
+  font-size: clamp(2.4rem, 4.5vw, 4.25rem);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0.1rem 0 0.4rem 0;
+  color: var(--text);
+}
+
+/* Improve reading rhythm for paragraph copy */
+p {
+  line-height: 1.72;
+  color: rgba(230, 231, 233, 0.95);
+}
+
+/* Breathing room for hero */
+.hero-bg {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Softer, cleaner cards */
+.card {
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: none;
+  backdrop-filter: blur(4px);
+}
+.card.interactive {
+  box-shadow: 0 6px 22px rgba(2, 6, 23, 0.42);
+  transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.18s ease;
+}
+.card.interactive:hover,
+.card.interactive:focus-visible {
+  transform: translateY(-2px);
+  border: 1px solid rgba(212, 175, 55, 0.06);
+}
+
+/* Subtle link underline position */
+.link-underline::after {
+  bottom: -4px !important;
+}
+
+/* Less jumpy microinteraction */
+.interactive:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Simplified layout tweaks */
+.simplified .hero-bg {
+  padding-top: 4rem;
+}
+
+/* Accent utility */
+.accent-warm {
+  color: var(--editorial-accent);
+}
+
+/* Small, elegant CTA */
+.btn-accent {
+  background: var(--editorial-accent);
+  color: #0b0b0d;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive,
+  .card.interactive {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Palette variants */
+:root {
+  --warm-bg: #0b0b0d;
+  --warm-surface: #0f1724;
+  --warm-text: #e6e7e9;
+  --warm-accent: #d4af37;
+
+  --cool-bg: #06070a;
+  --cool-surface: #0b1220;
+  --cool-text: #e8f9fb;
+  --cool-accent: #06b6d4;
+}
+
+/* Palette utility classes */
+.palette-warm {
+  --accent: var(--warm-accent);
+  color: var(--warm-text);
+  background-color: var(--warm-bg);
+}
+.palette-cool {
+  --accent: var(--cool-accent);
+  color: var(--cool-text);
+  background-color: var(--cool-bg);
+}
+
+/* Serif choices */
+.serif-playfair {
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+.serif-merri {
+  --font-serif: 'Merriweather', Georgia, serif;
+}
+
+/* Typographic scale variables */
+:root {
+  --scale-h1: clamp(2.4rem, 4.5vw, 4.25rem);
+  --scale-h2: clamp(1.6rem, 3.2vw, 2.2rem);
+  --scale-body: 1rem;
+}
+
+/* Apply scale and serif-specific tweaks */
+.serif-playfair .display {
+  font-size: var(--scale-h1);
+  letter-spacing: -0.02em;
+}
+.serif-merri .display {
+  font-size: calc(var(--scale-h1) * 0.95);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+/* Quick preview helpers for toggling in DOM */
+.preview-palette {
+  transition: background-color 0.22s ease, color 0.22s ease;
+}

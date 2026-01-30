@@ -1,19 +1,31 @@
-import React from 'react'
+import React from 'react';
 
 export default function SectionAutomation() {
   return (
     <section className="mt-12 max-w-5xl mx-auto text-left">
-      <h3 className="text-2xl font-serif text-white mb-4">Automatización — Sistemas con intención</h3>
+      <h3 className="text-2xl font-serif text-white mb-4">
+        Automatización — Sistemas con intención
+      </h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <article className="card interactive" tabIndex={0} aria-labelledby="auto-1">
-          <h4 id="auto-1" className="font-semibold text-white">Cadencia de publicación automatizada</h4>
-          <p className="text-gray-300/80 text-sm mt-2">Diseñé un flujo que transforma, valida y publica contenido con revisiones humanas integradas. Resultado: coherencia editorial y menos fricción operativa.</p>
+          <h4 id="auto-1" className="font-semibold text-white">
+            Cadencia de publicación automatizada
+          </h4>
+          <p className="text-gray-300/80 text-sm mt-2">
+            Diseñé un flujo que transforma, valida y publica contenido con revisiones humanas
+            integradas. Resultado: coherencia editorial y menos fricción operativa.
+          </p>
         </article>
 
         <article className="card interactive" tabIndex={0} aria-labelledby="auto-2">
-          <h4 id="auto-2" className="font-semibold text-white">Pipeline de imágenes</h4>
-          <p className="text-gray-300/80 text-sm mt-2">Un pipeline que respeta metadatos, versiones y trazabilidad: la automatización toma decisiones repetibles sin borrar el control humano donde importa.</p>
+          <h4 id="auto-2" className="font-semibold text-white">
+            Pipeline de imágenes
+          </h4>
+          <p className="text-gray-300/80 text-sm mt-2">
+            Un pipeline que respeta metadatos, versiones y trazabilidad: la automatización toma
+            decisiones repetibles sin borrar el control humano donde importa.
+          </p>
         </article>
       </div>
 
@@ -27,5 +39,5 @@ export default function SectionAutomation() {
         </svg>
       </div>
     </section>
-  )
+  );
 }

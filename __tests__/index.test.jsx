@@ -1,14 +1,14 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 
-jest.mock('../components/HeroCanvas', () => () => <div data-testid="hero-canvas" />)
+jest.mock('../components/HeroCanvas', () => () => <div data-testid="hero-canvas" />);
 
-import Home from '../pages/index'
+import Home from '../pages/index';
 
 test('muestra el título del portafolio en la página principal', () => {
-  render(<Home />)
-  const heading = screen.getByRole('heading', { level: 1 })
-  expect(heading).toBeInTheDocument()
-  expect(heading).toHaveTextContent(/Abreu Studio/i)
-  expect(screen.getByText(/Creative Strategy & Ethical Vision/i)).toBeInTheDocument()
-})
+  render(<Home />);
+  const heading = screen.getByRole('heading', { level: 1 });
+  expect(heading).toBeInTheDocument();
+  expect(heading).toHaveTextContent(/Abreu Studio/i);
+  expect(screen.getByText(/Diseño, Código y Visión Ética/i)).toBeInTheDocument();
+});
