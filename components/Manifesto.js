@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Manifesto() {
+export default function Manifesto({ id }) {
   return (
-    <section className="mt-12 text-left max-w-3xl mx-auto">
+    <section id={id || undefined} className="mt-12 text-left max-w-3xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-serif font-semibold text-white mb-4">Manifiesto</h2>
       <p className="text-gray-300/80 text-lg leading-relaxed">
         Entiendo el diseño como un acto de escucha: reconocer lo que pide una idea, respirar con

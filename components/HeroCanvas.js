@@ -14,6 +14,16 @@ export default function HeroCanvas() {
     const PARTICLE_COUNT = Math.max(28, Math.floor((width * height) / 60000));
     const mouse = { x: width / 2, y: height / 2 };
 
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let scrollY = 0;
+    function onScroll() {
+      scrollY = window.scrollY || window.pageYOffset || 0;
+    }
+
     function rand(min, max) {
       return Math.random() * (max - min) + min;
     }
@@ -43,11 +53,50 @@ export default function HeroCanvas() {
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', onMove);
     window.addEventListener('touchmove', onMove);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     let raf = null;
+    let tx = 0;
+    let ty = 0;
+    const PARALLAX_STRENGTH = 2.4; // increased global strength for a more immersive effect
+
+    function lerp(a, b, n) {
+      return (1 - n) * a + n * b;
+    }
+
+    // cache parallax layers
+    const layers = Array.from(document.querySelectorAll('.parallax-layer'));
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
+
+      // Apply a subtle parallax transform to the canvas based on pointer + scroll
+      if (!prefersReducedMotion) {
+        const cx = width / 2;
+        const cy = height / 2;
+        const normX = (mouse.x - cx) / (cx || 1);
+        const normY = (mouse.y - cy) / (cy || 1);
+        const maxOffset = Math.min(40, Math.max(12, width * 0.02));
+        const targetX = normX * maxOffset * PARALLAX_STRENGTH;
+        const targetY = normY * maxOffset * PARALLAX_STRENGTH + (scrollY / Math.max(1, window.innerHeight)) * 18 * PARALLAX_STRENGTH;
+        tx = lerp(tx, targetX, 0.06);
+        ty = lerp(ty, targetY, 0.06);
+        try {
+          canvas.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+        } catch (e) {
+          // ignore style failures in very constrained environments
+        }
+        // apply transforms to layer elements with depth
+        for (let el of layers) {
+          const depthAttr = el.getAttribute('data-depth');
+          const depth = depthAttr ? parseFloat(depthAttr) : 0.12;
+          const lx = tx * depth * 1.15; // gentler amplification per layer
+          const ly = ty * depth * 0.9; // slightly reduce vertical for softness
+          el.style.transform = `translate3d(${lx.toFixed(2)}px, ${ly.toFixed(2)}px, 0)`;
+        }
+      } else {
+        canvas.style.transform = '';
+      }
 
       // elegant soft gradient background (slightly desaturated)
       const g = ctx.createLinearGradient(0, 0, width, height);
@@ -136,6 +185,13 @@ export default function HeroCanvas() {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('scroll', onScroll);
+      try {
+        canvas.style.transform = '';
+        for (let el of layers) el.style.transform = '';
+      } catch (e) {
+        /* ignore */
+      }
     };
   }, []);
 

@@ -10,7 +10,7 @@ const fadeUp = {
   exit: { opacity: 0, y: 8, transition: { duration: DEFAULT_EXIT_DURATION } }
 };
 
-export default function Chapter({ children, className = '', delay = 0 }) {
+export default function Chapter({ children, className = '', delay = 0, ...props }) {
   const prefersReduced =
     typeof window !== 'undefined' &&
     window.matchMedia &&
@@ -24,6 +24,7 @@ export default function Chapter({ children, className = '', delay = 0 }) {
       variants={fadeUp}
       transition={{ delay }}
       className={className}
+      {...props}
     >
       {children}
     </motion.section>

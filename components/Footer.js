@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="mt-16 max-w-3xl mx-auto text-center text-gray-300/80">
+    <footer className="mt-16 max-w-3xl mx-auto text-center text-gray-300/80 parallax-layer" data-depth="0.06">
       <p className="mb-4">
         Reflexión final: la intersección entre creatividad y tecnología pide lentitud en la decisión
         y ceremonial en la ejecución. Preferir la profundidad sobre la prisa.

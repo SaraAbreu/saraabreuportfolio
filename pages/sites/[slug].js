@@ -40,7 +40,7 @@ export default function CaseStudy() {
   const next = projects[(idx + 1) % projects.length];
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-8 parallax-layer" data-depth="0.06">
       <Head>
         <title>{project.title} — Case Study</title>
       </Head>

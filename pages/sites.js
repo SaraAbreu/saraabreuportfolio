@@ -32,7 +32,7 @@ export default function Sites() {
   });
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-8 parallax-layer" data-depth="0.08">
       <Head>
         <title>Sitios & Apps — Abreu Studio</title>
       </Head>

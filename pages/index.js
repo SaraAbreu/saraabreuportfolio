@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import HeroCanvas from '../components/HeroCanvas';
 import Manifesto from '../components/Manifesto';
+import Showcase from '../components/Showcase';
+import Process from '../components/Process';
+import MindWorld from '../components/MindWorld';
 import SectionAI from '../components/SectionAI';
 import SectionAutomation from '../components/SectionAutomation';
 import SectionWeb from '../components/SectionWeb';
@@ -12,13 +15,13 @@ export default function Home() {
     <main
       id="content"
       role="main"
-      className="relative overflow-hidden min-h-screen flex flex-col items-center justify-center p-8 hero-bg text-white tech-grid scanlines"
+      className="relative overflow-hidden min-h-screen flex flex-col items-center justify-center p-8 hero-bg immersive-hero text-white tech-grid scanlines"
     >
       <HeroCanvas />
       <div className="max-w-4xl w-full text-center relative z-10 px-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2 tech-title">
-          <span className="text-[color:var(--accent-warm)]">Abreu Studio</span>
-          <span className="block text-white/90 mt-1 text-lg md:text-xl font-semibold">
+          <span className="text-[color:var(--accent-warm)] parallax-layer" data-depth="0.28">Abreu Studio</span>
+          <span className="block text-white/90 mt-1 text-lg md:text-xl font-semibold parallax-layer" data-depth="0.18">
             Diseño, Código y Visión Ética
           </span>
         </h1>
@@ -32,11 +35,21 @@ export default function Home() {
           automatizaciones y case studies.
         </p>
 
-        <Chapter className="mt-6">
+        <Chapter className="mt-6 parallax-layer" data-depth="0.14">
           <Manifesto />
         </Chapter>
 
-        <div className="tile-grid grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+        <Chapter className="mt-10 parallax-layer" data-depth="0.12">
+          <Manifesto id="manifesto" />
+        </Chapter>
+
+        <Chapter className="mt-10 parallax-layer" data-depth="0.10">
+          <MindWorld />
+          <Showcase />
+        </Chapter>
+
+          <Process id="process" />
+        <div className="tile-grid grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 parallax-layer" data-depth="0.12">
           <Link
             href="/generator"
             aria-label="Ir a Generador IA"
@@ -86,7 +99,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="mt-12">
-          <div className="bg-white/3 rounded-lg p-6 md:p-8 mt-6 text-left shadow-sm backdrop-blur-sm">
+          <div className="bg-white/3 rounded-lg p-6 md:p-8 mt-6 text-left shadow-sm backdrop-blur-sm parallax-layer" data-depth="0.08">
             <h2 className="text-lg font-semibold text-white">¿Quieres colaborar?</h2>
             <p className="text-sm text-white/70 mt-2">
               Envíame un correo o conecta en LinkedIn para hablar de proyectos, talleres o
@@ -111,17 +124,17 @@ export default function Home() {
           </div>
         </div>
 
-        <Chapter className="mt-8" delay={0.08}>
-          <SectionAI />
+        <Chapter className="mt-8 parallax-layer" delay={0.08} data-depth="0.10">
+          <div id="ai"><SectionAI /></div>
         </Chapter>
-        <Chapter className="mt-8" delay={0.18}>
-          <SectionAutomation />
+        <Chapter className="mt-8 parallax-layer" delay={0.18} data-depth="0.10">
+          <div id="automation"><SectionAutomation /></div>
         </Chapter>
-        <Chapter className="mt-8" delay={0.28}>
-          <SectionWeb />
+        <Chapter className="mt-8 parallax-layer" delay={0.28} data-depth="0.10">
+          <div id="web"><SectionWeb /></div>
         </Chapter>
 
-        <Chapter className="mt-12" delay={0.38}>
+        <Chapter className="mt-12 parallax-layer" delay={0.38} data-depth="0.06">
           <Footer />
         </Chapter>
       </div>

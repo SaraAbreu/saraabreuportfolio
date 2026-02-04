@@ -87,7 +87,7 @@ export default function Generator() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-8 parallax-layer" data-depth="0.08">
       <Head>
         <title>Generador IA — Demo</title>
       </Head>
