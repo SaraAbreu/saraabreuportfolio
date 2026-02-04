@@ -1,9 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import projects from '../data/projects';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Lightbox from './Lightbox';
-import { useState, useEffect } from 'react';
 
 const CATEGORY_MAP = {
   All: () => true,
