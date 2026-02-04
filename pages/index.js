@@ -19,8 +19,8 @@ export default function Home() {
     >
       <HeroCanvas />
       <div className="max-w-4xl w-full text-center relative z-10 px-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2 tech-title">
-          <span className="text-[color:var(--accent-warm)] parallax-layer" data-depth="0.28">Abreu Studio</span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2 tech-title animate-fade">
+          <span className="text-[color:var(--accent-warm)] parallax-layer gradient-text" data-depth="0.28">Abreu Studio</span>
           <span className="block text-white/90 mt-1 text-lg md:text-xl font-semibold parallax-layer" data-depth="0.18">
             Diseño, Código y Visión Ética
           </span>
@@ -35,20 +35,21 @@ export default function Home() {
           automatizaciones y case studies.
         </p>
 
-        <Chapter className="mt-6 parallax-layer" data-depth="0.14">
-          <Manifesto />
-        </Chapter>
-
-        <Chapter className="mt-10 parallax-layer" data-depth="0.12">
+        <Chapter className="mt-6 parallax-layer animate-fade" data-depth="0.14">
           <Manifesto id="manifesto" />
         </Chapter>
 
-        <Chapter className="mt-10 parallax-layer" data-depth="0.10">
+        <Chapter className="mt-8 parallax-layer animate-fade" data-depth="0.12" style={{ animationDelay: '0.2s' }}>
           <MindWorld />
-          <Showcase />
         </Chapter>
 
+        <Chapter className="mt-10 parallax-layer animate-fade" data-depth="0.12" style={{ animationDelay: '0.4s' }}>
           <Process id="process" />
+        </Chapter>
+
+        <Chapter className="mt-10 parallax-layer animate-fade" data-depth="0.10" style={{ animationDelay: '0.6s' }}>
+          <Showcase id="showcase" />
+        </Chapter>
         <div className="tile-grid grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 parallax-layer" data-depth="0.12">
           <Link
             href="/generator"

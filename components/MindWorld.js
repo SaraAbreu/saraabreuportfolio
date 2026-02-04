@@ -61,21 +61,32 @@ export default function MindWorld({ className = '' }) {
         const d = Math.hypot(dx, dy);
         const hover = d < n.r + 12;
 
-        // halo
+        // Enhanced halo with gradient
+        const gradient = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r + (hover ? 12 : 6));
+        gradient.addColorStop(0, hover ? 'rgba(212, 175, 55, 0.3)' : 'rgba(6, 182, 212, 0.15)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.fillStyle = hover ? 'rgba(6,182,212,0.08)' : 'rgba(124,58,237,0.03)';
-        ctx.arc(n.x, n.y, n.r + (hover ? 8 : 4), 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.r + (hover ? 12 : 6), 0, Math.PI * 2);
         ctx.fill();
 
-        // core
+        // core with gradient
+        const coreGradient = ctx.createLinearGradient(n.x - n.r, n.y - n.r, n.x + n.r, n.y + n.r);
+        if (hover) {
+          coreGradient.addColorStop(0, 'rgba(212, 175, 55, 0.9)');
+          coreGradient.addColorStop(1, 'rgba(6, 182, 212, 0.9)');
+        } else {
+          coreGradient.addColorStop(0, 'rgba(255, 255, 255, 0.08)');
+          coreGradient.addColorStop(1, 'rgba(255, 255, 255, 0.04)');
+        }
+        ctx.fillStyle = coreGradient;
         ctx.beginPath();
-        ctx.fillStyle = hover ? 'rgba(6,182,212,0.95)' : 'rgba(255,255,255,0.06)';
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
 
-        // label
-        ctx.fillStyle = hover ? '#001018' : '#dcefff';
-        ctx.font = '600 13px Inter, Arial';
+        // label with better contrast
+        ctx.fillStyle = hover ? '#000000' : '#ffffff';
+        ctx.font = '600 14px Inter, Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(n.label, n.x, n.y);

@@ -60,7 +60,7 @@ export default function Showcase({ className = '', id }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ duration: 0.32 }}
-              className="group card interactive bg-gradient-to-br from-black/20 to-white/2 rounded-xl p-0 overflow-hidden border border-white/6"
+              className="group card interactive bg-gradient-to-br from-black/20 to-white/2 rounded-xl p-0 overflow-hidden border border-white/6 glass"
             >
               <div className="w-full h-48 bg-gray-900 overflow-hidden relative cursor-zoom-in" onClick={(e) => { e.stopPropagation(); openLightbox(p.images, 0); }}>
                 <img src={p.images?.[0]} alt={p.title} loading="lazy" className="thumb-cover" />
