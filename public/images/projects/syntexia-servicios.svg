@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="darkBg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1f3a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark gradient background -->
+  <rect width="1200" height="900" fill="url(#darkBg2)"/>
+  
+  <!-- Nuestro Servicios Section -->
+  <text x="600" y="80" font-family="'Inter', Arial, sans-serif" font-size="28" fill="#e0e7ff" text-anchor="middle" font-weight="400">
+    Nuestro
+  </text>
+  <text x="600" y="120" font-family="'Inter', Arial, sans-serif" font-size="52" fill="#06b6d4" text-anchor="middle" font-weight="700">
+    Servicios
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="170" font-family="'Inter', Arial, sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">
+    Transformamos tu operación con soluciones de IA éticas, desde asistentes
+  </text>
+  <text x="600" y="195" font-family="'Inter', Arial, sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">
+    automatizados hasta formación especializada.
+  </text>
+  
+  <!-- Service Cards -->
+  <!-- Card 1: Asistentes Virtuales -->
+  <rect x="50" y="240" width="320" height="200" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
+  <text x="210" y="280" font-family="'Inter', Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Asistentes Virtuales</text>
+  <text x="210" y="320" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">Implementación de LLMs y Chatbots éticos y altamente especializados.</text>
+  
+  <!-- Card 2: Automatización Ética -->
+  <rect x="440" y="240" width="320" height="200" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
+  <text x="600" y="280" font-family="'Inter', Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Automatización Ética</text>
+  <text x="600" y="320" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">Optimizamos flujos de trabajo con R.P.A. y scripts basados en criterios inclusivos.</text>
+  
+  <!-- Card 3: Formación Corporativa -->
+  <rect x="830" y="240" width="320" height="200" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
+  <text x="990" y="280" font-family="'Inter', Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Formación Corporativa</text>
+  <text x="990" y="320" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">Talleres y cursos internos para equipos en IA Responsable y Herramientas clave.</text>
+  
+  <!-- Divider line -->
+  <line x1="100" y1="490" x2="1100" y2="490" stroke="#06b6d4" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Por qué Elegirños Section -->
+  <text x="600" y="560" font-family="'Inter', Arial, sans-serif" font-size="28" fill="#e0e7ff" text-anchor="middle" font-weight="400">
+    Por qué
+  </text>
+  <text x="600" y="600" font-family="'Inter', Arial, sans-serif" font-size="52" fill="#06b6d4" text-anchor="middle" font-weight="700">
+    Elegirños
+  </text>
+  
+  <!-- Benefits Cards -->
+  <!-- Benefit 1: Accesibilidad Total -->
+  <rect x="80" y="650" width="280" height="180" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.4"/>
+  <text x="220" y="690" font-family="'Inter', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">🌍 Accesibilidad Total</text>
+  <text x="220" y="730" font-family="'Inter', Arial, sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">Diseñamos para todos. Inclusivos desde el primer código.</text>
+  
+  <!-- Benefit 2: Eficiencia Humana -->
+  <rect x="460" y="650" width="280" height="180" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.4"/>
+  <text x="600" y="690" font-family="'Inter', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">🧠 Eficiencia Humana</text>
+  <text x="600" y="730" font-family="'Inter', Arial, sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">Aumentamos productividad sin perder la esencia personal.</text>
+  
+  <!-- Benefit 3: Ética y Transparencia -->
+  <rect x="840" y="650" width="280" height="180" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.4"/>
+  <text x="980" y="690" font-family="'Inter', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">🔒 Ética y Transparencia</text>
+  <text x="980" y="730" font-family="'Inter', Arial, sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">Tus datos son sagrados. Privacidad y seguridad garantizadas.</text>
+  
+  <!-- Footer accent lines -->
+  <line x1="0" y1="880" x2="1200" y2="880" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+</svg>

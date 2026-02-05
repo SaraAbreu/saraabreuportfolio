@@ -2,7 +2,6 @@ import '../styles/globals.css';
 import '../styles/aesthetic.css';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import ThemeSwitcher from '../components/ThemeSwitcher';
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -23,7 +22,6 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#000000" />
       </Head>
       <Layout>
-        <ThemeSwitcher />
         <Component {...pageProps} />
       </Layout>
     </>

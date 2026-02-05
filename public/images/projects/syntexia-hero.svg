@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="darkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1f3a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark gradient background -->
+  <rect width="1200" height="800" fill="url(#darkBg)"/>
+  
+  <!-- Animated stars/particles -->
+  <circle cx="100" cy="80" r="1.5" fill="#06b6d4" opacity="0.6" filter="url(#starGlow)"/>
+  <circle cx="250" cy="150" r="1" fill="#06b6d4" opacity="0.4"/>
+  <circle cx="400" cy="100" r="1.5" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="550" cy="120" r="1" fill="#06b6d4" opacity="0.6"/>
+  <circle cx="700" cy="90" r="1.5" fill="#06b6d4" opacity="0.4"/>
+  <circle cx="850" cy="140" r="1" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="1000" cy="110" r="1.5" fill="#06b6d4" opacity="0.6"/>
+  <circle cx="1100" cy="180" r="1" fill="#06b6d4" opacity="0.4"/>
+  
+  <circle cx="150" cy="700" r="1" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="600" cy="750" r="1.5" fill="#06b6d4" opacity="0.4"/>
+  <circle cx="950" cy="710" r="1" fill="#06b6d4" opacity="0.6"/>
+  
+  <!-- Top cyan line -->
+  <line x1="0" y1="30" x2="1200" y2="30" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Main heading -->
+  <text x="600" y="300" font-family="'Playfair Display', Georgia, serif" font-size="80" font-weight="bold" fill="#fbbf24" text-anchor="middle" letter-spacing="-1">
+    Transformamos tu
+  </text>
+  
+  <!-- Second line of heading -->
+  <text x="600" y="380" font-family="'Playfair Display', Georgia, serif" font-size="80" font-weight="bold" fill="#fbbf24" text-anchor="middle" letter-spacing="-1">
+    negocio con IA ética
+  </text>
+  
+  <!-- Badges/Pills -->
+  <g>
+    <!-- 100% Ético badge -->
+    <rect x="140" y="430" width="240" height="50" rx="25" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.7"/>
+    <text x="260" y="463" font-family="'Inter', Arial, sans-serif" font-size="16" fill="#06b6d4" text-anchor="middle" font-weight="600">✓ 100% Ético</text>
+    
+    <!-- Escalable badge -->
+    <rect x="480" y="430" width="240" height="50" rx="25" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.7"/>
+    <text x="600" y="463" font-family="'Inter', Arial, sans-serif" font-size="16" fill="#06b6d4" text-anchor="middle" font-weight="600">✓ Escalable</text>
+    
+    <!-- ROI Inmediato badge -->
+    <rect x="820" y="430" width="240" height="50" rx="25" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.7"/>
+    <text x="940" y="463" font-family="'Inter', Arial, sans-serif" font-size="16" fill="#06b6d4" text-anchor="middle" font-weight="600">✓ ROI Inmediato</text>
+  </g>
+  
+  <!-- Call-to-action button -->
+  <rect x="450" y="530" width="300" height="55" rx="30" fill="none" stroke="#06b6d4" stroke-width="2"/>
+  <text x="600" y="563" font-family="'Inter', Arial, sans-serif" font-size="18" fill="#06b6d4" text-anchor="middle" font-weight="600">Explora SyntexIA 🚀</text>
+  
+  <!-- Bottom cyan line -->
+  <line x1="0" y1="770" x2="1200" y2="770" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+</svg>

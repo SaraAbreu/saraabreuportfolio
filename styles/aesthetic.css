@@ -136,3 +136,15 @@ p {
 .preview-palette {
   transition: background-color 0.22s ease, color 0.22s ease;
 }
+
+/* Pulse animation para checkpoints */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(1.1);
+  }
+}

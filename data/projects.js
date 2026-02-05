@@ -5,129 +5,119 @@ const makeThumb = (title, hue = 200, w = 1200, h = 800) => {
 
 const projects = [
   {
-    slug: 'portfolio-principal',
-    title: 'Portfolio Principal',
-    short: 'Sitio personal con case studies y blog.',
-    tech: 'Next.js, Tailwind CSS',
+    slug: 'syntexia-prueba',
+    title: 'Syntexia Prueba',
+    short: 'Plataforma de síntesis de datos y análisis.',
+    tech: 'Next.js, React, Tailwind CSS',
     hue: 210,
-    images: [makeThumb('Portfolio — Home', 210), makeThumb('Portfolio — Case', 220)],
-    role: 'Diseño UX, Frontend',
-    duration: '3 meses',
-    liveUrl: '/',
+    images: ['/images/projects/syntexia-hero.svg', '/images/projects/syntexia-servicios.svg'],
+    role: 'Full Stack',
+    duration: '—',
+    liveUrl: 'https://syntexia-solutions.es/',
+    github: 'https://syntexia-solutions.es/',
     objectives: [
-      'Clarificar la narrativa de proyectos',
-      'Mejorar la conversión en contactos',
-      'Presentar métricas de impacto'
+      'Sintetizar datos complejos',
+      'Visualización intuitiva',
+      'Análisis en tiempo real'
     ],
     challenge:
-      'Consolidar proyectos diversos en una narrativa coherente y visualmente atractiva sin perder detalle técnico.',
+      'Procesar y presentar grandes volúmenes de datos de forma clara y accesible.',
     solution:
-      'Diseñamos una estructura de case study replicable, visual assets y métricas clave en la parte superior para facilitar la lectura rápida.',
+      'Interfaz modular con componentes reutilizables y renderizado eficiente.',
     metrics: [
-      { label: 'Tiempo de carga (LCP)', value: '1.2s' },
-      { label: 'Tasa de contacto', value: '+18%' }
+      { label: 'Rendimiento', value: 'Optimizado' }
     ],
     case: {
-      concise:
-        'Un portfolio claro y accesible que comunica proyectos y resultados. Enfocado en la narrativa visual y métricas clave.',
-      academic:
-        'Diseño orientado a la exposición de casos de estudio, con un enfoque metodológico en objetivos, hipótesis, metodología y resultados cuantificables.',
-      emotional:
-        'Un espacio que cuenta historias: el recorrido detrás de cada proyecto, los retos humanos y las soluciones que construimos juntos.'
+      concise: 'Herramienta de síntesis de datos para análisis visual.',
+      academic: 'Arquitectura modular con componentes React para visualización de datos.',
+      emotional: 'Simplifica lo complejo, revelando patrones en los datos.'
     }
   },
   {
-    slug: 'tienda-etica',
-    title: 'Tienda Ética',
-    short: 'E-commerce con enfoque en comercio justo.',
-    tech: 'React, Stripe',
+    slug: 'blog-caf',
+    title: 'Blog CAF',
+    short: 'Blog con contenido editorial y artículos.',
+    tech: 'Next.js, Markdown, Tailwind CSS',
     hue: 190,
-    images: [makeThumb('Tienda — Catálogo', 190), makeThumb('Tienda — Producto', 200)],
-    role: 'Product, Integraciones',
-    duration: '4 meses',
-    liveUrl: '/',
+    images: [makeThumb('Blog CAF — Home', 190), makeThumb('Blog CAF — Artículo', 200)],
+    role: 'Frontend, Editorial',
+    duration: '—',
+    liveUrl: 'https://github.com/SaraAbreu/blog-caf',
+    github: 'https://github.com/SaraAbreu/blog-caf',
     objectives: [
-      'Crear un flujo de compra transparente',
-      'Reducir fricción en la conversión',
-      'Comunicar origen y trazabilidad'
+      'Publicar contenido de calidad',
+      'Experiencia de lectura optimizada',
+      'Navegación intuitiva'
     ],
     challenge:
-      'Diseñar confianza en un público escéptico y equilibrar storytelling con el funnel de compra.',
+      'Diseñar una plataforma de contenido que priorice la legibilidad y la experiencia editorial.',
     solution:
-      'Interfaz enfocada en claridad, microcopy que explica proceso y una experiencia de checkout optimizada con Stripe.',
+      'Tipografía cuidadosa, espaciado generoso y un sistema de organización de contenido limpio.',
     metrics: [
-      { label: 'Conversión', value: '+12%' },
-      { label: 'Tasa de abandono de carrito', value: '-9%' }
+      { label: 'Legibilidad', value: 'Excelente' }
     ],
     case: {
-      concise: 'Tienda enfocada en usabilidad y conversiones con procesos de compra transparentes.',
-      academic:
-        'Implementación de un funnel optimizado para marketplaces éticos, con métricas de retención y conversión monitorizadas.',
-      emotional:
-        'Una experiencia de compra que transmite confianza y propósito, diseñada para conectar valores con acción.'
+      concise: 'Blog editorial centrado en la experiencia de lectura.',
+      academic: 'Diseño tipográfico y jerarquía de contenido optimizados.',
+      emotional: 'Un espacio para historias que importan.'
     }
   },
   {
-    slug: 'app-workshops',
-    title: 'App de Workshops',
-    short: 'Plataforma para reservar y gestionar talleres.',
-    tech: 'Node, Postgres',
+    slug: 'festivalmusic',
+    title: 'Festival Music',
+    short: 'Plataforma para gestionar y promocionar eventos musicales.',
+    tech: 'React, Node.js, MongoDB',
     hue: 170,
-    images: [makeThumb('Workshops — Dashboard', 170), makeThumb('Workshops — Reserva', 160)],
-    role: 'Arquitectura, Backend',
-    duration: '5 meses',
-    liveUrl: '/',
+    images: [makeThumb('Festival — Home', 170), makeThumb('Festival — Eventos', 160)],
+    role: 'Full Stack, Diseño',
+    duration: '—',
+    liveUrl: 'https://github.com/SaraAbreu/festivalmusic',
+    github: 'https://github.com/SaraAbreu/festivalmusic',
     objectives: [
-      'Gestionar reservas y asistentes',
-      'Automatizar recordatorios',
-      'Escalar operaciones administrativas'
+      'Gestionar eventos musicales',
+      'Promoción de artistas',
+      'Compra de entradas'
     ],
     challenge:
-      'Permitir a organizadores gestionar múltiples eventos con calendarios, pagos y reportes sin complejidad técnica.',
+      'Crear una experiencia inmersiva que capture la esencia del festival.',
     solution:
-      'Arquitectura basada en eventos, panel de administración y flujos de notificaciones automatizadas.',
+      'Diseño vibrante con navegación intuitiva y flujo de compra optimizado.',
     metrics: [
-      { label: 'Reducción de trabajo manual', value: '60%' },
-      { label: 'Retención organizadores', value: '+25%' }
+      { label: 'Experiencia', value: 'Inmersiva' }
     ],
     case: {
-      concise: 'Herramienta para gestionar reservas, participantes y pagos de forma escalable.',
-      academic:
-        'Arquitectura basada en eventos y diseño orientado a la gestión de usuarios y flujos administrativos.',
-      emotional:
-        'Facilita que los organizadores concentren su energía en la enseñanza, mientras la plataforma se encarga del resto.'
+      concise: 'Plataforma de gestión y promoción de festivales de música.',
+      academic: 'Arquitectura full-stack con gestión de eventos y transacciones.',
+      emotional: 'Conecta artistas con audiencia en un espacio digital energético.'
     }
   },
   {
-    slug: 'ia-demo',
-    title: 'Herramienta IA (demo)',
-    short: 'Prototipo de generador IA y flujos.',
-    tech: 'Next.js, Mock API',
+    slug: 'web-carrito',
+    title: 'Web Carrito',
+    short: 'E-commerce con carrito inteligente y checkout optimizado.',
+    tech: 'React, Express, PostgreSQL',
     hue: 150,
-    images: [makeThumb('IA — Generador', 150), makeThumb('IA — Galería', 140)],
-    role: 'Prototipado, Experimentos UX',
-    duration: '6 semanas',
-    liveUrl: '/generator',
+    images: [makeThumb('Web Carrito — Home', 150), makeThumb('Web Carrito — Checkout', 140)],
+    role: 'Full Stack, UX',
+    duration: '—',
+    liveUrl: 'https://github.com/SaraAbreu/web-carrito',
+    github: 'https://github.com/SaraAbreu/web-carrito',
     objectives: [
-      'Validar interacción prompt→resultado',
-      'Explorar parámetros de estilo',
-      'Medir engagement en galerías'
+      'Maximizar conversión',
+      'Experiencia de carrito fluida',
+      'Checkout sin fricciones'
     ],
     challenge:
-      'Comprender cómo usuarios describen ideas en lenguaje natural y traducirlo a resultados visuales útiles.',
+      'Diseñar un flujo de compra que minimice abandonos y maximice conversión.',
     solution:
-      'Mock API y flujos de interfaz que permiten iterar rápidamente sobre prompts, estilos y opciones de salida.',
+      'Carrito persistente, checkout progresivo y validación en tiempo real.',
     metrics: [
-      { label: 'Interacciones por sesión', value: '3.2' },
-      { label: 'Compartidos', value: '12%' }
+      { label: 'Conversión', value: 'Optimizada' }
     ],
     case: {
-      concise:
-        'Prototipo que demuestra flujo de prompt→resultado, ideal para validar producto e iterar.',
-      academic:
-        'Evaluación de UX para sistemas generativos, con pruebas A/B en prompts y control de parámetros.',
-      emotional:
-        'Un experimento creativo que permite explorar ideas rápidamente y materializarlas en imágenes.'
+      concise: 'Plataforma de e-commerce enfocada en conversión y experiencia.',
+      academic: 'Implementación de patrones de UX para reducción de fricción en compras.',
+      emotional: 'Comprar debería ser fácil, rápido y satisfactorio.'
     }
   }
 ];
