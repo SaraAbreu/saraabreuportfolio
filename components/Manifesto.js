@@ -18,16 +18,16 @@ export default function Manifesto({ id }) {
   ];
 
   return (
-    <section id={id || undefined} className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+    <section id={id || undefined} className="py-16 sm:py-20 px-6 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-6 sm:mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
               Mi Filosofía
             </span>
@@ -37,7 +37,7 @@ export default function Manifesto({ id }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {manifestoPoints.map((point, index) => (
             <motion.div
               key={index}

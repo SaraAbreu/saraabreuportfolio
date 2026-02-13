@@ -25,17 +25,17 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mt-24 border-t border-cyan-500/10 bg-gradient-to-b from-black via-black to-cyan-500/5">
-      <div className="max-w-6xl mx-auto px-4 py-16 md:py-20">
+    <footer className="mt-16 sm:mt-24 border-t border-cyan-500/10 bg-gradient-to-b from-black via-black to-cyan-500/5">
+      <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
         {/* Contenido principal */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-12"
+          className="max-w-3xl mx-auto mb-10 sm:mb-12"
         >
-          <p className="text-center text-lg text-gray-200 mb-6 leading-relaxed font-light">
+          <p className="text-center text-base sm:text-lg text-gray-200 mb-6 leading-relaxed font-light">
             La intersección entre creatividad y tecnología pide <span className="text-cyan-300">lentitud en la decisión</span> y <span className="text-purple-400">ceremonial en la ejecución.</span>
           </p>
           <p className="text-center text-gray-400 text-sm mb-8">
@@ -49,7 +49,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16"
         >
           <a
             href="mailto:hello@abreu.studio"

@@ -110,17 +110,17 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="space-y-8"
+          className="space-y-10 sm:space-y-8"
         >
           {/* Main heading */}
-          <div className="space-y-4">
+          <div className="space-y-6 sm:space-y-4">
             <motion.h1
-              className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight"
+              className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-tight"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -153,7 +153,7 @@ export default function HeroSection() {
 
           {/* Tech stack badges */}
           <motion.div
-            className="flex flex-wrap justify-center gap-4 mt-8"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-10 sm:mt-8 px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
@@ -174,7 +174,7 @@ export default function HeroSection() {
 
           {/* CTA buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
+            className="flex flex-col sm:flex-row gap-5 sm:gap-4 justify-center mt-14 sm:mt-12 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}

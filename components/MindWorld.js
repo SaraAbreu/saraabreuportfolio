@@ -65,7 +65,7 @@ export default function MindWorld() {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
+    <section className="py-16 sm:py-20 px-6 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -73,9 +73,9 @@ export default function MindWorld() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-6 sm:mb-4">
             <span className="bg-gradient-to-r from-cyan-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
               Dualidad Cognitiva
             </span>
@@ -115,7 +115,7 @@ export default function MindWorld() {
             </div>
             
             {/* Interactive Buttons Overlay */}
-            <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none">
+            <div className="absolute inset-0 flex items-center justify-between px-4 sm:px-8 pointer-events-none">
               {/* Left Hemisphere Button */}
               <motion.button
                 onMouseEnter={() => setHoveredSide('estrategica')}
@@ -123,7 +123,7 @@ export default function MindWorld() {
                 onClick={() => handleHemisphereClick('estrategica')}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`pointer-events-auto relative px-8 py-4 rounded-l-full transition-all duration-300 ${
+                className={`pointer-events-auto relative px-4 sm:px-8 py-3 sm:py-4 rounded-l-full transition-all duration-300 ${
                   activeSide === 'estrategica'
                     ? 'bg-cyan-500/40 border-2 border-cyan-400 shadow-lg shadow-cyan-500/50'
                     : hoveredSide === 'estrategica'
@@ -132,10 +132,10 @@ export default function MindWorld() {
                 }`}
               >
                 <div className="text-center">
-                  <div className="font-mono font-bold text-lg text-cyan-300 uppercase tracking-widest">
+                  <div className="font-mono font-bold text-sm sm:text-lg text-cyan-300 uppercase tracking-widest">
                     Estratega
                   </div>
-                  <div className="text-xs text-cyan-200/70 mt-1">Toca para descubrir</div>
+                  <div className="text-xs text-cyan-200/70 mt-1 hidden sm:block">Toca para descubrir</div>
                 </div>
               </motion.button>
 
@@ -146,7 +146,7 @@ export default function MindWorld() {
                 onClick={() => handleHemisphereClick('creativa')}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`pointer-events-auto relative px-8 py-4 rounded-r-full transition-all duration-300 ${
+                className={`pointer-events-auto relative px-4 sm:px-8 py-3 sm:py-4 rounded-r-full transition-all duration-300 ${
                   activeSide === 'creativa'
                     ? 'bg-amber-600/40 border-2 border-amber-500 shadow-lg shadow-amber-600/50'
                     : hoveredSide === 'creativa'
@@ -155,10 +155,10 @@ export default function MindWorld() {
                 }`}
               >
                 <div className="text-center">
-                  <div className="font-mono font-bold text-lg text-amber-300 uppercase tracking-widest">
+                  <div className="font-mono font-bold text-sm sm:text-lg text-amber-300 uppercase tracking-widest">
                     Creativa
                   </div>
-                  <div className="text-xs text-amber-200/70 mt-1">Toca para descubrir</div>
+                  <div className="text-xs text-amber-200/70 mt-1 hidden sm:block">Toca para descubrir</div>
                 </div>
               </motion.button>
             </div>

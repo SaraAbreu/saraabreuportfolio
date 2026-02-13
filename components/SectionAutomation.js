@@ -267,7 +267,7 @@ const PublicationFlow = () => {
       phase: 'Validación',
       icon: '✔',
       title: 'Cumple Criterios',
-      items: ['Estándares editorial', 'Coherencia de voz', 'Integridad de referencias'],
+      items: ['Estándares editoriales', 'Coherencia de voz', 'Integridad de referencias'],
       color: 'from-amber-500/20 to-amber-500/5',
       borderColor: 'border-amber-400/40'
     },
@@ -276,7 +276,7 @@ const PublicationFlow = () => {
       phase: 'Revisión',
       icon: '◉',
       title: 'Lectura Final',
-      items: ['Revisión editoral', 'Ajustes manuales', 'Aprobación firmada'],
+      items: ['Revisión editorial', 'Ajustes manuales', 'Aprobación firmada'],
       color: 'from-cyan-500/30 to-purple-500/20',
       borderColor: 'border-cyan-400/50'
     },
@@ -285,7 +285,7 @@ const PublicationFlow = () => {
       phase: 'Publicación',
       icon: '▲',
       title: 'En Producción',
-      items: ['Publicada autorizada', 'Auditada y firmada', 'Rastreable siempre'],
+      items: ['Publicación autorizada', 'Auditada y firmada', 'Rastreable siempre'],
       color: 'from-green-500/20 to-cyan-500/20',
       borderColor: 'border-green-400/40'
     }
@@ -420,7 +420,7 @@ const PublicationFlow = () => {
               <span className="text-purple-400">✓</span> 80% del trabajo automatizado
             </li>
             <li className="text-sm text-gray-300 flex items-center gap-2">
-              <span className="text-purple-400">✓</span> Solo décisiones críticas manuales
+              <span className="text-purple-400">✓</span> Solo decisiones críticas manuales
             </li>
             <li className="text-sm text-gray-300 flex items-center gap-2">
               <span className="text-purple-400">✓</span> Ciclos de publicación más rápidos

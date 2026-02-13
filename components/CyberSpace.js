@@ -9,7 +9,66 @@ export default function CyberSpace({ id }) {
   const tabs = [
     { id: 'projects', label: 'Proyectos', icon: '🚀' },
     { id: 'apps', label: 'Apps', icon: '📱' },
-    { id: 'gallery', label: 'Galería', icon: '🎨' }
+    { id: 'certifications', label: 'Certificaciones', icon: '🏅' }
+  ];
+
+  // Datos de certificaciones y conocimientos
+  const certifications = [
+    {
+      id: 1,
+      title: 'Especialista en Inteligencia Artificial',
+      issuer: 'Reboot Academy',
+      hours: '270h',
+      icon: '🤖',
+      skills: ['Machine Learning', 'Redes Neuronales', 'Python', 'PyTorch']
+    },
+    {
+      id: 2,
+      title: 'Seguridad Informática',
+      issuer: 'Formación Online',
+      hours: '525h',
+      icon: '🔐',
+      skills: ['Ciberseguridad', 'Análisis de riesgos', 'Protección de datos']
+    },
+    {
+      id: 3,
+      title: 'Programación Web con .NET',
+      issuer: 'ICADEPRO',
+      hours: '275h',
+      icon: '💻',
+      skills: ['ASP.NET', 'C#', 'SQL Server', 'Web APIs']
+    },
+    {
+      id: 4,
+      title: 'Actividades de Gestión Administrativa',
+      issuer: 'FAUCA',
+      hours: '920h',
+      icon: '📋',
+      skills: ['Gestión', 'Administración', 'Ofimática']
+    },
+    {
+      id: 5,
+      title: 'Experto en eLearning',
+      issuer: 'FAUCA',
+      hours: '40h',
+      icon: '🎓',
+      skills: ['Diseño instruccional', 'Plataformas LMS', 'Contenido digital']
+    },
+    {
+      id: 6,
+      title: 'Atención al Cliente y Calidad del Servicio',
+      issuer: 'FAUCA',
+      hours: '25h',
+      icon: '🤝',
+      skills: ['Comunicación', 'Servicio al cliente', 'Calidad']
+    }
+  ];
+
+  // Conocimientos técnicos
+  const technicalSkills = [
+    { category: 'Lenguajes', skills: ['HTML', 'CSS', 'JavaScript', 'Python', 'SQL'] },
+    { category: 'IA & Data', skills: ['Machine Learning', 'Redes Neuronales', 'Pandas', 'NumPy', 'Scikit-Learn', 'PyTorch'] },
+    { category: 'Bases de Datos', skills: ['MySQL', 'MongoDB', 'SQL Server'] }
   ];
 
   const getFilteredProjects = () => {
@@ -18,8 +77,8 @@ export default function CyberSpace({ id }) {
         return projects.filter(p => p.tech && /Next|React|Node|Postgres|Stripe/i.test(p.tech));
       case 'apps':
         return projects.filter(p => p.slug.includes('app') || /app|mobile|webapp/i.test(p.short));
-      case 'gallery':
-        return projects.filter(p => p.images && p.images.length > 0);
+      case 'certifications':
+        return []; // Certificaciones se manejan por separado
       default:
         return projects;
     }
@@ -28,22 +87,22 @@ export default function CyberSpace({ id }) {
   const filteredProjects = getFilteredProjects();
 
   return (
-    <section id={id || undefined} className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id={id || undefined} className="py-16 sm:py-20 px-6 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-amber-600 bg-clip-text text-transparent">
               Ciberespacio Creativo
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Explora mi universo digital: proyectos innovadores, aplicaciones funcionales y una galería de experiencias visuales
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+            Explora mi universo digital: proyectos innovadores, aplicaciones en desarrollo y mis certificaciones
           </p>
         </motion.div>
 
@@ -53,9 +112,9 @@ export default function CyberSpace({ id }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-10 sm:mb-12"
         >
-          <div className="glass-card p-2 rounded-2xl flex space-x-2">
+          <div className="glass-card p-2 rounded-2xl flex flex-wrap justify-center gap-2 sm:space-x-2">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
@@ -83,21 +142,131 @@ export default function CyberSpace({ id }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.slug}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative"
-              >
-                <div className="glass-card overflow-hidden rounded-2xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.images?.[0]}
+            {/* Empty state for Apps */}
+            {activeTab === 'apps' && filteredProjects.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-20 px-6">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center max-w-md"
+                >
+                  <div className="text-6xl mb-6">🔧</div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    2 Apps en desarrollo
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    Estoy trabajando en dos aplicaciones móviles que pronto verán la luz. 
+                    Por ahora, los detalles están bajo llave.
+                  </p>
+                  <div className="flex justify-center gap-4">
+                    <div className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300">
+                      📱 App #1 — En progreso
+                    </div>
+                    <div className="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm text-cyan-300">
+                      📱 App #2 — En progreso
+                    </div>
+                  </div>
+                  <p className="text-gray-500 text-sm mt-8 italic">
+                    Próximamente más información...
+                  </p>
+                </motion.div>
+              </div>
+            ) : activeTab === 'certifications' ? (
+              /* Certifications & Skills */
+              <div className="space-y-12">
+                {/* Technical Skills Section */}
+                <div className="glass-card p-6 rounded-2xl">
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <span>💡</span> Conocimientos Técnicos
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {technicalSkills.map((group, idx) => (
+                      <div key={idx} className="space-y-3">
+                        <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">{group.category}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {group.skills.map((skill, skillIdx) => (
+                            <span
+                              key={skillIdx}
+                              className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-sm text-cyan-300"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Certifications Grid */}
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <span>🏅</span> Certificaciones
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    {certifications.map((cert, index) => (
+                      <motion.div
+                        key={cert.id}
+                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        className="group relative"
+                      >
+                        <div className="glass-card overflow-hidden rounded-2xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 p-6">
+                          {/* Icon & Header */}
+                          <div className="flex items-start gap-4 mb-4">
+                            <div className="text-4xl">{cert.icon}</div>
+                            <div className="flex-1">
+                              <h3 className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors duration-300">
+                                {cert.title}
+                              </h3>
+                              <p className="text-sm text-gray-400">{cert.issuer}</p>
+                            </div>
+                          </div>
+                          
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {cert.skills.map((skill, skillIndex) => (
+                              <span
+                                key={skillIndex}
+                                className="px-2 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs font-medium text-amber-400"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                          
+                          {/* Hours */}
+                          <div className="flex justify-between items-center pt-4 border-t border-white/10">
+                            <span className="text-xs text-gray-400">Duración: {cert.hours}</span>
+                            <span className="text-amber-400 text-sm">✓ Completado</span>
+                          </div>
+                        </div>
+
+                        {/* Animated border */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.slug}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="group relative"
+                  >
+                    <div className="glass-card overflow-hidden rounded-2xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
+                      {/* Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img
+                          src={project.images?.[0]}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
@@ -152,6 +321,8 @@ export default function CyberSpace({ id }) {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
               </motion.div>
             ))}
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 

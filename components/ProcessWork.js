@@ -42,7 +42,7 @@ export default function ProcessWork({ id }) {
   ];
 
   return (
-    <section id={id || undefined} className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+    <section id={id || undefined} className="py-16 sm:py-24 px-6 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-black to-black pointer-events-none" />
 
@@ -52,9 +52,9 @@ export default function ProcessWork({ id }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-14 sm:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-6 sm:mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
               Cómo Trabajo
             </span>
@@ -67,10 +67,10 @@ export default function ProcessWork({ id }) {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-500/20 to-purple-500/20" />
+          <div className="absolute left-6 sm:left-1/2 sm:transform sm:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-500/20 to-purple-500/20" />
 
           {/* Steps */}
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-10 sm:space-y-16">
             {steps.map((step, index) => (
               <motion.div
                 key={step.number}
@@ -78,8 +78,23 @@ export default function ProcessWork({ id }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`flex items-center gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                className={`flex items-start sm:items-center gap-6 sm:gap-8 ${index % 2 === 0 ? 'flex-row sm:flex-row' : 'flex-row sm:flex-row-reverse'}`}
               >
+                {/* Timeline dot - Mobile left aligned */}
+                <div className="relative flex-shrink-0 sm:hidden">
+                  <motion.div
+                    whileInView={{ scale: [0.8, 1.2, 1] }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-md opacity-50" />
+                    <div className="relative w-10 h-10 bg-black border-2 border-cyan-500 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" />
+                    </div>
+                  </motion.div>
+                </div>
+
                 {/* Content */}
                 <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'}`}>
                   <div className="group">
@@ -103,8 +118,8 @@ export default function ProcessWork({ id }) {
                   </div>
                 </div>
 
-                {/* Timeline dot */}
-                <div className="relative w-full sm:w-2/12 flex justify-center">
+                {/* Timeline dot - Desktop centered */}
+                <div className="relative hidden sm:flex w-full sm:w-2/12 justify-center">
                   <motion.div
                     whileInView={{ scale: [0.8, 1.2, 1] }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
