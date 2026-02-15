@@ -180,7 +180,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1.4 }}
           >
             <motion.button
-              onClick={() => document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('trabajo')?.scrollIntoView({ behavior: 'smooth' })}
               className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

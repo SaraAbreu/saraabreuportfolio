@@ -67,7 +67,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/saritaabreu/"
             target="_blank"
             rel="noreferrer"
             className="group px-6 py-3 rounded-lg border border-white/20 text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all duration-300 font-medium text-sm tracking-wide"

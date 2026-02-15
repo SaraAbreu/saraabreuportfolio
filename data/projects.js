@@ -7,18 +7,20 @@ const projects = [
   {
     slug: 'syntexia-prueba',
     title: 'Syntexia Prueba',
-    short: 'Plataforma de síntesis de datos y análisis.',
+    short: 'Creé Syntexia como un proyecto personal para explorar cómo la inteligencia artificial puede integrarse en experiencias web intuitivas y accesibles. Mi objetivo fue diseñar una plataforma que permitiera a cualquier usuario generar contenido creativo de forma sencilla, combinando una interfaz limpia con funcionalidades potentes. Este proyecto me permitió profundizar en el desarrollo frontend, la arquitectura de aplicaciones modernas y la interacción con APIs de IA, mientras construía una herramienta útil y escalable.',
     tech: 'Next.js, React, Tailwind CSS',
     hue: 210,
     images: ['/images/projects/syntexia-hero.svg', '/images/projects/syntexia-servicios.svg'],
     role: 'Full Stack',
     duration: '—',
     liveUrl: 'https://syntexia-solutions.es/',
-    github: 'https://syntexia-solutions.es/',
+    github: 'https://github.com/SaraAbreu/Proyecto-web-SyntexIA-prueba',
     objectives: [
       'Sintetizar datos complejos',
       'Visualización intuitiva',
-      'Análisis en tiempo real'
+      'Análisis en tiempo real',
+      'Acceso rápido a código y demo online',
+      'Enlaces directos a recursos principales'
     ],
     challenge:
       'Procesar y presentar grandes volúmenes de datos de forma clara y accesible.',
@@ -28,7 +30,7 @@ const projects = [
       { label: 'Rendimiento', value: 'Optimizado' }
     ],
     case: {
-      concise: 'Herramienta de síntesis de datos para análisis visual.',
+      concise: 'Herramienta de síntesis de datos para análisis visual.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-web-SyntexIA-prueba" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E\n\uD83D\uDD17 \u003Ca href="https://syntexia-solutions.es/" target="_blank" rel="noopener noreferrer"\u003ESitio Web\u003C/a\u003E',
       academic: 'Arquitectura modular con componentes React para visualización de datos.',
       emotional: 'Simplifica lo complejo, revelando patrones en los datos.'
     }
@@ -36,18 +38,19 @@ const projects = [
   {
     slug: 'blog-caf',
     title: 'Blog CAF',
-    short: 'Blog con contenido editorial y artículos.',
+    short: 'Blog CAF es una plataforma editorial para compartir artículos y contenido de calidad, con un diseño enfocado en la experiencia de lectura y la organización clara del contenido.\n\nPuedes enfocar la web como un espacio para publicar historias, noticias y recursos, priorizando la legibilidad y la navegación sencilla.\n',
     tech: 'Next.js, Markdown, Tailwind CSS',
     hue: 190,
     images: ['/images/projects/blogcaf-hero.png'],
     role: 'Frontend, Editorial',
     duration: '—',
-    liveUrl: 'https://github.com/SaraAbreu/blog-caf',
     github: 'https://github.com/SaraAbreu/blog-caf',
     objectives: [
       'Publicar contenido de calidad',
       'Experiencia de lectura optimizada',
-      'Navegación intuitiva'
+      'Navegación intuitiva',
+      'Acceso rápido al código fuente',
+      'Enlace directo al repositorio'
     ],
     challenge:
       'Diseñar una plataforma de contenido que priorice la legibilidad y la experiencia editorial.',
@@ -57,7 +60,7 @@ const projects = [
       { label: 'Legibilidad', value: 'Excelente' }
     ],
     case: {
-      concise: 'Blog editorial centrado en la experiencia de lectura.',
+      concise: 'Blog editorial centrado en la experiencia de lectura.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-Blog-caf-" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E',
       academic: 'Diseño tipográfico y jerarquía de contenido optimizados.',
       emotional: 'Un espacio para historias que importan.'
     }
@@ -65,18 +68,19 @@ const projects = [
   {
     slug: 'festivalmusic',
     title: 'Festival Music',
-    short: 'Plataforma para gestionar y promocionar eventos musicales.',
+    short: 'Festival Music es una plataforma para gestionar y promocionar eventos musicales, conectar artistas y público, y facilitar la compra de entradas.\n\nPuedes enfocar la web como una solución integral para festivales, con herramientas para organización, promoción y experiencia de usuario.\n',
     tech: 'React, Node.js, MongoDB',
     hue: 170,
     images: ['/images/projects/festivalmusic-hero.png'],
     role: 'Full Stack, Diseño',
     duration: '—',
-    liveUrl: 'https://github.com/SaraAbreu/festivalmusic',
     github: 'https://github.com/SaraAbreu/festivalmusic',
     objectives: [
       'Gestionar eventos musicales',
       'Promoción de artistas',
-      'Compra de entradas'
+      'Compra de entradas',
+      'Acceso rápido al código fuente',
+      'Enlace directo al repositorio'
     ],
     challenge:
       'Crear una experiencia inmersiva que capture la esencia del festival.',
@@ -86,7 +90,7 @@ const projects = [
       { label: 'Experiencia', value: 'Inmersiva' }
     ],
     case: {
-      concise: 'Plataforma de gestión y promoción de festivales de música.',
+      concise: 'Plataforma de gestión y promoción de festivales de música.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-FestivalMusic" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E',
       academic: 'Arquitectura full-stack con gestión de eventos y transacciones.',
       emotional: 'Conecta artistas con audiencia en un espacio digital energético.'
     }

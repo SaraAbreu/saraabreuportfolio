@@ -468,7 +468,7 @@ export default function ArtGallery({ id }) {
             layout
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               {filteredImages.map((image, index) => (
                 <motion.div
                   key={image.id}
