@@ -217,7 +217,7 @@ const ImagePipelineFlow = () => {
           >
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl font-light text-cyan-300">{feature.icon}</span>
-              <h4 className="text-white font-semibold text-base">{feature.title}</h4>
+              <h4 className="text-white font-semibold text-sm sm:text-base break-words">{feature.title}</h4>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed break-words">{feature.description}</p>
           </div>
