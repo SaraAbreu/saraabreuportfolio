@@ -11,7 +11,7 @@ export default function ArtGallery({ id }) {
       id: 1,
       title: 'Abreu Studio - Conceptual I',
       category: 'conceptual',
-      image: '/images/gallery/Conceptual/Gemini_Generated_Image_4bq5je4bq5je4bq5.png',
+      image: '/images/gallery/Conceptual/concept1.png',
       description: 'Explorando la intersección entre tecnología y naturaleza digital',
       narrative: 'Abreu Studio'
     },
@@ -19,7 +19,7 @@ export default function ArtGallery({ id }) {
       id: 2,
       title: 'Abreu Studio - Conceptual II',
       category: 'conceptual',
-      image: '/images/gallery/Conceptual/Gemini_Generated_Image_859hk8859hk8859h.png',
+      image: '/images/gallery/Conceptual/concept2.png',
       description: 'Naturaleza reimaginada a través de una lente cibernética',
       narrative: 'Abreu Studio'
     },
@@ -27,7 +27,7 @@ export default function ArtGallery({ id }) {
       id: 3,
       title: 'Abreu Studio - Conceptual III',
       category: 'conceptual',
-      image: '/images/gallery/Conceptual/Gemini_Generated_Image_aohhn1aohhn1aohh.png',
+      image: '/images/gallery/Conceptual/concept3.png',
       description: 'Síntesis de lo orgánico y lo digital',
       narrative: 'Abreu Studio'
     },
@@ -35,7 +35,7 @@ export default function ArtGallery({ id }) {
       id: 4,
       title: 'Abreu Studio - Conceptual IV',
       category: 'conceptual',
-      image: '/images/gallery/Conceptual/Gemini_Generated_Image_jws0k5jws0k5jws0.png',
+      image: '/images/gallery/Conceptual/concept4.png',
       description: 'Convergencia de mundos paralelos',
       narrative: 'Abreu Studio'
     },
@@ -43,7 +43,7 @@ export default function ArtGallery({ id }) {
       id: 5,
       title: 'Abreu Studio - Conceptual V',
       category: 'conceptual',
-      image: '/images/gallery/Conceptual/Gemini_Generated_Image_n18n29n18n29n18n.png',
+      image: '/images/gallery/Conceptual/concept5.png',
       description: 'Interfaz entre realidad y ficción',
       narrative: 'Abreu Studio'
     },
@@ -52,7 +52,7 @@ export default function ArtGallery({ id }) {
       id: 6,
       title: 'Abreu Studio - Paisaje I',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_6ct7p26ct7p26ct7.png',
+      image: '/images/gallery/Paisajes/paisajes2.png',
       description: 'Montaña cristal - picos que reflejan la realidad',
       narrative: 'Abreu Studio'
     },
@@ -60,7 +60,7 @@ export default function ArtGallery({ id }) {
       id: 7,
       title: 'Abreu Studio - Paisaje II',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_f6dgyf6dgyf6dgyf.png',
+      image: '/images/gallery/Paisajes/paisajes3.png',
       description: 'Océano espejo - agua que refleja todo lo invisible',
       narrative: 'Abreu Studio'
     },
@@ -68,7 +68,7 @@ export default function ArtGallery({ id }) {
       id: 8,
       title: 'Abreu Studio - Paisaje III',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_gm4nvegm4nvegm4n.png',
+      image: '/images/gallery/Paisajes/paisajes4.png',
       description: 'Pradera luminiscente - hierba que emite luz propia',
       narrative: 'Abreu Studio'
     },
@@ -76,7 +76,7 @@ export default function ArtGallery({ id }) {
       id: 9,
       title: 'Abreu Studio - Paisaje IV',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_lun9awlun9awlun9.png',
+      image: '/images/gallery/Paisajes/paisajes5.png',
       description: 'Acantilado suspendido - rocas flotantes en el vacío',
       narrative: 'Abreu Studio'
     },
@@ -84,7 +84,7 @@ export default function ArtGallery({ id }) {
       id: 10,
       title: 'Abreu Studio - Paisaje V',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_mxmknwmxmknwmxmk.png',
+      image: '/images/gallery/Paisajes/pasaijes6.png',
       description: 'Nebulosa terrestre - cielo y tierra fusionados',
       narrative: 'Abreu Studio'
     },
@@ -92,7 +92,7 @@ export default function ArtGallery({ id }) {
       id: 11,
       title: 'Abreu Studio - Paisaje VI',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_ol2eesol2eesol2e.png',
+      image: '/images/gallery/Paisajes/paisajes7.png',
       description: 'Isla etérea - tierra que flota entre nubes',
       narrative: 'Abreu Studio'
     },
@@ -100,7 +100,7 @@ export default function ArtGallery({ id }) {
       id: 12,
       title: 'Abreu Studio - Paisaje VII',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_pb0q9fpb0q9fpb0q.png',
+      image: '/images/gallery/Paisajes/paisajes8.png',
       description: 'Horizonte dual - donde dos mundos se encuentran',
       narrative: 'Abreu Studio'
     },
@@ -108,7 +108,7 @@ export default function ArtGallery({ id }) {
       id: 13,
       title: 'Abreu Studio - Paisaje VIII',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_tn6rfitn6rfitn6r.png',
+      image: '/images/gallery/Paisajes/paisajes9.png',
       description: 'Valle envuelto - niebla que guarda secretos',
       narrative: 'Abreu Studio'
     },
@@ -116,7 +116,7 @@ export default function ArtGallery({ id }) {
       id: 14,
       title: 'Abreu Studio - Paisaje IX',
       category: 'landscape',
-      image: '/images/gallery/Paisajes/Gemini_Generated_Image_xq6t9wxq6t9wxq6t.png',
+      image: '/images/gallery/Paisajes/paisajes10.png',
       description: 'Montaña destello - luz que emerge de la roca',
       narrative: 'Abreu Studio'
     },
@@ -125,7 +125,7 @@ export default function ArtGallery({ id }) {
       id: 15,
       title: 'Abreu Studio - Abstract I',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115108.png',
+      image: '/images/gallery/Abstracto/abstract3.png',
       description: 'Colores imposibles, composiciones de otro universo',
       narrative: 'Abreu Studio'
     },
@@ -133,7 +133,7 @@ export default function ArtGallery({ id }) {
       id: 16,
       title: 'Abreu Studio - Abstract II',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115410.png',
+      image: '/images/gallery/Abstracto/abstract4.png',
       description: 'Formas fluidas en el caos cromático',
       narrative: 'Abreu Studio'
     },
@@ -141,7 +141,7 @@ export default function ArtGallery({ id }) {
       id: 17,
       title: 'Abreu Studio - Abstract III',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115420.png',
+      image: '/images/gallery/Abstracto/abstract5.png',
       description: 'Geometría disuelta en luz',
       narrative: 'Abreu Studio'
     },
@@ -149,7 +149,7 @@ export default function ArtGallery({ id }) {
       id: 18,
       title: 'Abreu Studio - Abstract IV',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115429.png',
+      image: '/images/gallery/Abstracto/abstract6.png',
       description: 'Dimensiones entrelazadas',
       narrative: 'Abreu Studio'
     },
@@ -157,7 +157,7 @@ export default function ArtGallery({ id }) {
       id: 19,
       title: 'Abreu Studio - Abstract V',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115924.png',
+      image: '/images/gallery/Abstracto/abstract7.png',
       description: 'Vibración cósmica visualizada',
       narrative: 'Abreu Studio'
     },
@@ -165,7 +165,7 @@ export default function ArtGallery({ id }) {
       id: 20,
       title: 'Abreu Studio - Abstract VI',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115926.png',
+      image: '/images/gallery/Abstracto/abstract2.png',
       description: 'Espectro infinito en movimiento',
       narrative: 'Abreu Studio'
     },
@@ -173,7 +173,7 @@ export default function ArtGallery({ id }) {
       id: 21,
       title: 'Abreu Studio - Abstract VII',
       category: 'abstract',
-      image: '/images/gallery/Abstracto/Copilot_20260205_115928.png',
+      image: '/images/gallery/Abstracto/abstract1.png',
       description: 'Materia transformándose en energía',
       narrative: 'Abreu Studio'
     },
@@ -183,7 +183,7 @@ export default function ArtGallery({ id }) {
       id: 22,
       title: 'Susana Pierre - I',
       category: 'portrait',
-      image: '/images/gallery/Retratos/Imagen%20de%20WhatsApp%202025-10-21%20a%20las%2009.29.52_67183c64.jpg',
+      image: '/images/gallery/Retratos/susanapierre4.jpg',
       description: 'La luz natural revela su esencia auténtica',
       narrative: 'Sesión Susana Pierre',
       session: 'susana',
@@ -193,7 +193,7 @@ export default function ArtGallery({ id }) {
       id: 23,
       title: 'Susana Pierre - II',
       category: 'portrait',
-      image: '/images/gallery/Retratos/WhatsApp%20Image%202026-01-16%20at%2019.38.14.jpeg',
+      image: '/images/gallery/Retratos/susanapierre1.jpeg',
       description: 'Mirada que atraviesa el tiempo',
       narrative: 'Sesión Susana Pierre',
       session: 'susana',
@@ -203,7 +203,7 @@ export default function ArtGallery({ id }) {
       id: 24,
       title: 'Susana Pierre - III',
       category: 'portrait',
-      image: '/images/gallery/Retratos/WhatsApp%20Image%202026-01-17%20at%2017.18.35.jpeg',
+      image: '/images/gallery/Retratos/susanapierre2.jpeg',
       description: 'Entre sombras y destellos, presencia serena',
       narrative: 'Sesión Susana Pierre',
       session: 'susana',
@@ -213,7 +213,7 @@ export default function ArtGallery({ id }) {
       id: 25,
       title: 'Susana Pierre - IV',
       category: 'portrait',
-      image: '/images/gallery/Retratos/WhatsApp%20Image%202026-01-20%20at%2019.37.30.jpeg',
+      image: '/images/gallery/Retratos/susanapierre3.jpeg',
       description: 'Elegancia capturada en un instante eterno',
       narrative: 'Sesión Susana Pierre',
       session: 'susana',
