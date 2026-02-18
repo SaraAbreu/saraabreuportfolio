@@ -100,7 +100,7 @@ export default function ArtGallery({ id }) {
       id: 12,
       title: 'Abreu Studio - Paisaje VII',
       category: 'landscape',
-      image: '/images/gallery/paisajes/Gemini_Generated_Image_pb0q9fpb0q9fpb0q.png',
+      image: '/images/gallery/Paisajes/Gemini_Generated_Image_pb0q9fpb0q9fpb0q.png',
       description: 'Horizonte dual - donde dos mundos se encuentran',
       narrative: 'Abreu Studio'
     },
@@ -108,7 +108,7 @@ export default function ArtGallery({ id }) {
       id: 13,
       title: 'Abreu Studio - Paisaje VIII',
       category: 'landscape',
-      image: '/images/gallery/paisajes/Gemini_Generated_Image_tn6rfitn6rfitn6r.png',
+      image: '/images/gallery/Paisajes/Gemini_Generated_Image_tn6rfitn6rfitn6r.png',
       description: 'Valle envuelto - niebla que guarda secretos',
       narrative: 'Abreu Studio'
     },
@@ -116,7 +116,7 @@ export default function ArtGallery({ id }) {
       id: 14,
       title: 'Abreu Studio - Paisaje IX',
       category: 'landscape',
-      image: '/images/gallery/paisajes/Gemini_Generated_Image_xq6t9wxq6t9wxq6t.png',
+      image: '/images/gallery/Paisajes/Gemini_Generated_Image_xq6t9wxq6t9wxq6t.png',
       description: 'Montaña destello - luz que emerge de la roca',
       narrative: 'Abreu Studio'
     },
@@ -125,7 +125,7 @@ export default function ArtGallery({ id }) {
       id: 15,
       title: 'Abreu Studio - Abstract I',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115108.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115108.png',
       description: 'Colores imposibles, composiciones de otro universo',
       narrative: 'Abreu Studio'
     },
@@ -133,7 +133,7 @@ export default function ArtGallery({ id }) {
       id: 16,
       title: 'Abreu Studio - Abstract II',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115410.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115410.png',
       description: 'Formas fluidas en el caos cromático',
       narrative: 'Abreu Studio'
     },
@@ -141,7 +141,7 @@ export default function ArtGallery({ id }) {
       id: 17,
       title: 'Abreu Studio - Abstract III',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115420.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115420.png',
       description: 'Geometría disuelta en luz',
       narrative: 'Abreu Studio'
     },
@@ -149,7 +149,7 @@ export default function ArtGallery({ id }) {
       id: 18,
       title: 'Abreu Studio - Abstract IV',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115429.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115429.png',
       description: 'Dimensiones entrelazadas',
       narrative: 'Abreu Studio'
     },
@@ -157,7 +157,7 @@ export default function ArtGallery({ id }) {
       id: 19,
       title: 'Abreu Studio - Abstract V',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115924.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115924.png',
       description: 'Vibración cósmica visualizada',
       narrative: 'Abreu Studio'
     },
@@ -165,7 +165,7 @@ export default function ArtGallery({ id }) {
       id: 20,
       title: 'Abreu Studio - Abstract VI',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115926.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115926.png',
       description: 'Espectro infinito en movimiento',
       narrative: 'Abreu Studio'
     },
@@ -173,7 +173,7 @@ export default function ArtGallery({ id }) {
       id: 21,
       title: 'Abreu Studio - Abstract VII',
       category: 'abstract',
-      image: '/images/gallery/abstracto/Copilot_20260205_115928.png',
+      image: '/images/gallery/Abstracto/Copilot_20260205_115928.png',
       description: 'Materia transformándose en energía',
       narrative: 'Abreu Studio'
     },
