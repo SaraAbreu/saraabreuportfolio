@@ -180,7 +180,7 @@ const ImagePipelineFlow = () => {
 
               {/* Información */}
               <div className="col-span-10">
-                <h4 className="text-lg font-semibold text-white mb-2 font-serif">
+                <h4 className="text-lg font-semibold text-white mb-3 font-serif">
                   {stage.phase}: <span className="text-cyan-300">{stage.title}</span>
                 </h4>
                 <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
