@@ -204,7 +204,7 @@ const ImagePipelineFlow = () => {
 
       {/* Características clave */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
@@ -213,13 +213,13 @@ const ImagePipelineFlow = () => {
         {features.map((feature, i) => (
           <div
             key={i}
-            className={`p-6 rounded-xl border ${feature.borderColor} bg-gradient-to-br ${feature.color} backdrop-blur-sm`}
+            className={`p-6 sm:p-6 py-8 rounded-xl border ${feature.borderColor} bg-gradient-to-br ${feature.color} backdrop-blur-sm`}
           >
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl font-light text-cyan-300">{feature.icon}</span>
               <h4 className="text-white font-semibold text-base">{feature.title}</h4>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
+            <p className="text-gray-300 text-sm leading-relaxed break-words">{feature.description}</p>
           </div>
         ))}
       </motion.div>
