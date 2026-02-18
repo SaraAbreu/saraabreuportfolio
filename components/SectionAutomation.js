@@ -185,7 +185,7 @@ const ImagePipelineFlow = () => {
                 </h4>
                 <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {stage.items.map((item, i) => (
-                    <li key={i} className="text-sm text-gray-300 flex items-center gap-2">
+                    <li key={i} className="text-sm text-gray-300 flex items-center gap-2 break-words">
                       <span className="text-xs text-cyan-400">→</span>
                       {item}
                     </li>
