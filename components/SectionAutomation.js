@@ -183,7 +183,7 @@ const ImagePipelineFlow = () => {
                 <h4 className="text-lg font-semibold text-white mb-2 font-serif">
                   {stage.phase}: <span className="text-cyan-300">{stage.title}</span>
                 </h4>
-                <ul className="grid grid-cols-3 gap-2">
+                <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {stage.items.map((item, i) => (
                     <li key={i} className="text-sm text-gray-300 flex items-center gap-2">
                       <span className="text-xs text-cyan-400">→</span>
