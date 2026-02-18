@@ -75,8 +75,6 @@ export default function CyberSpace({ id }) {
     switch (activeTab) {
       case 'projects':
         return projects.filter(p => p.tech && /Next|React|Node|Postgres|Stripe/i.test(p.tech));
-      case 'apps':
-        return projects.filter(p => p.slug.includes('app') || /app|mobile|webapp/i.test(p.short));
       case 'certifications':
         return []; // Certificaciones se manejan por separado
       default:
@@ -143,8 +141,8 @@ export default function CyberSpace({ id }) {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Empty state for Apps */}
-            {activeTab === 'apps' && filteredProjects.length === 0 ? (
+            {/* Apps tab: show only a message */}
+            {activeTab === 'apps' ? (
               <div className="flex flex-col items-center justify-center py-20 px-6">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -154,22 +152,10 @@ export default function CyberSpace({ id }) {
                 >
                   <div className="text-6xl mb-6">🔧</div>
                   <h3 className="text-2xl font-bold text-white mb-4">
-                    2 Apps en desarrollo
+                    Actualmente estoy desarrollando dos apps.
                   </h3>
                   <p className="text-gray-400 leading-relaxed mb-6">
-                    Estoy trabajando en dos aplicaciones móviles que pronto verán la luz. 
-                    Por ahora, los detalles están bajo llave.
-                  </p>
-                  <div className="flex justify-center gap-4">
-                    <div className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300">
-                      📱 App #1 — En progreso
-                    </div>
-                    <div className="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-sm text-cyan-300">
-                      📱 App #2 — En progreso
-                    </div>
-                  </div>
-                  <p className="text-gray-500 text-sm mt-8 italic">
-                    Próximamente más información...
+                    Pronto compartiré más detalles sobre estos proyectos.
                   </p>
                 </motion.div>
               </div>

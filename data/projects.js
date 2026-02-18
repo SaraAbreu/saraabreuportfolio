@@ -6,15 +6,16 @@ const makeThumb = (title, hue = 200, w = 1200, h = 800) => {
 const projects = [
   {
     slug: 'syntexia-prueba',
-    title: 'Syntexia Prueba',
-    short: 'Creé Syntexia como un proyecto personal para explorar cómo la inteligencia artificial puede integrarse en experiencias web intuitivas y accesibles. Mi objetivo fue diseñar una plataforma que permitiera a cualquier usuario generar contenido creativo de forma sencilla, combinando una interfaz limpia con funcionalidades potentes. Este proyecto me permitió profundizar en el desarrollo frontend, la arquitectura de aplicaciones modernas y la interacción con APIs de IA, mientras construía una herramienta útil y escalable.',
+    title: 'SyntexIA',
+    short: 'Creé esta página web para ayudar a Susana Pierre, fundadora de esta empresa. La idea que ella tenía para su página era diseñar una plataforma que combine una interfaz limpia con funcionalidades potentes, permitiendo a los usuarios generar contenido creativo de forma sencilla. Este proyecto me permitió profundizar en el desarrollo frontend, la arquitectura de aplicaciones modernas y la interacción con APIs de IA.',
     tech: 'Next.js, React, Tailwind CSS',
     hue: 210,
-    images: ['/images/projects/syntexia-hero.svg', '/images/projects/syntexia-servicios.svg'],
+    images: ['/images/projects/syntexia-hero.svg'],
     role: 'Full Stack',
     duration: '—',
     liveUrl: 'https://syntexia-solutions.es/',
     github: 'https://github.com/SaraAbreu/Proyecto-web-SyntexIA-prueba',
+    linkedin: 'https://www.linkedin.com/in/susana-pierre/',
     objectives: [
       'Sintetizar datos complejos',
       'Visualización intuitiva',
@@ -37,8 +38,8 @@ const projects = [
   },
   {
     slug: 'blog-caf',
-    title: 'Blog CAF',
-    short: 'Blog CAF es una plataforma editorial para compartir artículos y contenido de calidad, con un diseño enfocado en la experiencia de lectura y la organización clara del contenido.\n\nPuedes enfocar la web como un espacio para publicar historias, noticias y recursos, priorizando la legibilidad y la navegación sencilla.\n',
+    title: 'Blog Café',
+    short: 'Blog Café es una plataforma editorial para compartir artículos y contenido de calidad, con un diseño enfocado en la experiencia de lectura y la organización clara del contenido.\n\nPuedes enfocar la web como un espacio para publicar historias, noticias y recursos, priorizando la legibilidad y la navegación sencilla.\n',
     tech: 'Next.js, Markdown, Tailwind CSS',
     hue: 190,
     images: ['/images/projects/blogcaf-hero.png'],
