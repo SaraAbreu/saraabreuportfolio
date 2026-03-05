@@ -9,295 +9,295 @@ export default function ArtGallery({ id }) {
   const images = [
     {
       id: 1,
-      title: 'Abreu Studio - Conceptual I',
+      title: 'Fragmentos de luz',
       category: 'conceptual',
       image: '/images/gallery/Conceptual/concept1.png',
-      description: 'Explorando la intersección entre tecnología y naturaleza digital',
-      narrative: 'Abreu Studio'
+      description: 'Cuando la luz se fragmenta, nacen nuevas formas de ver',
+      narrative: 'La realidad es solo una interpretación'
     },
     {
       id: 2,
-      title: 'Abreu Studio - Conceptual II',
+      title: 'Pulso digital',
       category: 'conceptual',
       image: '/images/gallery/Conceptual/concept2.png',
-      description: 'Naturaleza reimaginada a través de una lente cibernética',
-      narrative: 'Abreu Studio'
+      description: 'El latido de lo que aún no existe pero ya se siente',
+      narrative: 'Entre código y emoción'
     },
     {
       id: 3,
-      title: 'Abreu Studio - Conceptual III',
+      title: 'Silencio visual',
       category: 'conceptual',
       image: '/images/gallery/Conceptual/concept3.png',
-      description: 'Síntesis de lo orgánico y lo digital',
-      narrative: 'Abreu Studio'
+      description: 'Lo que no se dice, a veces se ve',
+      narrative: 'El arte del espacio vacío'
     },
     {
       id: 4,
-      title: 'Abreu Studio - Conceptual IV',
+      title: 'Capas de memoria',
       category: 'conceptual',
       image: '/images/gallery/Conceptual/concept4.png',
-      description: 'Convergencia de mundos paralelos',
-      narrative: 'Abreu Studio'
+      description: 'Cada capa guarda un recuerdo que nunca existió',
+      narrative: 'Arqueología de lo imaginado'
     },
     {
       id: 5,
-      title: 'Abreu Studio - Conceptual V',
+      title: 'Eco de color',
       category: 'conceptual',
       image: '/images/gallery/Conceptual/concept5.png',
-      description: 'Interfaz entre realidad y ficción',
-      narrative: 'Abreu Studio'
+      description: 'Los colores también tienen voz propia',
+      narrative: 'Sinéstesia visual'
     },
     // PAISAJES
     {
       id: 6,
-      title: 'Abreu Studio - Paisaje I',
+      title: 'Horizonte suspendido',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes2.png',
-      description: 'Montaña cristal - picos que reflejan la realidad',
-      narrative: 'Abreu Studio'
+      description: 'Donde el cielo decide no terminar',
+      narrative: 'El límite es solo una sugestión'
     },
     {
       id: 7,
-      title: 'Abreu Studio - Paisaje II',
+      title: 'Atardecer quieto',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes3.png',
-      description: 'Océano espejo - agua que refleja todo lo invisible',
-      narrative: 'Abreu Studio'
+      description: 'El sol se despide sin prisas',
+      narrative: 'Tiempo detenido en ambar'
     },
     {
       id: 8,
-      title: 'Abreu Studio - Paisaje III',
+      title: 'Valle de niebla',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes4.png',
-      description: 'Pradera luminiscente - hierba que emite luz propia',
-      narrative: 'Abreu Studio'
+      description: 'Lo que la bruma oculta, la imaginación completa',
+      narrative: 'Misterio en cada capa'
     },
     {
       id: 9,
-      title: 'Abreu Studio - Paisaje IV',
+      title: 'Agua dormida',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes5.png',
-      description: 'Acantilado suspendido - rocas flotantes en el vacío',
-      narrative: 'Abreu Studio'
+      description: 'Reflejos que cuentan historias paralelas',
+      narrative: 'Dos mundos en uno'
     },
     {
       id: 10,
-      title: 'Abreu Studio - Paisaje V',
+      title: 'Sendero borrado',
       category: 'landscape',
       image: '/images/gallery/Paisajes/pasaijes6.png',
-      description: 'Nebulosa terrestre - cielo y tierra fusionados',
-      narrative: 'Abreu Studio'
+      description: 'Caminos que solo existen si decides verlos',
+      narrative: 'La ruta la creas tú'
     },
     {
       id: 11,
-      title: 'Abreu Studio - Paisaje VI',
+      title: 'Luz entre ramas',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes7.png',
-      description: 'Isla etérea - tierra que flota entre nubes',
-      narrative: 'Abreu Studio'
+      description: 'Cuando el bosque respira dorado',
+      narrative: 'Naturaleza que ilumina'
     },
     {
       id: 12,
-      title: 'Abreu Studio - Paisaje VII',
+      title: 'Piedra y silencio',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes8.png',
-      description: 'Horizonte dual - donde dos mundos se encuentran',
-      narrative: 'Abreu Studio'
+      description: 'La montaña no habla, pero dice todo',
+      narrative: 'Solidez que inspira'
     },
     {
       id: 13,
-      title: 'Abreu Studio - Paisaje VIII',
+      title: 'Cielo partido',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes9.png',
-      description: 'Valle envuelto - niebla que guarda secretos',
-      narrative: 'Abreu Studio'
+      description: 'Entre nubes que pelean y se abrazan',
+      narrative: 'Drama celeste'
     },
     {
       id: 14,
-      title: 'Abreu Studio - Paisaje IX',
+      title: 'Pradera infinita',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes10.png',
-      description: 'Montaña destello - luz que emerge de la roca',
-      narrative: 'Abreu Studio'
+      description: 'Verde que no tiene fin ni principio',
+      narrative: 'Libertad en estado puro'
     },
     // ABSTRACTO
     {
       id: 15,
-      title: 'Abreu Studio - Abstract I',
+      title: 'Caos ordenado',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract3.png',
-      description: 'Colores imposibles, composiciones de otro universo',
-      narrative: 'Abreu Studio'
+      description: 'En el desorden hay una lógica que solo el alma entiende',
+      narrative: 'Belleza sin reglas'
     },
     {
       id: 16,
-      title: 'Abreu Studio - Abstract II',
+      title: 'Emoción líquida',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract4.png',
-      description: 'Formas fluidas en el caos cromático',
-      narrative: 'Abreu Studio'
+      description: 'Sentimientos que fluyen sin forma definida',
+      narrative: 'Lo que sientes, visualizado'
     },
     {
       id: 17,
-      title: 'Abreu Studio - Abstract III',
+      title: 'Geometría rota',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract5.png',
-      description: 'Geometría disuelta en luz',
-      narrative: 'Abreu Studio'
+      description: 'Las líneas rectas también sueñan con curvas',
+      narrative: 'Rebeldía estructural'
     },
     {
       id: 18,
-      title: 'Abreu Studio - Abstract IV',
+      title: 'Profundidad vacía',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract6.png',
-      description: 'Dimensiones entrelazadas',
-      narrative: 'Abreu Studio'
+      description: 'Capas que esconden más capas',
+      narrative: 'Infinito interior'
     },
     {
       id: 19,
-      title: 'Abreu Studio - Abstract V',
+      title: 'Ritmo invisible',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract7.png',
-      description: 'Vibración cósmica visualizada',
-      narrative: 'Abreu Studio'
+      description: 'La música que ves cuando cierras los ojos',
+      narrative: 'Sonido en silencio'
     },
     {
       id: 20,
-      title: 'Abreu Studio - Abstract VI',
+      title: 'Gradiente de alma',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract2.png',
-      description: 'Espectro infinito en movimiento',
-      narrative: 'Abreu Studio'
+      description: 'Transiciones suaves entre estados de ánimo',
+      narrative: 'Del gris al color'
     },
     {
       id: 21,
-      title: 'Abreu Studio - Abstract VII',
+      title: 'Energía contenida',
       category: 'abstract',
       image: '/images/gallery/Abstracto/abstract1.png',
-      description: 'Materia transformándose en energía',
-      narrative: 'Abreu Studio'
+      description: 'A punto de explotar, pero en perfecta calma',
+      narrative: 'Tensión creativa'
     },
     // SESIONES FOTOGRÁFICAS - RETRATOS
     // Sesión: Susana Pierre
     {
       id: 22,
-      title: 'Susana Pierre - I',
+      title: 'Susana Pierre - Luz interior',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre4.jpg',
-      description: 'La luz natural revela su esencia auténtica',
-      narrative: 'Sesión Susana Pierre',
+      description: 'La luz la encontró, ella solo tuvo que ser',
+      narrative: 'Cuando la cámara desaparece y queda la persona',
       session: 'susana',
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
       id: 23,
-      title: 'Susana Pierre - II',
+      title: 'Susana Pierre - Mirada presente',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre1.jpeg',
-      description: 'Mirada que atraviesa el tiempo',
-      narrative: 'Sesión Susana Pierre',
+      description: 'Ojos que cuentan historias sin palabras',
+      narrative: 'La profundidad de un instante',
       session: 'susana',
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
       id: 24,
-      title: 'Susana Pierre - III',
+      title: 'Susana Pierre - Entre sombras',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre2.jpeg',
-      description: 'Entre sombras y destellos, presencia serena',
-      narrative: 'Sesión Susana Pierre',
+      description: 'Lo que la sombra revela, la luz no puede',
+      narrative: 'Misterio y claridad en equilibrio',
       session: 'susana',
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
       id: 25,
-      title: 'Susana Pierre - IV',
+      title: 'Susana Pierre - Elegancia natural',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre3.jpeg',
-      description: 'Elegancia capturada en un instante eterno',
-      narrative: 'Sesión Susana Pierre',
+      description: 'La belleza que no se fuerza, simplemente existe',
+      narrative: 'Gracia sin esfuerzo',
       session: 'susana',
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     // Sesión: Ray Expósito
     {
       id: 26,
-      title: 'Ray Expósito - I',
+      title: 'Ray Expósito - Actitud urbana',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-1.png',
-      description: 'Capturando la esencia urbana y auténtica',
-      narrative: 'Sesión Ray Expósito',
+      description: 'La ciudad como escenario, él como protagonista',
+      narrative: 'Donde el asfalto se vuelve estética',
       session: 'ray',
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
       id: 27,
-      title: 'Ray Expósito - II',
+      title: 'Ray Expósito - Momento real',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-2.jpg',
-      description: 'Expresión natural bajo luz ambiente',
-      narrative: 'Sesión Ray Expósito',
+      description: 'Sin poses, sin filtros, solo él',
+      narrative: 'La autenticidad no se ensaya',
       session: 'ray',
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
       id: 28,
-      title: 'Ray Expósito - III',
+      title: 'Ray Expósito - Gesto sincero',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-3.jpg',
-      description: 'Personalidad reflejada en cada gesto',
-      narrative: 'Sesión Ray Expósito',
+      description: 'Cuando el gesto dice más que mil palabras',
+      narrative: 'Expresión que conecta',
       session: 'ray',
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
       id: 29,
-      title: 'Ray Expósito - IV',
+      title: 'Ray Expósito - Presencia',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-4.jpg',
-      description: 'Momentos genuinos, presencia magnética',
-      narrative: 'Sesión Ray Expósito',
+      description: 'Estar presente es el mejor regalo a la cámara',
+      narrative: 'Magnetismo natural',
       session: 'ray',
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     // Sesión: Rubén Trujillo
     {
       id: 30,
-      title: 'Rubén Trujillo - I',
+      title: 'Rubén Trujillo - Calle y carácter',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-1.png',
-      description: 'Estilo urbano con actitud auténtica',
-      narrative: 'Sesión Rubén Trujillo',
+      description: 'El entorno urbano como extensión de su personalidad',
+      narrative: 'Donde la calle cuenta historias',
       session: 'ruben',
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
       id: 31,
-      title: 'Rubén Trujillo - II',
+      title: 'Rubén Trujillo - Espacio propio',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-2.png',
-      description: 'La calle como escenario, carácter natural',
-      narrative: 'Sesión Rubén Trujillo',
+      description: 'Cada espacio se transforma cuando él lo habita',
+      narrative: 'Dueño de su territorio',
       session: 'ruben',
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
       id: 32,
-      title: 'Rubén Trujillo - III',
+      title: 'Rubén Trujillo - Seguridad',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-3.png',
-      description: 'Presencia que destaca en cualquier entorno',
-      narrative: 'Sesión Rubén Trujillo',
+      description: 'La confianza se ve, no se explica',
+      narrative: 'Presencia que no pide permiso',
       session: 'ruben',
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
       id: 33,
-      title: 'Rubén Trujillo - IV',
+      title: 'Rubén Trujillo - Instante',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-4.jpg',
-      description: 'Momentos genuinos en la ciudad',
-      narrative: 'Sesión Rubén Trujillo',
+      description: 'Un segundo perfecto que duraba para siempre',
+      narrative: 'Lo espontáneo tiene su propia magia',
       session: 'ruben',
       instagram: 'https://www.instagram.com/rubens_89/'
     }
@@ -359,11 +359,6 @@ export default function ArtGallery({ id }) {
               Mi Galería Visual
             </span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Creaciones generadas con IA y personalizadas con mi toque fotográfico.
-            <br />
-            Cada imagen cuenta una historia diferente.
-          </p>
         </motion.div>
 
         {/* Category Filter */}
@@ -500,17 +495,11 @@ export default function ArtGallery({ id }) {
                         </span>
                       </div>
 
-                      {/* Bottom - Title & Description */}
+                      {/* Bottom - Title */}
                       <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 className="text-xl font-semibold text-white mb-2">
-                          {image.title}
+                          Abreu Studio
                         </h3>
-                        <p className="text-sm text-gray-200 line-clamp-2">
-                          {image.description}
-                        </p>
-                        <p className="text-xs text-gray-400 mt-3">
-                          {image.narrative}
-                        </p>
                       </div>
                     </div>
 

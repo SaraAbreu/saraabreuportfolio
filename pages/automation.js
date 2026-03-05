@@ -21,8 +21,7 @@ export default function Automation() {
       <div className="max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold mb-2">Demo: Automatización (simulada)</h2>
         <p className="text-gray-600 mb-4">
-          Simula un workflow con triggers, acciones y logs para mostrar cómo presentas soluciones de
-          automatización.
+          La automatización permite optimizar procesos, reducir errores y ahorrar tiempo en tareas repetitivas. Aquí se muestra un ejemplo general de cómo se puede simular un workflow automatizado, con registro de acciones y resultados.
         </p>
 
         <div className="mb-4">

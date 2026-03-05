@@ -3,6 +3,111 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Componente de partículas flotantes para el fondo
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 4 + 2,
+    duration: Math.random() * 20 + 10,
+    delay: Math.random() * 5,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-gradient-to-r from-rose-500/30 to-pink-500/20"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 15, -15, 0],
+            opacity: [0.3, 0.7, 0.3],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Componente de nodo interactivo del flujo
+const FlowNode = ({ stage, isActive, onClick, index }) => {
+  const colors = {
+    entrada: { bg: 'from-rose-600 to-pink-500', glow: 'shadow-rose-500/50', border: 'border-rose-400' },
+    proceso: { bg: 'from-purple-600 to-fuchsia-500', glow: 'shadow-purple-500/50', border: 'border-purple-400' },
+    optimiza: { bg: 'from-amber-500 to-orange-500', glow: 'shadow-amber-500/50', border: 'border-amber-400' },
+    salida: { bg: 'from-emerald-500 to-cyan-500', glow: 'shadow-emerald-500/50', border: 'border-emerald-400' },
+  };
+  const color = colors[stage.type] || colors.entrada;
+
+  return (
+    <motion.div
+      className="relative flex flex-col items-center cursor-pointer group"
+      onClick={() => onClick(stage)}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.15, duration: 0.5 }}
+      viewport={{ once: true }}
+    >
+      {/* Nodo principal */}
+      <motion.div
+        className={`relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br ${color.bg} flex items-center justify-center border-2 ${color.border} ${isActive ? `shadow-2xl ${color.glow}` : 'shadow-lg'}`}
+        whileHover={{ scale: 1.15, boxShadow: '0 0 40px rgba(244, 63, 94, 0.6)' }}
+        whileTap={{ scale: 0.95 }}
+        animate={isActive ? { scale: [1, 1.1, 1], boxShadow: ['0 0 20px rgba(244, 63, 94, 0.4)', '0 0 40px rgba(244, 63, 94, 0.8)', '0 0 20px rgba(244, 63, 94, 0.4)'] } : {}}
+        transition={{ duration: 2, repeat: isActive ? Infinity : 0 }}
+      >
+        <span className="text-3xl md:text-4xl">{stage.icon}</span>
+        {/* Pulso animado */}
+        <motion.div
+          className={`absolute inset-0 rounded-full bg-gradient-to-br ${color.bg} opacity-30`}
+          animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+        />
+      </motion.div>
+      {/* Etiqueta */}
+      <motion.span
+        className="mt-3 text-sm md:text-base font-bold text-white group-hover:text-rose-300 transition-colors"
+        whileHover={{ y: -2 }}
+      >
+        {stage.title}
+      </motion.span>
+    </motion.div>
+  );
+};
+
+// Componente de conexión animada entre nodos
+const FlowConnection = ({ index }) => (
+  <motion.div
+    className="flex-1 h-1 mx-2 md:mx-4 rounded-full bg-gradient-to-r from-rose-500/50 via-purple-500/50 to-pink-500/50 relative overflow-hidden"
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ delay: index * 0.2 + 0.3, duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    {/* Partícula viajando */}
+    <motion.div
+      className="absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-white/80 to-transparent rounded-full"
+      animate={{ x: ['0%', '400%'] }}
+      transition={{ duration: 2, repeat: Infinity, delay: index * 0.5, ease: 'easeInOut' }}
+    />
+  </motion.div>
+);
+
 // Componente para palabras/frases inspeccionables con efecto glow
 const InspectableWord = ({ word, tooltip, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -489,8 +594,45 @@ const inspectableTerms = {
   },
 };
 
+// Datos del flujo interactivo
+const flowStages = [
+  {
+    id: 'entrada',
+    type: 'entrada',
+    icon: '📥',
+    title: 'Entrada',
+    description: 'Todo comienza aquí. Los datos, archivos o tareas entran al sistema. Se capturan metadatos, se valida la integridad y se prepara todo para el procesamiento.',
+    tags: ['Captura de datos', 'Validación', 'Metadatos'],
+  },
+  {
+    id: 'proceso',
+    type: 'proceso',
+    icon: '⚙️',
+    title: 'Transforma',
+    description: 'El corazón de la automatización. Los datos se procesan, transforman y enriquecen según reglas definidas. Aquí la máquina trabaja, pero el humano diseña las reglas.',
+    tags: ['Procesamiento', 'Transformación', 'Reglas inteligentes'],
+  },
+  {
+    id: 'optimiza',
+    type: 'optimiza',
+    icon: '🚀',
+    title: 'Optimiza',
+    description: 'La eficiencia cobra vida. Se eliminan redundancias, se comprimen datos, se mejora el rendimiento. Todo sin perder calidad ni control.',
+    tags: ['Optimización', 'Rendimiento', 'Calidad'],
+  },
+  {
+    id: 'salida',
+    type: 'salida',
+    icon: '✅',
+    title: 'Salida',
+    description: 'El resultado final. Datos listos, tareas completadas, todo rastreable y auditado. El humano revisa, aprueba y tiene el control total.',
+    tags: ['Resultado', 'Auditoría', 'Control humano'],
+  },
+];
+
 export default function SectionAutomation() {
   const [activeSection, setActiveSection] = useState(null);
+  const [activeStage, setActiveStage] = useState(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -533,196 +675,336 @@ export default function SectionAutomation() {
           </div>
         </motion.div>
 
-        <h2 className="text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-          <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-amber-500 bg-clip-text text-transparent">
+        <h2 className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+          <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Automatización — Sistemas con intención
           </span>
         </h2>
-        <p className="text-gray-300 text-lg max-w-3xl">
-          Inspector de decisiones: pasa el cursor para explorar el pensamiento detrás de cada paso
-        </p>
+        <motion.p 
+          className="text-rose-100/90 text-xl max-w-3xl font-serif leading-relaxed"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <span className="text-rose-300 font-semibold">Automatiza sin perder el alma.</span> Procesos que fluyen, decisiones que importan y control que permanece en tus manos. Explora cómo la tecnología amplifica tu creatividad.
+        </motion.p>
       </motion.div>
 
-      {/* Grid de 2 columnas con canvas */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-        {/* Cadencia */}
-        <motion.div 
-          className="group relative overflow-hidden rounded-2xl border border-cyan-500/20"
-          variants={itemVariants}
-          onMouseEnter={() => setActiveSection('cadencia')}
-          onMouseLeave={() => setActiveSection(null)}
-        >
-          {/* Gradient overlay */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-black z-0"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-
-          {/* Content */}
-          <div className="relative p-6 bg-black/50 backdrop-blur-sm">
-            <motion.h3 
-              className="text-2xl font-bold mb-2 text-white"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              Cadencia de publicación automatizada
-            </motion.h3>
-
-            <motion.p 
-              className="text-gray-400 text-sm mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-            >
-              Diseñé un flujo que{' '}
-              <InspectableWord word={inspectableTerms.transforma.text} tooltip={inspectableTerms.transforma.tooltip} index={0} />
-              , <InspectableWord word={inspectableTerms.valida.text} tooltip={inspectableTerms.valida.tooltip} index={1} /> y
-              publica contenido con{' '}
-              <InspectableWord word={inspectableTerms.revisionesHumanas.text} tooltip={inspectableTerms.revisionesHumanas.tooltip} index={2} />
-              . Resultado: coherencia editorial y menos fricción operativa.
-            </motion.p>
-
-            {/* Flujo visual de checkpoints */}
-            <PublicationFlow />
-
-            {/* Detalles con bullets */}
-            <motion.div 
-              className="mt-8 space-y-3"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="flex gap-3">
-                <span className="text-cyan-400 flex-shrink-0 pt-0.5">▪</span>
-                <div>
-                  <span className="text-cyan-300 font-mono text-sm">¿Qué significa?</span>
-                  <p className="text-gray-400 text-sm mt-1">En lugar de publicar cuando yo decida, el sistema revisa cada pieza contra un checklist editorial.</p>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-purple-400 flex-shrink-0 pt-0.5">▪</span>
-                <div>
-                  <span className="text-purple-300 font-mono text-sm">Ganancia ética</span>
-                  <p className="text-gray-400 text-sm mt-1">Cada publicación tiene una firma humana, no es "el algoritmo decidió".</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Pipeline */}
-        <motion.div 
-          className="group relative overflow-hidden rounded-2xl border border-purple-500/20"
-          variants={itemVariants}
-          onMouseEnter={() => setActiveSection('pipeline')}
-          onMouseLeave={() => setActiveSection(null)}
-        >
-          {/* Gradient overlay */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-transparent to-black z-0"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-
-          {/* Content */}
-          <div className="relative p-6 bg-black/50 backdrop-blur-sm">
-            <motion.h3 
-              className="text-2xl font-bold mb-2 text-white"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              Pipeline de imágenes
-            </motion.h3>
-
-            <motion.p 
-              className="text-gray-400 text-sm mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              Un pipeline que respeta{' '}
-              <InspectableWord word={inspectableTerms.metadatos.text} tooltip={inspectableTerms.metadatos.tooltip} index={3} />
-              , <InspectableWord word={inspectableTerms.versiones.text} tooltip={inspectableTerms.versiones.tooltip} index={4} /> y{' '}
-              <InspectableWord word={inspectableTerms.trazabilidad.text} tooltip={inspectableTerms.trazabilidad.tooltip} index={5} />
-              : automatización repetible sin borrar el{' '}
-              <InspectableWord word={inspectableTerms.controlHumano.text} tooltip={inspectableTerms.controlHumano.tooltip} index={6} />.
-            </motion.p>
-
-            {/* Flujo visual del pipeline de imágenes */}
-            <ImagePipelineFlow />
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Pilares con efecto de red neural */}
-      <motion.div 
-        className="relative p-8 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-black/50 via-cyan-500/5 to-purple-500/5 backdrop-blur-sm"
+      {/* Flujo de automatización */}
+      <motion.div
+        className="relative mb-16 p-8 md:p-12 rounded-3xl border border-blue-500/30 bg-gradient-to-br from-black/80 via-blue-950/20 to-violet-950/20 backdrop-blur-xl overflow-hidden"
         variants={itemVariants}
       >
-        <motion.h3 
-          className="text-2xl font-bold mb-8 text-white"
+        {/* Partículas de fondo azul-violeta */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {Array.from({ length: 20 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-gradient-to-r from-blue-500/30 to-violet-500/20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: Math.random() * 4 + 2,
+                height: Math.random() * 4 + 2,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 8,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Título del flujo */}
+        <motion.div className="text-center mb-10 relative z-10">
+          <motion.h3
+            className="text-2xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Flujo de automatización
+          </motion.h3>
+          <motion.p
+            className="text-blue-200/70 text-base md:text-lg max-w-xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            De la idea a la realidad, paso a paso
+          </motion.p>
+        </motion.div>
+
+        {/* Nodos del flujo */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 relative z-10">
+          {/* Nodo 1: Entrada */}
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            <motion.div
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center border-2 border-blue-400"
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="text-3xl">📥</span>
+            </motion.div>
+            <span className="mt-3 text-sm font-bold text-blue-300">Entrada</span>
+          </motion.div>
+
+          {/* Conexión 1-2 */}
+          <motion.div
+            className="hidden md:block flex-1 h-1 mx-4 rounded-full bg-gradient-to-r from-blue-500/60 to-indigo-500/60 relative overflow-hidden max-w-[80px]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <motion.div
+              className="absolute top-0 left-0 h-full w-4 bg-white/40 rounded-full"
+              animate={{ x: ['-100%', '2000%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+            />
+          </motion.div>
+          <div className="md:hidden w-1 h-8 bg-gradient-to-b from-blue-500/60 to-indigo-500/60 rounded-full" />
+
+          {/* Nodo 2: Proceso */}
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <motion.div
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center border-2 border-indigo-400"
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="text-3xl">⚙️</span>
+            </motion.div>
+            <span className="mt-3 text-sm font-bold text-indigo-300">Proceso</span>
+          </motion.div>
+
+          {/* Conexión 2-3 */}
+          <motion.div
+            className="hidden md:block flex-1 h-1 mx-4 rounded-full bg-gradient-to-r from-indigo-500/60 to-purple-500/60 relative overflow-hidden max-w-[80px]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <motion.div
+              className="absolute top-0 left-0 h-full w-4 bg-white/40 rounded-full"
+              animate={{ x: ['-100%', '2000%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+            />
+          </motion.div>
+          <div className="md:hidden w-1 h-8 bg-gradient-to-b from-indigo-500/60 to-purple-500/60 rounded-full" />
+
+          {/* Nodo 3: Optimiza */}
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <motion.div
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center border-2 border-purple-400"
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="text-3xl">✨</span>
+            </motion.div>
+            <span className="mt-3 text-sm font-bold text-purple-300">Optimiza</span>
+          </motion.div>
+
+          {/* Conexión 3-4 */}
+          <motion.div
+            className="hidden md:block flex-1 h-1 mx-4 rounded-full bg-gradient-to-r from-purple-500/60 to-violet-500/60 relative overflow-hidden max-w-[80px]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <motion.div
+              className="absolute top-0 left-0 h-full w-4 bg-white/40 rounded-full"
+              animate={{ x: ['-100%', '2000%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: 1 }}
+            />
+          </motion.div>
+          <div className="md:hidden w-1 h-8 bg-gradient-to-b from-purple-500/60 to-violet-500/60 rounded-full" />
+
+          {/* Nodo 4: Salida */}
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <motion.div
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-violet-500 to-violet-600 flex items-center justify-center border-2 border-violet-400"
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="text-3xl">🚀</span>
+            </motion.div>
+            <span className="mt-3 text-sm font-bold text-violet-300">Salida</span>
+          </motion.div>
+        </div>
+
+        {/* Descripción del flujo */}
+        <motion.p
+          className="text-center text-blue-200/60 text-sm mt-8 max-w-lg mx-auto relative z-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Cada paso del proceso está diseñado para amplificar tu trabajo, no reemplazarlo
+        </motion.p>
+      </motion.div>
+
+      {/* Dos ideas cobrando vida */}
+      <motion.div
+        className="relative mb-16 p-8 md:p-12 rounded-3xl border border-rose-500/30 bg-gradient-to-br from-black/80 via-rose-950/20 to-purple-950/20 backdrop-blur-xl overflow-hidden"
+        variants={itemVariants}
+      >
+        {/* Partículas de fondo */}
+        <FloatingParticles />
+
+        {/* Título de la sección */}
+        <motion.div className="text-center mb-12 relative z-10">
+          <motion.h3
+            className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Dos ideas cobrando vida
+          </motion.h3>
+          <motion.p
+            className="text-cyan-200/80 text-lg md:text-xl max-w-2xl mx-auto font-serif"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            Proyectos que están tomando forma en mi mente. Pronto los verás nacer.
+          </motion.p>
+        </motion.div>
+
+        {/* Las dos ideas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+          {/* Idea 1 */}
+          <motion.div
+            className="relative p-8 rounded-2xl bg-gradient-to-br from-rose-900/30 to-purple-900/30 border border-rose-500/20 backdrop-blur-sm overflow-hidden group"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            whileHover={{ scale: 1.02, borderColor: 'rgba(244, 63, 94, 0.5)' }}
+          >
+            {/* Icono animado */}
+            <motion.div
+              className="text-6xl mb-6"
+              animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >
+              💡
+            </motion.div>
+            <h4 className="text-2xl font-bold text-white mb-3">Idea en gestación</h4>
+            <p className="text-rose-200/70 leading-relaxed mb-4">
+              Una visión que conecta creatividad y tecnología de formas que aún no has visto. Está madurando.
+            </p>
+            <div className="flex items-center gap-2">
+              <motion.div
+                className="w-2 h-2 rounded-full bg-rose-400"
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+              <span className="text-rose-300/60 text-sm font-mono">En desarrollo...</span>
+            </div>
+            {/* Glow effect */}
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-rose-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+            />
+          </motion.div>
+
+          {/* Idea 2 */}
+          <motion.div
+            className="relative p-8 rounded-2xl bg-gradient-to-br from-purple-900/30 to-rose-900/30 border border-purple-500/20 backdrop-blur-sm overflow-hidden group"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            whileHover={{ scale: 1.02, borderColor: 'rgba(168, 85, 247, 0.5)' }}
+          >
+            {/* Icono animado */}
+            <motion.div
+              className="text-6xl mb-6"
+              animate={{ rotate: [0, -5, 5, 0], scale: [1, 1.05, 1] }}
+              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+            >
+              ✨
+            </motion.div>
+            <h4 className="text-2xl font-bold text-white mb-3">Chispa encendida</h4>
+            <p className="text-purple-200/70 leading-relaxed mb-4">
+              Algo que empezó como una intuición y ahora toma forma. Pronto tendrá nombre y rostro.
+            </p>
+            <div className="flex items-center gap-2">
+              <motion.div
+                className="w-2 h-2 rounded-full bg-purple-400"
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+              />
+              <span className="text-purple-300/60 text-sm font-mono">Tomando forma...</span>
+            </div>
+            {/* Glow effect */}
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-rose-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+            />
+          </motion.div>
+        </div>
+
+        {/* Mensaje de pronto */}
+        <motion.div
+          className="text-center mt-12 relative z-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <motion.p
+            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-rose-300 via-pink-300 to-purple-300 bg-clip-text text-transparent"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            Pronto enseñaré más...
+          </motion.p>
+          <p className="text-rose-200/50 text-sm mt-3 font-mono">
+            — Ideas que merecen tiempo para nacer bien
+          </p>
+        </motion.div>
+      </motion.div>
+
+      {/* Mensaje final */}
+      <motion.div 
+        className="relative p-8 rounded-2xl border border-rose-500/20 bg-gradient-to-br from-black/50 via-rose-950/10 to-purple-950/10 backdrop-blur-sm text-center"
+        variants={itemVariants}
+      >
+        <motion.p
+          className="text-xl md:text-2xl text-rose-100/80 font-serif leading-relaxed max-w-2xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <span className="text-rose-300">"</span>
+          Las mejores ideas necesitan tiempo para respirar. Estas dos están respirando profundo antes de salir al mundo.
+          <span className="text-rose-300">"</span>
+        </motion.p>
+        <motion.p
+          className="text-rose-400/60 text-sm mt-4 font-mono"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          Pilares del pensamiento
-        </motion.h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              title: 'Intención',
-              desc: 'Claridad en cada paso del proceso',
-              color: 'from-cyan-500/30 to-cyan-500/10',
-              border: 'border-cyan-500/30'
-            },
-            {
-              title: 'Responsabilidad',
-              desc: 'Humano en el centro, máquina como herramienta',
-              color: 'from-purple-500/30 to-purple-500/10',
-              border: 'border-purple-500/30'
-            },
-            {
-              title: 'Escala',
-              desc: 'Eficiencia sin perder control creativo',
-              color: 'from-amber-500/30 to-amber-500/10',
-              border: 'border-amber-500/30'
-            }
-          ].map((pilar, idx) => (
-            <motion.div
-              key={idx}
-              className={`relative p-4 rounded-lg border ${pilar.border} bg-gradient-to-br ${pilar.color} backdrop-blur-sm overflow-hidden group`}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                borderColor: 'rgba(6, 182, 212, 0.5)',
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-            >
-              {/* Glow en hover */}
-              <motion.div
-                className={`absolute -inset-1 bg-gradient-to-r ${pilar.color} rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}
-              />
-
-              <div className="relative">
-                <div className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-amber-500 bg-clip-text text-transparent mb-2">
-                  {pilar.title}
-                </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {pilar.desc}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+          — Sara Abreu
+        </motion.p>
       </motion.div>
     </motion.section>
   );
