@@ -14,14 +14,11 @@ const projects = [
     role: 'Full Stack',
     duration: '—',
     liveUrl: 'https://syntexia-solutions.es/',
-    github: 'https://github.com/SaraAbreu/Proyecto-web-SyntexIA-prueba',
     linkedin: 'https://www.linkedin.com/in/susana-pierre/',
     objectives: [
       'Sintetizar datos complejos',
       'Visualización intuitiva',
-      'Análisis en tiempo real',
-      'Acceso rápido a código y demo online',
-      'Enlaces directos a recursos principales'
+      'Análisis en tiempo real'
     ],
     challenge:
       'Procesar y presentar grandes volúmenes de datos de forma clara y accesible.',
@@ -31,7 +28,7 @@ const projects = [
       { label: 'Rendimiento', value: 'Optimizado' }
     ],
     case: {
-      concise: 'Herramienta de síntesis de datos para análisis visual.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-web-SyntexIA-prueba" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E\n\uD83D\uDD17 \u003Ca href="https://syntexia-solutions.es/" target="_blank" rel="noopener noreferrer"\u003ESitio Web\u003C/a\u003E',
+      concise: 'Herramienta de síntesis de datos para análisis visual.\n\n\uD83D\uDD17 \u003Ca href="https://syntexia-solutions.es/" target="_blank" rel="noopener noreferrer"\u003ESitio Web\u003C/a\u003E',
       academic: 'Arquitectura modular con componentes React para visualización de datos.',
       emotional: 'Simplifica lo complejo, revelando patrones en los datos.'
     }
@@ -45,13 +42,10 @@ const projects = [
     images: ['/images/projects/blogcaf-hero.png'],
     role: 'Frontend, Editorial',
     duration: '—',
-    github: 'https://github.com/SaraAbreu/blog-caf',
     objectives: [
       'Publicar contenido de calidad',
       'Experiencia de lectura optimizada',
-      'Navegación intuitiva',
-      'Acceso rápido al código fuente',
-      'Enlace directo al repositorio'
+      'Navegación intuitiva'
     ],
     challenge:
       'Diseñar una plataforma de contenido que priorice la legibilidad y la experiencia editorial.',
@@ -61,7 +55,7 @@ const projects = [
       { label: 'Legibilidad', value: 'Excelente' }
     ],
     case: {
-      concise: 'Blog editorial centrado en la experiencia de lectura.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-Blog-caf-" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E',
+      concise: 'Blog editorial centrado en la experiencia de lectura.',
       academic: 'Diseño tipográfico y jerarquía de contenido optimizados.',
       emotional: 'Un espacio para historias que importan.'
     }
@@ -75,13 +69,10 @@ const projects = [
     images: ['/images/projects/festivalmusic-hero.png'],
     role: 'Full Stack, Diseño',
     duration: '—',
-    github: 'https://github.com/SaraAbreu/festivalmusic',
     objectives: [
       'Gestionar eventos musicales',
       'Promoción de artistas',
-      'Compra de entradas',
-      'Acceso rápido al código fuente',
-      'Enlace directo al repositorio'
+      'Compra de entradas'
     ],
     challenge:
       'Crear una experiencia inmersiva que capture la esencia del festival.',
@@ -91,7 +82,7 @@ const projects = [
       { label: 'Experiencia', value: 'Inmersiva' }
     ],
     case: {
-      concise: 'Plataforma de gestión y promoción de festivales de música.\n\n\uD83D\uDD17 \u003Ca href="https://github.com/SaraAbreu/Proyecto-FestivalMusic" target="_blank" rel="noopener noreferrer"\u003ERepositorio GitHub\u003C/a\u003E',
+      concise: 'Plataforma de gestión y promoción de festivales de música.',
       academic: 'Arquitectura full-stack con gestión de eventos y transacciones.',
       emotional: 'Conecta artistas con audiencia en un espacio digital energético.'
     }
@@ -105,8 +96,6 @@ const projects = [
     images: ['/images/projects/webcarrito-hero.png'],
     role: 'Full Stack, UX',
     duration: '—',
-    liveUrl: 'https://github.com/SaraAbreu/web-carrito',
-    github: 'https://github.com/SaraAbreu/web-carrito',
     objectives: [
       'Maximizar conversión',
       'Experiencia de carrito fluida',
