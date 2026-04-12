@@ -150,7 +150,7 @@ const projects = [
     short: 'Academia de formación especializada en producción musical y DJing. Plataforma educativa que conecta estudiantes con instructores profesionales activos en la industria para aprender técnica, mentalidad y estrategia de carrera musical.',
     tech: 'HTML5, CSS3, JavaScript, Tailwind CSS',
     hue: 280,
-    images: ['/images/projects/bedj-hero.svg'],
+    images: ['/images/bedj.png'],
     role: 'Frontend, UX/UI',
     duration: 'En desarrollo',
     liveUrl: 'https://proyecto-p-gina-web-be-dj-school.vercel.app/',
