@@ -5,8 +5,10 @@ import ProcessWork from '../components/ProcessWork';
 import ArtGallery from '../components/ArtGallery';
 import MindWorld from '../components/MindWorld';
 import CyberSpace from '../components/CyberSpace';
-import SectionAutomation from '../components/SectionAutomation';
+import dynamic from 'next/dynamic';
 import Footer from '../components/Footer';
+
+const SectionAutomation = dynamic(() => import('../components/SectionAutomation'), { ssr: false });
 
 export default function Home() {
   return (

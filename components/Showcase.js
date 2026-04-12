@@ -52,16 +52,18 @@ export default function Showcase({ className = '', id }) {
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {projects.map((project, index) => (
-              <motion.article
-                key={project.slug}
-                layout
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -50, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative"
-              >
+            {projects.map((project, index) => {
+              try {
+                return (
+                <motion.article
+                  key={project.slug}
+                  layout
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -50, scale: 0.9 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group relative"
+                >
                 <div className="glass-card overflow-hidden rounded-2xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
                   {/* Image container */}
                   <div
@@ -136,7 +138,12 @@ export default function Showcase({ className = '', id }) {
                 {/* Animated border */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
               </motion.article>
-            ))}
+                );
+              } catch (e) {
+                console.error('Error renderizando proyecto:', project?.title, e);
+                return null;
+              }
+            })}
           </AnimatePresence>
         </motion.div>
 
