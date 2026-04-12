@@ -9,6 +9,9 @@ export default function Showcase({ className = '', id }) {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [lightboxImages, setLightboxImages] = useState([]);
 
+  console.log('📊 SHOWCASE DEBUG - Total projects:', projects.length);
+  console.log('📊 Projects:', projects.map(p => p.title).join(', '));
+
   useEffect(() => {
     function onSelect(e) {
       if (typeof e.detail === 'number') setLightboxIndex(e.detail);
