@@ -5,14 +5,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Componente de partículas flotantes para el fondo
 const FloatingParticles = () => {
-  const particles = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 2,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-  }));
+  const [particles, setParticles] = useState([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    setParticles(
+      Array.from({ length: 30 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 2,
+        duration: Math.random() * 20 + 10,
+        delay: Math.random() * 5,
+      }))
+    );
+  }, []);
+
+  if (!isClient) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
