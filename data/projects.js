@@ -29,7 +29,7 @@ const projects = [
     slug: 'be-dj-school',
     title: 'BE DJ School',
     short: 'Academia de formación especializada en producción musical y DJing. Plataforma educativa que conecta estudiantes con instructores profesionales.',
-    tech: 'HTML5, CSS3, JavaScript, Tailwind CSS',
+    tech: 'React, Tailwind CSS, JavaScript',
     hue: 280,
     images: ['/images/bedj.png'],
     role: 'Frontend, UX/UI',
