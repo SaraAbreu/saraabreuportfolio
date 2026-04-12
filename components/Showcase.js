@@ -52,18 +52,16 @@ export default function Showcase({ className = '', id }) {
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {projects.map((project, index) => {
-              try {
-                return (
-                <motion.article
-                  key={project.slug}
-                  layout
-                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -50, scale: 0.9 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative"
-                >
+            {projects.map((project, index) => (
+              <motion.article
+                key={project.slug}
+                layout
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -50, scale: 0.9 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative"
+              >
                 <div className="glass-card overflow-hidden rounded-2xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
                   {/* Image container */}
                   <div
@@ -138,51 +136,42 @@ export default function Showcase({ className = '', id }) {
                 {/* Animated border */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
               </motion.article>
-                );
-              } catch (e) {
-                console.error('Error renderizando proyecto:', project?.title, e);
-                return null;
-              }
-            })}
+            ))}
           </AnimatePresence>
         </motion.div>
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="mt-24 pt-16 border-t border-white/10"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: projects.length, label: 'Proyectos' },
-              { number: '3+', label: 'Años Exp.' },
-              { number: '50+', label: 'Tecnologías' },
-              { number: '∞', label: 'Creatividad' }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass-card p-6 rounded-xl"
-              >
-                <div className="text-3xl font-bold text-cyan-400 mb-2">{stat.number}</div>
-                <div className="text-sm text-gray-300">{stat.label}</div>
-              </motion.div>
+              { label: 'Proyectos Totales', value: projects.length },
+              { label: 'Tecnologías', value: '5+' },
+              { label: 'Años Creando', value: '2+' },
+              { label: 'Creatividad', value: '∞' }
+            ].map((stat, i) => (
+              <div key={i}>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                  {stat.value}
+                </div>
+                <p className="text-sm text-gray-400">{stat.label}</p>
+              </div>
             ))}
           </div>
         </motion.div>
       </div>
 
+      {/* Lightbox */}
       {lightboxOpen && (
         <Lightbox
           images={lightboxImages}
-          index={lightboxIndex}
           onClose={() => setLightboxOpen(false)}
+          currentIndex={lightboxIndex}
         />
       )}
     </section>
