@@ -10,7 +10,7 @@ const projects = [
     short: 'Creé esta página web para ayudar a Susana Pierre, fundadora de esta empresa. La idea que ella tenía para su página era diseñar una plataforma que combine una interfaz limpia con funcionalidades potentes.',
     tech: 'Next.js, React, Tailwind CSS',
     hue: 210,
-    images: ['/images/projects/syntexia-hero.svg'],
+    images: ['/images/syntexia.png'],
     role: 'Full Stack',
     duration: '—',
     liveUrl: 'https://syntexia-solutions.es/',
