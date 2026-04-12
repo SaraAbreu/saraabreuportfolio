@@ -120,7 +120,7 @@ const projects = [
     short: 'Una plataforma colaborativa diseñada para conectar, empoderar e inspirar a mujeres. Espacio seguro para compartir experiencias, ideas y oportunidades de crecimiento profesional.',
     tech: 'Next.js, React, Tailwind CSS, Firebase',
     hue: 335,
-    images: ['/images/projects/agora-hero.svg'],
+    images: ['/images/agora.png'],
     role: 'Full Stack, UX/UI',
     duration: '—',
     liveUrl: 'https://agoramujeres.syntexia-solutions.es/',
