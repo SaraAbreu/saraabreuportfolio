@@ -113,6 +113,66 @@ const projects = [
       academic: 'Implementación de patrones de UX para reducción de fricción en compras.',
       emotional: 'Comprar debería ser fácil, rápido y satisfactorio.'
     }
+  },
+  {
+    slug: 'agora-mujeres',
+    title: 'Ágora Mujeres',
+    short: 'Una plataforma colaborativa diseñada para conectar, empoderar e inspirar a mujeres. Espacio seguro para compartir experiencias, ideas y oportunidades de crecimiento profesional.',
+    tech: 'Next.js, React, Tailwind CSS, Firebase',
+    hue: 335,
+    images: ['/images/projects/agora-hero.svg'],
+    role: 'Full Stack, UX/UI',
+    duration: '—',
+    liveUrl: 'https://agoramujeres.syntexia-solutions.es/',
+    objectives: [
+      'Conectar comunidad de mujeres',
+      'Espacio seguro y colaborativo',
+      'Compartir oportunidades',
+      'Empoderamiento profesional'
+    ],
+    challenge:
+      'Crear un espacio de confianza donde mujeres puedan conectar, colaborar y crecer juntas, sin fricciones en la experiencia de usuario.',
+    solution:
+      'Diseño inclusivo, navegación intuitiva y herramientas de colaboración integradas que facilitan la conexión y el intercambio de conocimiento.',
+    metrics: [
+      { label: 'Comunidad', value: 'En crecimiento' },
+      { label: 'Engagement', value: 'Alto' }
+    ],
+    case: {
+      concise: 'Plataforma comunitaria para mujeres emprendedoras y profesionales.',
+      academic: 'Arquitectura inclusiva con herramientas de colaboración y redes sociales integradas.',
+      emotional: 'Un espacio donde las voces de las mujeres importan y se amplifican.'
+    }
+  },
+  {
+    slug: 'be-dj-school',
+    title: 'BE DJ School',
+    short: 'Academia de formación especializada en producción musical y DJing. Plataforma educativa que conecta estudiantes con instructores profesionales activos en la industria para aprender técnica, mentalidad y estrategia de carrera musical.',
+    tech: 'HTML5, CSS3, JavaScript, Tailwind CSS',
+    hue: 280,
+    images: ['/images/projects/bedj-hero.svg'],
+    role: 'Frontend, UX/UI',
+    duration: 'En desarrollo',
+    liveUrl: 'https://proyecto-p-gina-web-be-dj-school.vercel.app/',
+    objectives: [
+      'Conectar estudiantes con instructores profesionales',
+      'Ofrecer formación personalizada y flexible',
+      'Crear comunidad de músicos emergentes',
+      'Facilitar reserva de clases'
+    ],
+    challenge:
+      'Diseñar una plataforma educativa que inspire y facilite tanto la formación técnica como la construcción de carrera musical profesional.',
+    solution:
+      'Interfaz intuitiva con galería visual, formularios de contacto optimizados, secciones de equipo docente y sistema de clases claramente presentado.',
+    metrics: [
+      { label: 'Usabilidad', value: 'Excelente' },
+      { label: 'Conversión', value: 'En optimización' }
+    ],
+    case: {
+      concise: 'Plataforma educativa para formación de DJs y productores musicales.',
+      academic: 'Arquitectura frontend responsiva con experiencia de usuario optimizada para captación de estudiantes.',
+      emotional: 'Donde la pasión por la música se transforma en carrera profesional.'
+    }
   }
 ];
 
