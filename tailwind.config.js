@@ -12,8 +12,8 @@ module.exports = {
         'accent-cool': '#06b6d4'
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['DM Sans', 'system-ui', 'ui-sans-serif', 'sans-serif'],
+        serif: ['DM Serif Display', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular']
       }
     }

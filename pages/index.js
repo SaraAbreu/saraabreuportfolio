@@ -1,29 +1,25 @@
-import Navigation from '../components/Navigation';
-import HeroSection from '../components/HeroSection';
-import Manifesto from '../components/Manifesto';
-import ProcessWork from '../components/ProcessWork';
-import ArtGallery from '../components/ArtGallery';
-import MindWorld from '../components/MindWorld';
-import CyberSpace from '../components/CyberSpace';
-import dynamic from 'next/dynamic';
-import Footer from '../components/Footer';
-
-const SectionAutomation = dynamic(() => import('../components/SectionAutomation'), { ssr: false });
+import NewNavigation from '../components/NewNavigation';
+import NewHero from '../components/NewHero';
+import Services from '../components/Services';
+import ProjectsSection from '../components/ProjectsSection';
+import MarketingSection from '../components/MarketingSection';
+import AboutSection from '../components/AboutSection';
+import CTASection from '../components/CTASection';
+import NewFooter from '../components/NewFooter';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black">
-      <Navigation />
+    <div className="min-h-screen bg-white">
+      <NewNavigation />
 
-      <main id="content">
-        <HeroSection />
-        <MindWorld />
-        <Manifesto id="manifesto" />
-        <ProcessWork id="proceso" />
-        <ArtGallery id="galeria" />
-        <CyberSpace id="trabajo" />
-        <SectionAutomation id="automation" />
-        <Footer />
+      <main>
+        <NewHero />
+        <Services />
+        <ProjectsSection />
+        <MarketingSection />
+        <AboutSection />
+        <CTASection />
+        <NewFooter />
       </main>
     </div>
   );

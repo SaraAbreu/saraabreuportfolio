@@ -1,55 +1,16 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ArtGallery({ id }) {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('conceptual');
+  const [selectedCategory, setSelectedCategory] = useState('portrait');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Galería de imágenes - organizada por carpetas locales
   const images = [
-    {
-      id: 1,
-      title: 'Fragmentos de luz',
-      category: 'conceptual',
-      image: '/images/gallery/Conceptual/concept1.png',
-      description: 'Cuando la luz se fragmenta, nacen nuevas formas de ver',
-      narrative: 'La realidad es solo una interpretación'
-    },
-    {
-      id: 2,
-      title: 'Pulso digital',
-      category: 'conceptual',
-      image: '/images/gallery/Conceptual/concept2.png',
-      description: 'El latido de lo que aún no existe pero ya se siente',
-      narrative: 'Entre código y emoción'
-    },
-    {
-      id: 3,
-      title: 'Silencio visual',
-      category: 'conceptual',
-      image: '/images/gallery/Conceptual/concept3.png',
-      description: 'Lo que no se dice, a veces se ve',
-      narrative: 'El arte del espacio vacío'
-    },
-    {
-      id: 4,
-      title: 'Capas de memoria',
-      category: 'conceptual',
-      image: '/images/gallery/Conceptual/concept4.png',
-      description: 'Cada capa guarda un recuerdo que nunca existió',
-      narrative: 'Arqueología de lo imaginado'
-    },
-    {
-      id: 5,
-      title: 'Eco de color',
-      category: 'conceptual',
-      image: '/images/gallery/Conceptual/concept5.png',
-      description: 'Los colores también tienen voz propia',
-      narrative: 'Sinéstesia visual'
-    },
     // PAISAJES
     {
-      id: 6,
+      id: 1,
       title: 'Horizonte suspendido',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes2.png',
@@ -57,7 +18,7 @@ export default function ArtGallery({ id }) {
       narrative: 'El límite es solo una sugestión'
     },
     {
-      id: 7,
+      id: 2,
       title: 'Atardecer quieto',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes3.png',
@@ -65,7 +26,7 @@ export default function ArtGallery({ id }) {
       narrative: 'Tiempo detenido en ambar'
     },
     {
-      id: 8,
+      id: 3,
       title: 'Valle de niebla',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes4.png',
@@ -73,7 +34,7 @@ export default function ArtGallery({ id }) {
       narrative: 'Misterio en cada capa'
     },
     {
-      id: 9,
+      id: 4,
       title: 'Agua dormida',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes5.png',
@@ -81,7 +42,7 @@ export default function ArtGallery({ id }) {
       narrative: 'Dos mundos en uno'
     },
     {
-      id: 10,
+      id: 5,
       title: 'Sendero borrado',
       category: 'landscape',
       image: '/images/gallery/Paisajes/pasaijes6.png',
@@ -89,7 +50,7 @@ export default function ArtGallery({ id }) {
       narrative: 'La ruta la creas tú'
     },
     {
-      id: 11,
+      id: 6,
       title: 'Luz entre ramas',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes7.png',
@@ -97,7 +58,7 @@ export default function ArtGallery({ id }) {
       narrative: 'Naturaleza que ilumina'
     },
     {
-      id: 12,
+      id: 7,
       title: 'Piedra y silencio',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes8.png',
@@ -105,7 +66,7 @@ export default function ArtGallery({ id }) {
       narrative: 'Solidez que inspira'
     },
     {
-      id: 13,
+      id: 8,
       title: 'Cielo partido',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes9.png',
@@ -113,74 +74,17 @@ export default function ArtGallery({ id }) {
       narrative: 'Drama celeste'
     },
     {
-      id: 14,
+      id: 9,
       title: 'Pradera infinita',
       category: 'landscape',
       image: '/images/gallery/Paisajes/paisajes10.png',
       description: 'Verde que no tiene fin ni principio',
       narrative: 'Libertad en estado puro'
     },
-    // ABSTRACTO
-    {
-      id: 15,
-      title: 'Caos ordenado',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract3.png',
-      description: 'En el desorden hay una lógica que solo el alma entiende',
-      narrative: 'Belleza sin reglas'
-    },
-    {
-      id: 16,
-      title: 'Emoción líquida',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract4.png',
-      description: 'Sentimientos que fluyen sin forma definida',
-      narrative: 'Lo que sientes, visualizado'
-    },
-    {
-      id: 17,
-      title: 'Geometría rota',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract5.png',
-      description: 'Las líneas rectas también sueñan con curvas',
-      narrative: 'Rebeldía estructural'
-    },
-    {
-      id: 18,
-      title: 'Profundidad vacía',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract6.png',
-      description: 'Capas que esconden más capas',
-      narrative: 'Infinito interior'
-    },
-    {
-      id: 19,
-      title: 'Ritmo invisible',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract7.png',
-      description: 'La música que ves cuando cierras los ojos',
-      narrative: 'Sonido en silencio'
-    },
-    {
-      id: 20,
-      title: 'Gradiente de alma',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract2.png',
-      description: 'Transiciones suaves entre estados de ánimo',
-      narrative: 'Del gris al color'
-    },
-    {
-      id: 21,
-      title: 'Energía contenida',
-      category: 'abstract',
-      image: '/images/gallery/Abstracto/abstract1.png',
-      description: 'A punto de explotar, pero en perfecta calma',
-      narrative: 'Tensión creativa'
-    },
     // SESIONES FOTOGRÁFICAS - RETRATOS
     // Sesión: Susana Pierre
     {
-      id: 22,
+      id: 10,
       title: 'Susana Pierre - Luz interior',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre4.jpg',
@@ -190,7 +94,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
-      id: 23,
+      id: 11,
       title: 'Susana Pierre - Mirada presente',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre1.jpeg',
@@ -200,7 +104,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
-      id: 24,
+      id: 12,
       title: 'Susana Pierre - Entre sombras',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre2.jpeg',
@@ -210,7 +114,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/d_pierre78/'
     },
     {
-      id: 25,
+      id: 13,
       title: 'Susana Pierre - Elegancia natural',
       category: 'portrait',
       image: '/images/gallery/Retratos/susanapierre3.jpeg',
@@ -221,7 +125,7 @@ export default function ArtGallery({ id }) {
     },
     // Sesión: Ray Expósito
     {
-      id: 26,
+      id: 14,
       title: 'Ray Expósito - Actitud urbana',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-1.png',
@@ -231,7 +135,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
-      id: 27,
+      id: 15,
       title: 'Ray Expósito - Momento real',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-2.jpg',
@@ -241,7 +145,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
-      id: 28,
+      id: 16,
       title: 'Ray Expósito - Gesto sincero',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-3.jpg',
@@ -251,7 +155,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/ray_exposito/'
     },
     {
-      id: 29,
+      id: 17,
       title: 'Ray Expósito - Presencia',
       category: 'portrait',
       image: '/images/gallery/Retratos/ray-4.jpg',
@@ -262,7 +166,7 @@ export default function ArtGallery({ id }) {
     },
     // Sesión: Rubén Trujillo
     {
-      id: 30,
+      id: 18,
       title: 'Rubén Trujillo - Calle y carácter',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-1.png',
@@ -272,7 +176,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
-      id: 31,
+      id: 19,
       title: 'Rubén Trujillo - Espacio propio',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-2.png',
@@ -282,7 +186,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
-      id: 32,
+      id: 20,
       title: 'Rubén Trujillo - Seguridad',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-3.png',
@@ -292,7 +196,7 @@ export default function ArtGallery({ id }) {
       instagram: 'https://www.instagram.com/rubens_89/'
     },
     {
-      id: 33,
+      id: 21,
       title: 'Rubén Trujillo - Instante',
       category: 'portrait',
       image: '/images/gallery/Retratos/ruben-4.jpg',
@@ -300,6 +204,55 @@ export default function ArtGallery({ id }) {
       narrative: 'Lo espontáneo tiene su propia magia',
       session: 'ruben',
       instagram: 'https://www.instagram.com/rubens_89/'
+    },
+    // CAMPAÑAS DE MARKETING
+    {
+      id: 22,
+      title: 'SyntexIA - Identidad Digital',
+      category: 'marketing',
+      image: '/images/syntexia.png',
+      description: 'Campaña de branding para plataforma de síntesis de datos',
+      narrative: 'La tecnología hecha accesible y elegante'
+    },
+    {
+      id: 23,
+      title: 'BE DJ School - Vibes Educativos',
+      category: 'marketing',
+      image: '/images/bedj.png',
+      description: 'Identidad visual para academia de formación musical',
+      narrative: 'Donde la pasión se transforma en carrera'
+    },
+    {
+      id: 24,
+      title: 'Festival Music - Experiencia Sensorial',
+      category: 'marketing',
+      image: '/images/gallery/Paisajes/paisajes2.png',
+      description: 'Diseño de campaña para evento musical inmersivo',
+      narrative: 'La música que sientes en cada píxel'
+    },
+    {
+      id: 25,
+      title: 'Marca Corporativa - Presencia Premium',
+      category: 'marketing',
+      image: '/images/gallery/Paisajes/paisajes3.png',
+      description: 'Estrategia de branding para empresa B2B',
+      narrative: 'Profesionalismo y elegancia en cada touchpoint'
+    },
+    {
+      id: 26,
+      title: 'Campaña Social - Conexión Humana',
+      category: 'marketing',
+      image: '/images/gallery/Paisajes/paisajes4.png',
+      description: 'Identidad visual para marca lifestyle',
+      narrative: 'Comunidad que crece a través del diseño'
+    },
+    {
+      id: 27,
+      title: 'Estrategia Digital - Datos Visuales',
+      category: 'marketing',
+      image: '/images/gallery/Paisajes/paisajes5.png',
+      description: 'Infografía y diseño de datos para startup tech',
+      narrative: 'Complejidad convertida en claridad visual'
     }
   ];
 
@@ -333,13 +286,50 @@ export default function ArtGallery({ id }) {
   ];
 
   const categories = [
-    { id: 'conceptual', label: 'Conceptual' },
+    { id: 'portrait', label: 'Retratos' },
     { id: 'landscape', label: 'Paisajes', folder: 'paisajes' },
-    { id: 'abstract', label: 'Abstracto', folder: 'abstracto' },
-    { id: 'portrait', label: 'Retratos' }
+    { id: 'marketing', label: 'Campañas' }
   ];
 
   const filteredImages = images.filter(img => img.category === selectedCategory);
+
+  // Manejador para actualizar índice cuando se selecciona una imagen
+  const handleImageSelect = (image) => {
+    setSelectedImage(image);
+    setCurrentIndex(filteredImages.findIndex(img => img.id === image.id));
+  };
+
+  // Navegación prev/next
+  const goToPrevious = (e) => {
+    e.stopPropagation();
+    const newIndex = currentIndex === 0 ? filteredImages.length - 1 : currentIndex - 1;
+    setSelectedImage(filteredImages[newIndex]);
+    setCurrentIndex(newIndex);
+  };
+
+  const goToNext = (e) => {
+    e.stopPropagation();
+    const newIndex = (currentIndex + 1) % filteredImages.length;
+    setSelectedImage(filteredImages[newIndex]);
+    setCurrentIndex(newIndex);
+  };
+
+  // Cerrar modal
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  // Manejo de teclado
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!selectedImage) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') goToPrevious(e);
+      if (e.key === 'ArrowRight') goToNext(e);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentIndex, filteredImages]);
 
   return (
     <section id={id || undefined} className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
@@ -429,7 +419,7 @@ export default function ArtGallery({ id }) {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                         viewport={{ once: true }}
                         className="group relative cursor-pointer aspect-square"
-                        onClick={() => setSelectedImage(image)}
+                        onClick={() => handleImageSelect(image)}
                       >
                         <div className="relative h-full rounded-xl overflow-hidden">
                           <img
@@ -473,7 +463,7 @@ export default function ArtGallery({ id }) {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="group relative cursor-pointer h-80"
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => handleImageSelect(image)}
                 >
                   <div className="relative h-full rounded-xl overflow-hidden">
                     {/* Image */}
@@ -512,69 +502,186 @@ export default function ArtGallery({ id }) {
           </motion.div>
         )}
 
-        {/* Image Modal */}
-        <AnimatePresence>
+        {/* Image Modal - Museo Elegante */}
+        <AnimatePresence mode="wait">
           {selectedImage && (
             <motion.div
+              key="modal-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedImage(null)}
-              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+              transition={{ duration: 0.3 }}
+              onClick={closeModal}
+              className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4"
             >
+              {/* Modal Container */}
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+                key={`modal-${selectedImage.id}`}
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 30 }}
                 onClick={e => e.stopPropagation()}
-                className="max-w-4xl w-full"
+                className="w-full max-w-6xl"
               >
-                <div className="relative rounded-xl overflow-hidden">
-                  <img
-                    src={selectedImage.image}
-                    alt={selectedImage.title}
-                    className="w-full h-auto max-h-[80vh] object-cover"
-                  />
-
-                  {/* Close button */}
-                  <button
-                    onClick={() => setSelectedImage(null)}
-                    className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all duration-300 backdrop-blur-sm"
+                {/* Main Content - Two column layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                  {/* Image Container */}
+                  <motion.div
+                    key={`image-${selectedImage.id}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative group"
                   >
-                    <span className="text-2xl">×</span>
-                  </button>
-
-                  {/* Info panel */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {selectedImage.title}
-                    </h3>
-                    <p className="text-gray-300 mb-4">
-                      {selectedImage.description}
-                    </p>
-                    <div className="flex items-center justify-between flex-wrap gap-4">
-                      <div className="flex items-center gap-4">
-                        <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs font-medium text-cyan-400">
-                          {selectedImage.category}
-                        </span>
-                        <span className="text-sm text-gray-400">
-                          {selectedImage.narrative}
-                        </span>
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                      {/* Image with glassmorphism frame */}
+                      <div className="relative aspect-square lg:aspect-auto lg:h-[600px] bg-black/50">
+                        <img
+                          src={selectedImage.image}
+                          alt={selectedImage.title}
+                          className="w-full h-full object-cover"
+                        />
+                        
+                        {/* Subtle border glow */}
+                        <div className="absolute inset-0 rounded-2xl border border-gradient-to-r from-cyan-500/30 via-transparent to-purple-500/30" />
+                        
+                        {/* Image position indicator */}
+                        <div className="absolute top-4 right-4 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
+                          <span className="text-xs font-semibold text-white/90">
+                            {currentIndex + 1} / {filteredImages.length}
+                          </span>
+                        </div>
                       </div>
+
+                      {/* Navigation Arrows */}
+                      <button
+                        onClick={goToPrevious}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group/btn"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={goToNext}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group/btn"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </motion.div>
+
+                  {/* Information Panel */}
+                  <motion.div
+                    key={`info-${selectedImage.id}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="flex flex-col justify-between lg:py-4"
+                  >
+                    {/* Header Info */}
+                    <div>
+                      {/* Close Button */}
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex gap-3">
+                          {/* Category Badge */}
+                          <span className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full text-xs font-semibold text-cyan-300 uppercase tracking-wider">
+                            {selectedImage.category === 'landscape' && 'Paisaje'}
+                            {selectedImage.category === 'portrait' && 'Retrato'}
+                            {selectedImage.category === 'marketing' && 'Campaña'}
+                          </span>
+                          {selectedImage.session && (
+                            <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-300 uppercase tracking-wider">
+                              {filteredImages.find(img => img.session === selectedImage.session)?.session}
+                            </span>
+                          )}
+                        </div>
+                        <button
+                          onClick={closeModal}
+                          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Title */}
+                      <div className="mb-6">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                          {selectedImage.title}
+                        </h2>
+                      </div>
+
+                      {/* Description */}
+                      <div className="mb-8 space-y-4">
+                        <div>
+                          <p className="text-lg text-gray-300 leading-relaxed">
+                            {selectedImage.description}
+                          </p>
+                        </div>
+                        
+                        {/* Narrative */}
+                        {selectedImage.narrative && (
+                          <div className="pl-4 border-l-2 border-cyan-500/50">
+                            <p className="text-base text-gray-400 italic">
+                              "{selectedImage.narrative}"
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Footer Actions */}
+                    <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
+                      {/* Social Link */}
                       {selectedImage.instagram && (
                         <a
                           href={selectedImage.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105"
+                          className="group/link w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2"
                         >
-                          <span>📸</span>
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5z" />
+                          </svg>
                           <span>Ver en Instagram</span>
                         </a>
                       )}
+
+                      {/* Studio Mark */}
+                      <div className="text-center pt-4 text-sm text-gray-500">
+                        <p>© Abreu Studio</p>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
+
+                {/* Keyboard hints - Desktop only */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="hidden lg:flex justify-center gap-4 mt-8 pt-6 border-t border-white/5"
+                >
+                  <span className="flex items-center gap-2 text-xs text-gray-500">
+                    <kbd className="px-2 py-1 bg-white/5 rounded border border-white/10">←</kbd>
+                    <span>Anterior</span>
+                  </span>
+                  <span className="flex items-center gap-2 text-xs text-gray-500">
+                    <kbd className="px-2 py-1 bg-white/5 rounded border border-white/10">→</kbd>
+                    <span>Siguiente</span>
+                  </span>
+                  <span className="flex items-center gap-2 text-xs text-gray-500">
+                    <kbd className="px-2 py-1 bg-white/5 rounded border border-white/10">Esc</kbd>
+                    <span>Cerrar</span>
+                  </span>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
