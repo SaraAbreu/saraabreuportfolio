@@ -54,27 +54,27 @@ export default function Services() {
   if (!isClient) return null;
 
   return (
-    <section className="border-t border-gray-200">
+    <section className="border-t border-[#DDD8CE]">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-gray-200"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-[#DDD8CE]"
       >
         {services.map((service, idx) => (
           <motion.div
             key={idx}
             variants={itemVariants}
-            className="p-8 sm:p-10 border-r border-gray-200 last:border-r-0 hover:bg-gray-50 transition-colors duration-300 max-sm:border-b"
+            className="p-8 sm:p-10 border-r border-[#DDD8CE] last:border-r-0 hover:bg-[#F0E0D6]/30 transition-colors duration-300 max-sm:border-b"
           >
-            <div className="text-xs font-medium tracking-widest text-amber-700 mb-4 uppercase">
+            <div className="text-xs font-medium tracking-widest text-[#C4602A] mb-4 uppercase">
               {service.num}
             </div>
-            <h3 className="text-base sm:text-lg font-medium mb-3 tracking-tight">
+            <h3 className="text-base sm:text-lg font-medium mb-3 tracking-tight text-[#1A1A18]">
               {service.title}
             </h3>
-            <p className="text-sm text-gray-500 leading-relaxed font-light">
+            <p className="text-sm text-[#6B6860] leading-relaxed font-light">
               {service.desc}
             </p>
           </motion.div>

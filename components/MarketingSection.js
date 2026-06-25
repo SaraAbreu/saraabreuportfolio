@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const marketingItems = [
-  // Publicaciones Tatuajes
-  { id: 1, cat: 'publicacion', title: 'Tatuajes · Post editorial', label: 'Publicación', image: '/images/marketing/post tatuajes/tattoo.png' },
-  { id: 2, cat: 'publicacion', title: 'Galería tatuajes', label: 'Publicación', image: '/images/marketing/post tatuajes/tattoo2.png' },
   // Publicaciones Tecnológico
   { id: 3, cat: 'publicacion', title: 'ChatGPT 5.2 · Coherencia', label: 'Publicación', image: '/images/marketing/post tatuajes/post tecnologico/ChatGPT 5.2 El Salto en Coherencia (2).png' },
   { id: 4, cat: 'publicacion', title: 'Inteligencia Artificial ética', label: 'Publicación', image: '/images/marketing/post tatuajes/post tecnologico/Inteligencia Artificial útil, ética y transformadora.png' },
   // Banners
-  { id: 5, cat: 'banner', title: 'Technology YouTube Display Ad', label: 'Banner', image: '/images/banners/banners/Blue and Yellow Illustrative Technology YouTube Display Ad (3).png' },
-  { id: 6, cat: 'banner', title: 'SyntexIA Consulting', label: 'Banner', image: '/images/banners/banners/SyntexIA Consulting.png' },
+  { id: 5, cat: 'banner', title: 'Technology YouTube Display Ad', label: 'Banner', image: '/images/banners/Blue and Yellow Illustrative Technology YouTube Display Ad (3).png' },
+  { id: 6, cat: 'banner', title: 'SyntexIA Consulting', label: 'Banner', image: '/images/banners/SyntexIA Consulting.png' },
   // Fotografía de marca
   { id: 7, cat: 'fotografia', title: 'Fotografía de marca · Editorial', label: 'Fotografía', image: '/images/marketing/post tatuajes/identidad visual/foto1.png' },
   { id: 8, cat: 'fotografia', title: 'Fotografía de marca · Retratos', label: 'Fotografía', image: '/images/marketing/post tatuajes/identidad visual/foto2.png' },
@@ -71,8 +68,8 @@ export default function MarketingSection() {
         <h2 className="font-serif text-4xl sm:text-5xl font-light tracking-tight">
           Marketing visual
         </h2>
-        <a href="#" className="text-xs font-medium text-gray-500 hover:text-black transition-colors border-b border-gray-300 hover:border-black pb-0.5 uppercase tracking-widest w-fit">
-          Ver todos →
+        <a href="https://www.instagram.com/sa_draftstudio/" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-gray-500 hover:text-black transition-colors border-b border-gray-300 hover:border-black pb-0.5 uppercase tracking-widest w-fit">
+          Instagram →
         </a>
       </motion.div>
 

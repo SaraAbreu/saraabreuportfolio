@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 export default function NewNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         isScrolled
-          ? 'bg-white/92 backdrop-blur-md border-b border-gray-200 shadow-sm'
+          ? 'bg-[#F8F6F1]/95 backdrop-blur-md border-b border-[#DDD8CE]'
           : 'bg-transparent'
       }`}
     >
@@ -31,39 +26,41 @@ export default function NewNavigation() {
         {/* Logo */}
         <button
           onClick={() => scrollToSection('hero')}
-          className={`font-serif text-lg font-light tracking-tight transition-colors ${
-            isScrolled ? 'text-black' : 'text-black'
+          className={`font-serif text-lg tracking-tight transition-colors ${
+            isScrolled ? 'text-[#1A1A18]' : 'text-white'
           }`}
         >
-          Sara Abreu
+          Sara Abreu<span className="text-[#C4602A]">.</span>
         </button>
 
         {/* Links */}
         <div className="hidden md:flex items-center gap-10">
-          <button
-            onClick={() => scrollToSection('projects')}
-            className="text-sm text-gray-500 hover:text-black transition-colors"
-          >
-            Proyectos
-          </button>
-          <button
-            onClick={() => scrollToSection('marketing')}
-            className="text-sm text-gray-500 hover:text-black transition-colors"
-          >
-            Marketing
-          </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="text-sm text-gray-500 hover:text-black transition-colors"
-          >
-            Sobre mí
-          </button>
+          {[
+            { label: 'Proyectos', id: 'projects' },
+            { label: 'Proceso', id: 'process' },
+            { label: 'Sobre mí', id: 'about' },
+          ].map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={`text-sm transition-colors hover:text-[#C4602A] ${
+                isScrolled ? 'text-[#6B6860]' : 'text-white/70 hover:text-white'
+              }`}
+              style={{ '--tw-text-opacity': 1 }}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* CTA */}
         <a
-          href="mailto:hello@abreu.studio"
-          className="text-xs font-medium px-4 py-2 bg-black text-white hover:bg-gray-900 transition-colors rounded"
+          href="mailto:sarahernandez.online@gmail.com"
+          className={`text-xs font-medium px-4 py-2 border transition-all duration-200 hover:-translate-y-px ${
+            isScrolled
+              ? 'border-[#C4602A] text-[#C4602A] hover:bg-[#C4602A] hover:text-white'
+              : 'border-white/50 text-white hover:border-white hover:bg-white/10'
+          }`}
         >
           Hablemos
         </a>

@@ -13,13 +13,24 @@ export default function MyApp({ Component, pageProps }) {
         Ir al contenido
       </a>
       <Head>
-        <title>Abreu Studio — Creative Strategy & Ethical Vision</title>
+        <title>Sara Abreu — Desarrolladora Full Stack | Tenerife</title>
         <meta
           name="description"
-          content="Abreu Studio — diseño web, automatizaciones y estrategia ética en IA. Proyectos, demos y consultoría."
+          content="Sara Abreu, desarrolladora Full Stack en Tenerife. Aplicaciones web con React y Next.js, plataformas multiplataforma, automatizaciones e integraciones IA."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        {/* Open Graph */}
+        <meta property="og:title" content="Sara Abreu — Desarrolladora Full Stack | Tenerife" />
+        <meta property="og:description" content="Aplicaciones web con React y Next.js, plataformas multiplataforma, automatizaciones e integraciones IA." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.portfoliosaraabreu.com" />
+        <meta property="og:image" content="https://www.portfoliosaraabreu.com/images/trabajo.png" />
+        {/* Twitter/X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sara Abreu — Desarrolladora Full Stack | Tenerife" />
+        <meta name="twitter:description" content="Aplicaciones web con React y Next.js, plataformas multiplataforma, automatizaciones e integraciones IA." />
+        <meta name="twitter:image" content="https://www.portfoliosaraabreu.com/images/trabajo.png" />
       </Head>
       <Layout>
         <Component {...pageProps} />
