@@ -44,13 +44,13 @@ const projectsData = [
   },
   {
     id: 5,
-    title: 'AutoPost CM',
+    title: 'Qubia Craft',
     type: 'Plataforma · Automatización',
     status: 'En desarrollo',
-    desc: 'Plataforma para automatizar la creación y publicación de contenido visual. Genera posts de redes, assets multimedia y copy optimizado a partir de un prompt — sin intervención manual.',
-    techs: ['React', 'Grok', 'Automation', 'Next.js'],
+    desc: 'Suite de automatización de redes sociales multiplataforma. Genera imágenes y vídeos con IA, analiza tu multimedia, escribe los copies para cada red y programa la publicación en Instagram, Facebook y LinkedIn — personalizable por sector.',
+    techs: ['Next.js', 'PWA', 'Grok', 'n8n', 'Meta Graph API'],
     link: '/automation',
-    image: '/images/projects/ContentFlow AI .png',
+    image: '/images/projects/qubia-craft.webp',
   },
 ];
 

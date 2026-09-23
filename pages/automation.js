@@ -57,8 +57,8 @@ export default function AutopostDemo() {
   return (
     <>
       <Head>
-        <title>AutoPost CM — Demo · Sara Abreu</title>
-        <meta name="description" content="Demo en vivo de AutoPost CM — generación automática de contenido para redes sociales con IA." />
+        <title>Qubia Craft — Demo · Sara Abreu</title>
+        <meta name="description" content="Demo en vivo de Qubia Craft — generación automática de contenido para redes sociales con IA." />
       </Head>
 
       <div className="min-h-screen bg-[#F8F6F1]">
@@ -75,13 +75,13 @@ export default function AutopostDemo() {
           <div className="flex items-center gap-3 border border-[#DDD8CE] bg-[#F0E0D6]/40 px-5 py-3 mb-10 w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C4602A] flex-shrink-0 animate-pulse"></span>
             <p className="text-xs text-[#6B6860] font-light">
-              Esta es una prueba de concepto. <span className="text-[#1A1A18] font-medium">AutoPost CM estará disponible muy pronto.</span>
+              Esta es una prueba de concepto. <span className="text-[#1A1A18] font-medium">Qubia Craft estará disponible muy pronto.</span>
             </p>
           </div>
 
           {/* Header */}
           <div className="mb-14">
-            <p className="text-xs font-medium tracking-widest text-[#C4602A] uppercase mb-4">AutoPost CM</p>
+            <p className="text-xs font-medium tracking-widest text-[#C4602A] uppercase mb-4">Qubia Craft</p>
             <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-tight text-[#1A1A18] mb-5">
               Genera contenido
               <br />
@@ -265,7 +265,7 @@ export default function AutopostDemo() {
 
           {/* Footer note */}
           <p className="text-xs text-[#B8B3A8] mt-6 font-light text-center">
-            Demo de <span className="text-[#C4602A]">AutoPost CM</span> · Desarrollado por Sara Abreu · Powered by Grok
+            Demo de <span className="text-[#C4602A]">Qubia Craft</span> · Desarrollado por Sara Abreu · Powered by Grok
           </p>
         </div>
       </div>
