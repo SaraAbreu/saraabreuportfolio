@@ -78,7 +78,7 @@ export default function Manifesto({ id }) {
           className="text-center mt-16"
         >
           <p className="text-gray-400 max-w-2xl mx-auto italic">
-            "El mejor diseño es invisible. El usuario no debe pensar en cómo funciona, solo debe disfrutarlo."
+            “El mejor diseño es invisible. El usuario no debe pensar en cómo funciona, solo debe disfrutarlo.”
           </p>
         </motion.div>
       </div>

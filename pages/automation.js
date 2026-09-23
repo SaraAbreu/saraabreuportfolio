@@ -210,7 +210,7 @@ export default function AutopostDemo() {
                   {/* Hook */}
                   <div>
                     <p className="text-xs font-medium tracking-widest text-[#C4602A] uppercase mb-2">Gancho</p>
-                    <p className="font-serif text-lg font-light text-[#1A1A18] italic">"{result.hook}"</p>
+                    <p className="font-serif text-lg font-light text-[#1A1A18] italic">“{result.hook}”</p>
                   </div>
 
                   {/* Caption */}

@@ -36,7 +36,7 @@ export default function AboutSection() {
         className="px-6 sm:px-12 py-16 sm:py-24 border-b sm:border-b-0 sm:border-r border-[#DDD8CE]"
       >
         <blockquote className="font-serif text-2xl sm:text-4xl font-light leading-tight mb-8 tracking-tight text-[#1A1A18]">
-          "El mejor diseño es el que funciona <em className="italic text-[#C4602A]">sin que nadie lo note.</em>"
+          “El mejor diseño es el que funciona <em className="italic text-[#C4602A]">sin que nadie lo note.</em>”
         </blockquote>
 
         <p className="text-sm leading-relaxed text-[#6B6860] mb-6 font-light">
