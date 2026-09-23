@@ -27,21 +27,22 @@ export default function GaleriaHall() {
     <GaleriaLayout>
       {/* Hall de entrada — basado en el borrador */}
       <section className="min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center px-6 text-center">
-        <motion.p
-          variants={fade}
-          initial="hidden"
-          animate="visible"
-          className="text-[10px] uppercase tracking-[0.4em]"
-          style={{ color: GOLD }}
-        >
-          Estudio de fotografía
-        </motion.p>
+        <motion.div variants={fade} initial="hidden" animate="visible">
+          <Image
+            src="/images/galeria/logo-estudio.webp"
+            alt="Sara Abreu · Estudio de fotografía"
+            width={553}
+            height={484}
+            priority
+            className="w-[170px] sm:w-[220px] h-auto"
+          />
+        </motion.div>
         <motion.h1
           variants={fade}
           custom={1}
           initial="hidden"
           animate="visible"
-          className="mt-6 font-serif italic text-3xl sm:text-5xl leading-tight max-w-3xl !text-[#EDEAE3]"
+          className="mt-10 font-serif italic text-3xl sm:text-5xl leading-tight max-w-3xl !text-[#EDEAE3]"
         >
           {FRASE}
         </motion.h1>
