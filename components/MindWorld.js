@@ -201,7 +201,7 @@ export default function MindWorld() {
 
                 {/* Narrative */}
                 <p className="text-lg text-gray-200 mb-8 leading-relaxed italic">
-                  "{hemisphereData[activeSide].narrative}"
+                  “{hemisphereData[activeSide].narrative}”
                 </p>
 
                 {/* Keywords */}
@@ -272,7 +272,7 @@ export default function MindWorld() {
                             : 'border-amber-500/40 bg-amber-500/5'
                         }`}
                       >
-                        <p className="text-gray-300 italic">"{question}"</p>
+                        <p className="text-gray-300 italic">“{question}”</p>
                       </motion.div>
                     ))}
                   </div>

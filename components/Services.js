@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const services = [
@@ -21,6 +22,12 @@ const services = [
     num: '04',
     title: 'Automatizaciones',
     desc: 'Sistemas standalone, CRM, gestión de datos. Flujos sin dependencias externas, escalables y con documentación completa.'
+  },
+  {
+    num: '05',
+    title: 'Fotografía y contenido visual',
+    desc: 'Retrato, producto y marca. Las imágenes de tu web y tus redes, hechas por la misma persona que la construye.',
+    href: '/galeria'
   }
 ];
 
@@ -60,7 +67,7 @@ export default function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-[#DDD8CE]"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-[#DDD8CE]"
       >
         {services.map((service, idx) => (
           <motion.div
@@ -77,6 +84,11 @@ export default function Services() {
             <p className="text-sm text-[#6B6860] leading-relaxed font-light">
               {service.desc}
             </p>
+            {service.href && (
+              <Link href={service.href} className="inline-block mt-4 text-xs text-[#C4602A] hover:underline">
+                Ver galería →
+              </Link>
+            )}
           </motion.div>
         ))}
       </motion.div>

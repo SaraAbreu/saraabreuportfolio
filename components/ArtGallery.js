@@ -630,7 +630,7 @@ export default function ArtGallery({ id }) {
                         {selectedImage.narrative && (
                           <div className="pl-4 border-l-2 border-cyan-500/50">
                             <p className="text-base text-gray-400 italic">
-                              "{selectedImage.narrative}"
+                              “{selectedImage.narrative}”
                             </p>
                           </div>
                         )}

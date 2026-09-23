@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function NewNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,6 +52,14 @@ export default function NewNavigation() {
               {label}
             </button>
           ))}
+          <Link
+            href="/galeria"
+            className={`text-sm transition-colors hover:text-[#C4602A] ${
+              isScrolled ? 'text-[#6B6860]' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            Galería
+          </Link>
         </div>
 
         {/* CTA */}

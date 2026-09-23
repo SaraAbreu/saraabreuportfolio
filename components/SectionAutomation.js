@@ -1015,9 +1015,9 @@ export default function SectionAutomation() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <span className="text-rose-300">"</span>
+          <span className="text-rose-300">&quot;</span>
           Las mejores ideas necesitan tiempo para respirar. Estas dos están respirando profundo antes de salir al mundo.
-          <span className="text-rose-300">"</span>
+          <span className="text-rose-300">&quot;</span>
         </motion.p>
         <motion.p
           className="text-rose-400/60 text-sm mt-4 font-mono"
