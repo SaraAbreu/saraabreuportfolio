@@ -10,8 +10,8 @@ export default function LaArtista() {
       title="La artista"
       description="Sara Abreu, fotógrafa y desarrolladora web en Tenerife."
     >
-      <section className="max-w-6xl mx-auto px-6 sm:px-10 pt-16 grid gap-12 md:grid-cols-2 items-center">
-        <div className="relative aspect-[4/5] overflow-hidden bg-white/5">
+      <section className="max-w-6xl mx-auto px-6 sm:px-10 pt-16 pb-24 grid gap-12 md:grid-cols-2 items-center">
+        <div className="relative aspect-[3/4] overflow-hidden bg-white/5">
           <Image
             src={f.src}
             alt={f.alt}
@@ -19,7 +19,7 @@ export default function LaArtista() {
             priority
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
-            placeholder="blur"
+            placeholder={f.blurDataURL ? 'blur' : 'empty'}
             blurDataURL={f.blurDataURL}
           />
         </div>

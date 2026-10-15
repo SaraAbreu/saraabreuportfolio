@@ -54,7 +54,7 @@ export default function OtraMirada() {
                   fill
                   sizes="(min-width: 1024px) 20vw, 33vw"
                   className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-700"
-                  placeholder="blur"
+                  placeholder={f.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={f.blurDataURL}
                 />
               </Link>

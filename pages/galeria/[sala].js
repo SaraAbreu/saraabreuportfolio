@@ -1,73 +1,83 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import GaleriaLayout, { GOLD } from '../../components/galeria/GaleriaLayout';
-import Visor from '../../components/galeria/Visor';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import GaleriaLayout from '../../components/galeria/GaleriaLayout';
+import Pasillo from '../../components/galeria/Pasillo';
+import Inmersion from '../../components/galeria/Inmersion';
 import { SALAS, getSala } from '../../data/galeria';
 
+// Agrupa las fotos de la sala en alas (una por categoría) y numera las obras.
+function montarAlas(sala) {
+  const grupos = sala.categorias?.length
+    ? sala.categorias.map((c) => ({
+        id: c.id,
+        label: c.label,
+        texto: c.texto,
+        antes: c.antes,
+        serie: `Serie ${c.label}`,
+        fotos: sala.fotos.filter((f) => f.categoria === c.id)
+      }))
+    : [{ id: sala.slug, label: sala.titulo, texto: null, antes: sala.inicio, serie: sala.titulo, fotos: sala.fotos }];
+
+  let n = 0;
+  return grupos
+    .filter((g) => g.fotos.length)
+    .map((g) => ({ ...g, obras: g.fotos.map((foto) => ({ foto, serie: g.serie, indice: n++ })) }));
+}
+
 export default function Sala({ sala, siguiente }) {
-  const [abierta, setAbierta] = useState(null);
+  const alas = useMemo(() => montarAlas(sala), [sala]);
+  const obras = useMemo(() => alas.flatMap((a) => a.obras), [alas]);
+  const obraRefs = useRef([]);
+  const [abierta, setAbierta] = useState(null); // { inicio, origen }
+  const [actual, setActual] = useState(null);
+
+  const getRect = useCallback((i) => obraRefs.current[i]?.getBoundingClientRect(), []);
+
+  const abrir = (i) => {
+    setAbierta({ inicio: i, origen: getRect(i) });
+    setActual(i);
+  };
+
+  // Al pasar de obra dentro de la inmersión, la sala "camina" por detrás
+  // para que al volver aparezcas delante del cuadro que estabas mirando.
+  const alCambiar = useCallback((i) => {
+    setActual(i);
+    const el = obraRefs.current[i];
+    const seccion = el?.closest('section');
+    if (!el || !seccion) return;
+    const r = el.getBoundingClientRect();
+    if (r.left >= 0 && r.right <= window.innerWidth) return; // ya está a la vista
+    const top = seccion.getBoundingClientRect().top + window.scrollY;
+    const xActual = -(window.scrollY - top);
+    const enPista = r.left - xActual;
+    const destino = top + enPista - (window.innerWidth - r.width) / 2;
+    const max = top + seccion.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: Math.max(top, Math.min(max, destino)), behavior: 'instant' });
+  }, []);
 
   return (
     <GaleriaLayout title={`Sala ${sala.numero} · ${sala.titulo}`} description={sala.intro}>
-      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 pb-14">
-        <p className="text-[10px] uppercase tracking-[0.4em]" style={{ color: GOLD }}>
-          Sala {sala.numero}
-        </p>
-        <h1 className="mt-4 font-serif italic text-5xl sm:text-7xl !text-[#EDEAE3]">
-          {sala.titulo}
-        </h1>
-        <p className="mt-5 text-white/50 max-w-md">{sala.intro}</p>
-      </header>
-
-      <section className="max-w-7xl mx-auto px-6 sm:px-10 columns-1 sm:columns-2 lg:columns-3 gap-6">
-        {sala.fotos.map((f, i) => (
-          <motion.button
-            key={f.src}
-            type="button"
-            onClick={() => setAbierta(i)}
-            aria-label={`Ampliar: ${f.alt}`}
-            className="block w-full mb-6 break-inside-avoid group overflow-hidden bg-white/5"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.7, delay: (i % 3) * 0.08 }}
-          >
-            <Image
-              src={f.src}
-              alt={f.alt}
-              width={f.width}
-              height={f.height}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              placeholder="blur"
-              blurDataURL={f.blurDataURL}
-              className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700"
-            />
-          </motion.button>
-        ))}
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 mt-16 flex justify-between items-baseline border-t border-white/10 pt-8">
-        <Link href="/galeria" className="text-xs text-white/50 hover:text-white">
-          ← Recorrido
-        </Link>
-        <Link href={siguiente.href} className="group text-right">
-          <span className="block text-[10px] uppercase tracking-[0.3em] text-white/40">
-            Siguiente sala
-          </span>
-          <span className="font-serif italic text-2xl group-hover:text-[#C9A96E] transition-colors">
-            {siguiente.titulo} →
-          </span>
-        </Link>
-      </div>
-
-      <Visor
-        fotos={sala.fotos}
-        index={abierta}
-        onClose={() => setAbierta(null)}
-        onChange={setAbierta}
+      <Pasillo
+        sala={sala}
+        alas={alas}
+        siguiente={siguiente}
+        obraRefs={obraRefs}
+        oculta={abierta ? actual : null}
+        onOpen={abrir}
       />
+
+      {abierta && (
+        <Inmersion
+          obras={obras}
+          inicio={abierta.inicio}
+          origen={abierta.origen}
+          getRect={getRect}
+          onIndex={alCambiar}
+          onClose={() => {
+            setAbierta(null);
+            setActual(null);
+          }}
+        />
+      )}
     </GaleriaLayout>
   );
 }

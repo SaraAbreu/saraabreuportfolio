@@ -78,7 +78,7 @@ export default function GaleriaLayout({ title, description, children }) {
         {children}
       </main>
 
-      <footer className="border-t border-white/5 mt-24">
+      <footer className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-10 flex flex-col sm:flex-row gap-6 justify-between text-xs text-white/40">
           <p>© {new Date().getFullYear()} Sara Abreu · Estudio de fotografía · Tenerife</p>
           <div className="flex gap-6">
