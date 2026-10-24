@@ -1,202 +1,180 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 const projectsData = [
   {
-    id: 1,
+    id: 'qubia',
+    title: 'Qubia',
+    type: 'Producto · Plataforma SaaS',
+    role: 'Producto + full stack',
+    status: 'Live',
+    pitch: 'Plataforma con 6 productos de IA para negocios: contenido para redes, CRM y atención de reservas, propiedades y huéspedes 24/7.',
+    techs: ['Next.js', 'LLMs', 'n8n', 'SaaS'],
+    live: 'https://qubia.es',
+    image: '/images/projects/qubia.png',
+  },
+  {
+    id: 'qubia-craft',
+    title: 'Qubia Craft',
+    type: 'Producto · Contenido con IA',
+    role: 'Producto + full stack',
+    status: 'Live',
+    pitch: 'Sube una foto y la IA escribe el texto con la voz de tu marca, la encuadra para Instagram y la publica o programa.',
+    techs: ['Next.js', 'Grok', 'n8n', 'Meta Graph API'],
+    live: 'https://q-craft.qubia.es',
+    image: '/images/projects/qubia-craft.png',
+  },
+  {
+    id: 'agora',
     title: 'Ágora Mujeres',
     type: 'Plataforma · App móvil',
+    role: 'Diseño + full stack',
     status: 'Live',
-    desc: 'Plataforma integral de salud mental para mujeres con chat IA empático, diario emocional, rastreo de ciclo menstrual y soporte en crisis. Multiplataforma (iOS, Android, Web).',
+    pitch: 'App de bienestar emocional para mujeres con chat IA empático, diario y soporte en crisis. iOS, Android y Web.',
     techs: ['React Native', 'Expo', 'FastAPI', 'OpenAI', 'MongoDB', 'Stripe'],
-    link: 'https://agoramujeres.syntexia-solutions.es/',
+    live: 'https://agoramujeres.syntexia-solutions.es/',
     image: '/images/projects/agora.png',
   },
   {
-    id: 2,
-    title: 'SyntexIA CRM',
-    type: 'Sistema · Backend',
-    status: 'Live',
-    desc: 'CRM standalone basado en FastAPI para gestión de clientes, contactos, actividades y oportunidades. API REST documentada, SQLite, y listo para integración con sistemas de facturación.',
-    techs: ['FastAPI', 'Python', 'SQLite', 'Swagger'],
-    link: 'https://github.com/SaraAbreu/SyntexIA-CRM-Standalone',
-    image: '/images/projects/CRM_Syntexia_Modulo.png',
-  },
-  {
-    id: 3,
-    title: 'SyntexIA Web',
-    type: 'Marketing · Landing',
-    status: 'Live',
-    desc: 'Landing page de alta conversión para SyntexIA Consulting. Maquetación semántica, diseño responsive, multiidioma y optimización de rendimiento — entregada en tiempo récord para cliente real.',
-    techs: ['HTML', 'CSS', 'JavaScript', 'Responsive', 'Performance'],
-    link: 'https://syntex-ia-web.vercel.app/',
-    image: '/images/projects/syntexia.png',
-  },
-  {
-    id: 4,
+    id: 'bedj',
     title: 'BE DJ School',
     type: 'Web · Academia',
+    role: 'UX/UI + frontend',
     status: 'Live',
-    desc: 'Web para academia especializada en producción musical con integración de IA. Gestión de cursos, estudiantes y recursos multimedia interactivos.',
-    techs: ['Next.js', 'AI Integration', 'Node.js'],
-    link: 'https://github.com/SaraAbreu/Proyecto-p-gina-web-BE-DJ-SCHOOL',
+    pitch: 'Web para academia de producción musical y DJing, con asistente IA para orientar a futuros alumnos.',
+    techs: ['Next.js', 'Node.js', 'AI Integration'],
+    live: 'https://proyecto-p-gina-web-be-dj-school.vercel.app/',
+    code: 'https://github.com/SaraAbreu/Proyecto-p-gina-web-BE-DJ-SCHOOL',
     image: '/images/projects/bedj.png',
-  },
-  {
-    id: 5,
-    title: 'Qubia Craft',
-    type: 'Plataforma · Automatización',
-    status: 'En desarrollo',
-    desc: 'Suite de automatización de redes sociales multiplataforma. Genera imágenes y vídeos con IA, analiza tu multimedia, escribe los copies para cada red y programa la publicación en Instagram, Facebook y LinkedIn — personalizable por sector.',
-    techs: ['Next.js', 'PWA', 'Grok', 'n8n', 'Meta Graph API'],
-    link: '/automation',
-    image: '/images/projects/qubia-craft.webp',
   },
 ];
 
 export default function ProjectsSection() {
-  const [isClient, setIsClient] = useState(false);
+  const trackRef = useRef(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
-  useEffect(() => {
-    setIsClient(true);
+  const update = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 4);
+    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
+  useEffect(() => {
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [update]);
+
+  const scrollBy = (dir) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector('article');
+    const step = card ? card.offsetWidth + 24 : el.clientWidth;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
-  if (!isClient) return null;
+  const arrowBtn =
+    'w-10 h-10 flex items-center justify-center border border-[#DDD8CE] text-[#1A1A18] hover:border-[#C4602A] hover:text-[#C4602A] disabled:opacity-30 disabled:pointer-events-none transition-colors';
 
   return (
-    <section id="projects" className="border-t border-[#DDD8CE]">
+    <section id="projects" className="border-t border-[#DDD8CE] px-6 sm:px-10 py-14 sm:py-16">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 px-6 sm:px-10 py-12 sm:py-14 border-b border-[#DDD8CE]"
+        className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10"
       >
-        <h2 className="font-serif text-4xl sm:text-5xl font-light tracking-tight text-[#1A1A18]">
-          Proyectos web
-        </h2>
+        <div>
+          <p className="text-xs font-medium text-[#C4602A] uppercase tracking-widest mb-3">Trabajo seleccionado</p>
+          <h2 className="font-serif text-4xl sm:text-5xl font-light tracking-tight text-[#1A1A18]">
+            Proyectos web
+          </h2>
+        </div>
+        <div className="flex items-center gap-6">
         <a href="https://github.com/SaraAbreu" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-[#6B6860] hover:text-[#C4602A] transition-colors border-b border-[#DDD8CE] hover:border-[#C4602A] pb-0.5 uppercase tracking-widest w-fit">
           GitHub →
         </a>
+          <div className="hidden sm:flex items-center gap-2">
+            <button type="button" onClick={() => scrollBy(-1)} disabled={!canPrev} aria-label="Proyecto anterior" className={arrowBtn}>←</button>
+            <button type="button" onClick={() => scrollBy(1)} disabled={!canNext} aria-label="Proyecto siguiente" className={arrowBtn}>→</button>
+          </div>
+        </div>
       </motion.div>
 
-      {/* Projects list */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      <div
+        ref={trackRef}
+        onScroll={update}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {projectsData.map((project, idx) => (
-          <motion.div
+          <motion.article
             key={project.id}
-            variants={itemVariants}
-            className="grid grid-cols-1 sm:grid-cols-[360px_1fr] border-b border-[#DDD8CE] hover:bg-[#F0E0D6]/20 transition-colors duration-300 group"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+            className="group relative shrink-0 snap-start w-[85%] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] flex flex-col bg-[#FAF8F4] border border-[#DDD8CE] hover:border-[#C4602A]/50 hover:shadow-[0_18px_40px_-24px_rgba(26,26,24,0.35)] transition-all duration-300"
           >
-            {/* Image */}
-            <div className="hidden sm:flex items-center justify-center h-64 bg-[#E8E3D9] border-r border-[#DDD8CE] p-8 overflow-hidden">
-              <div className="transform group-hover:scale-105 transition-transform duration-500 ease-out w-full h-full flex items-center justify-center">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                ) : (
-                  <div className="w-32 h-32 bg-[#DDD8CE] flex items-center justify-center text-[#6B6860] text-xs">
-                    Sin imagen
-                  </div>
-                )}
-              </div>
+            {/* Imagen */}
+            <div className="aspect-[16/10] overflow-hidden border-b border-[#DDD8CE] bg-[#E8E3D9]">
+              <img
+                src={project.image}
+                alt={`Captura de ${project.title}`}
+                loading="lazy"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              />
             </div>
 
-            {/* Mobile Image */}
-            <div className="sm:hidden flex items-center justify-center h-48 bg-[#E8E3D9] border-b border-[#DDD8CE] p-6 overflow-hidden">
-              <div className="transform group-hover:scale-105 transition-transform duration-500 ease-out w-full h-full flex items-center justify-center">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                ) : (
-                  <div className="w-24 h-24 bg-[#DDD8CE] flex items-center justify-center text-[#6B6860] text-xs">
-                    Sin imagen
-                  </div>
-                )}
+            {/* Contenido */}
+            <div className="flex flex-col flex-1 p-5 sm:p-6">
+              <div className="flex items-center justify-between mb-3 text-[11px] font-medium uppercase tracking-wider text-[#6B6860]">
+                <span>{project.type}</span>
+                <span className="flex items-center gap-1.5 normal-case tracking-normal">
+                  <span className={`w-1.5 h-1.5 rounded-full ${project.status === 'Live' ? 'bg-[#5B8C5A]' : 'bg-[#C4602A]'}`} />
+                  {project.status === 'Live' ? 'En producción' : project.status}
+                </span>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-6 sm:p-9 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-medium text-[#6B6860] uppercase tracking-wider">
-                    {project.type}
+              <h3 className="font-serif text-2xl font-light tracking-tight text-[#1A1A18] mb-2">
+                {project.title}
+              </h3>
+              <p className="text-sm text-[#4A4843] leading-relaxed mb-4">{project.pitch}</p>
+
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {project.techs.slice(0, 4).map((tech) => (
+                  <span key={tech} className="text-[11px] text-[#6B6860] bg-[#F0EBE2] px-2 py-0.5">
+                    {tech}
                   </span>
-                  <span className={`text-xs font-medium px-2.5 py-1 border ${
-                    project.status === 'Live'
-                      ? 'bg-green-50 border-green-200 text-green-700'
-                      : project.status === 'En desarrollo'
-                      ? 'bg-[#F0E0D6] border-[#C4602A]/30 text-[#C4602A]'
-                      : 'bg-[#E8E3D9] border-[#DDD8CE] text-[#6B6860]'
-                  }`}>
-                    {project.status}
-                  </span>
-                </div>
-                <h3 className="font-serif text-3xl sm:text-4xl font-light mb-3 tracking-tight text-[#1A1A18]">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-[#6B6860] leading-relaxed mb-5">
-                  {project.desc}
-                </p>
+                ))}
               </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex flex-wrap gap-2">
-                  {project.techs.map((tech, i) => (
-                    <span key={i} className="text-xs text-[#6B6860] border border-[#DDD8CE] px-2.5 py-1">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {project.link ? (
+
+              <div className="mt-auto flex items-center justify-between pt-4 border-t border-[#DDD8CE] text-xs">
+                <span className="text-[#8A867D]">{project.role}</span>
+                <div className="flex items-center gap-4">
+                  {project.code && (
+                    <a href={project.code} target="_blank" rel="noopener noreferrer" className="relative z-10 text-[#6B6860] hover:text-[#C4602A] transition-colors">
+                      Código
+                    </a>
+                  )}
                   <a
-                    href={project.link}
+                    href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xl text-[#DDD8CE] group-hover:text-[#C4602A] group-hover:translate-x-1 transition-all"
+                    className="font-medium text-[#1A1A18] group-hover:text-[#C4602A] transition-colors after:absolute after:inset-0"
+                    aria-label={`Ver ${project.title}`}
                   >
-                    →
+                    Ver ↗
                   </a>
-                ) : (
-                  <span className="text-xl text-[#DDD8CE]">→</span>
-                )}
+                </div>
               </div>
             </div>
-          </motion.div>
+          </motion.article>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

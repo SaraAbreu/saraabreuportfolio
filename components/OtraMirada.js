@@ -3,63 +3,110 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SALAS } from '../data/galeria';
 
-// Franja oscura en la home: la puerta del estudio web a la galería.
-const destacadas = [SALAS[0]?.fotos[1], SALAS[1]?.fotos[1], SALAS[0]?.fotos[3]].filter(Boolean);
+// Franja oscura en la home: una pared de galería con tres obras colgadas
+// a la misma línea de horizonte, cada una con su cartela.
+
+const buscar = (titulo) => {
+  for (const sala of SALAS) {
+    const foto = sala.fotos.find((f) => f.titulo === titulo);
+    if (foto) return { ...foto, sala: sala.titulo, numeroSala: sala.numero };
+  }
+  return null;
+};
+
+// Cambia los títulos para colgar otras obras (deben existir en data/galeria.js)
+const obras = ['Desde arriba', 'Mirador', 'Viento'].map(buscar).filter(Boolean);
+
+const totalObras = SALAS.reduce((n, s) => n + s.fotos.length, 0);
 
 export default function OtraMirada() {
   return (
-    <section id="fotografia" className="bg-[#0B0B0A] text-[#EDEAE3]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 py-20 sm:py-28 grid gap-12 lg:grid-cols-[1fr_1.6fr] items-center">
+    <section id="fotografia" className="relative bg-[#0B0B0A] text-[#EDEAE3] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-20 sm:pt-28 pb-20 sm:pb-24">
+        {/* Texto de sala */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="grid gap-8 lg:grid-cols-2 lg:items-end"
         >
-          <p className="text-xs font-medium tracking-widest uppercase text-[#C9A96E]">
-            La otra mirada
-          </p>
-          <h2 className="mt-4 font-serif text-4xl sm:text-5xl leading-tight !text-[#EDEAE3]">
-            También miro <em>a través de la cámara</em>.
-          </h2>
-          <p className="mt-6 text-sm text-white/55 leading-relaxed max-w-sm font-light">
-            Retrato y paisaje en Tenerife. La misma atención al detalle con la que construyo una
-            interfaz, aplicada a la luz y a las personas.
-          </p>
-          <Link
-            href="/galeria"
-            className="inline-block mt-8 text-xs font-medium px-5 py-3 border border-[#C9A96E] text-[#C9A96E] hover:bg-[#C9A96E] hover:text-black transition-colors"
-          >
-            Entrar a la galería →
-          </Link>
-        </motion.div>
-
-        <div className="grid grid-cols-3 gap-3 sm:gap-4">
-          {destacadas.map((f, i) => (
-            <motion.div
-              key={f.src}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + i * 0.12, duration: 0.8 }}
-              className={i === 1 ? 'mt-8' : ''}
-            >
+          <div>
+            <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-[#C9A96E]">
+              La otra mirada
+            </p>
+            <h2 className="mt-4 font-serif text-4xl sm:text-5xl font-light leading-tight !text-[#EDEAE3]">
+              También miro <br className="hidden sm:block" />
+              <em>a través de la cámara</em>.
+            </h2>
+          </div>
+          <div className="lg:justify-self-end lg:max-w-sm">
+            <p className="text-sm text-white/55 leading-relaxed font-light">
+              Retrato y paisaje en Tenerife. La misma atención al detalle con la que construyo una
+              interfaz, aplicada a la luz y a las personas.
+            </p>
+            <div className="mt-6 flex items-center gap-6">
               <Link
                 href="/galeria"
-                className="group block relative aspect-[3/4] overflow-hidden bg-white/5"
+                className="group inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-[#C9A96E]"
               >
-                <Image
-                  src={f.src}
-                  alt={f.alt}
-                  fill
-                  sizes="(min-width: 1024px) 20vw, 33vw"
-                  className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition duration-700"
-                  placeholder={f.blurDataURL ? 'blur' : 'empty'}
-                  blurDataURL={f.blurDataURL}
-                />
+                <span className="border-b border-[#C9A96E]/40 group-hover:border-[#C9A96E] pb-1 transition-colors">
+                  Entrar a la galería
+                </span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
-            </motion.div>
-          ))}
+              <span className="text-[11px] uppercase tracking-[0.2em] text-white/30">
+                {SALAS.length} salas · {totalObras} obras
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Pared */}
+        <div className="mt-14 sm:mt-20 -mx-6 sm:mx-0 px-6 sm:px-0 flex items-end sm:justify-center gap-10 lg:gap-16 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {obras.map((obra, i) => {
+            const horizontal = obra.width > obra.height;
+            return (
+              <motion.figure
+                key={obra.src}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 + i * 0.2, duration: 1.2 }}
+                className="group relative shrink-0 snap-center"
+              >
+                <Link
+                  href="/galeria"
+                  className={`relative block ${horizontal ? 'h-[200px] sm:h-[230px] lg:h-[260px]' : 'h-[260px] sm:h-[300px] lg:h-[340px]'} ring-1 ring-white/5`}
+                  style={{ aspectRatio: `${obra.width} / ${obra.height}` }}
+                  aria-label={`${obra.titulo} — ver en la galería`}
+                >
+                  <Image
+                    src={obra.src}
+                    alt={obra.alt}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, 70vw"
+                    className="object-cover brightness-[0.85] group-hover:brightness-100 transition duration-700"
+                    placeholder={obra.blurDataURL ? 'blur' : 'empty'}
+                    blurDataURL={obra.blurDataURL}
+                  />
+                </Link>
+
+                {/* Cartela */}
+                <figcaption className="mt-5 flex items-baseline gap-3">
+                  <span className="text-[10px] tabular-nums text-[#C9A96E]/80">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span>
+                    <span className="block font-serif italic text-sm text-white/80">{obra.titulo}</span>
+                    <span className="block mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+                      Sala {obra.numeroSala} · {obra.sala}
+                    </span>
+                  </span>
+                </figcaption>
+              </motion.figure>
+            );
+          })}
         </div>
       </div>
     </section>
