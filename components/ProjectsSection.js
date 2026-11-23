@@ -29,10 +29,9 @@ const projectsData = [
     title: 'Ágora Mujeres',
     type: 'Plataforma · App móvil',
     role: 'Diseño + full stack',
-    status: 'Live',
+    status: 'En obras',
     pitch: 'App de bienestar emocional para mujeres con chat IA empático, diario y soporte en crisis. iOS, Android y Web.',
     techs: ['React Native', 'Expo', 'FastAPI', 'OpenAI', 'MongoDB', 'Stripe'],
-    live: 'https://agoramujeres.syntexia-solutions.es/',
     image: '/images/projects/agora.png',
   },
   {
@@ -160,6 +159,7 @@ export default function ProjectsSection() {
                       Código
                     </a>
                   )}
+                  {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
@@ -169,6 +169,7 @@ export default function ProjectsSection() {
                   >
                     Ver ↗
                   </a>
+                  )}
                 </div>
               </div>
             </div>

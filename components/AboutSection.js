@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const facts = [
-  { value: '4', label: 'Productos en producción' },
+  { value: '3', label: 'Productos en producción' },
   { value: '3', label: 'Plataformas: iOS, Android y Web' },
   { value: 'E2E', label: 'Del diseño al código' },
 ];
