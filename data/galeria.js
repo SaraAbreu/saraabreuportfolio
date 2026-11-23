@@ -2,7 +2,7 @@
 // Para añadir fotos: optimízalas a WebP (máx. 2000px) en public/images/galeria/<sala>/
 // y añade una entrada aquí. blurDataURL es una miniatura de ~12px en base64 (opcional).
 
-export const FRASE = 'Retratos de lo que no se dice. Paisajes de lo que se queda.'; // ← cámbiala por la tuya
+export const FRASE = 'Fotografío para que veas lo que sentí.';
 
 export const SALAS = [
   {
@@ -151,10 +151,10 @@ export const ARTISTA = {
     blurDataURL:
       'data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoIAAwAA4BaJaQAAvyFCnN87IAAAP7Pd/I39hULslmswAvTeQanqo2tUG7PxQlBDi5UjP2ymxTuswAA'
   },
-  // ← Reescribe este texto con tu voz
   texto: [
-    'Soy Sara Abreu. De día construyo webs y automatizaciones; el resto del tiempo miro a través de la cámara.',
-    'Fotografío personas y la luz de Tenerife. Me interesa lo que no se posa: un gesto, una mirada, el último minuto de sol.'
+    'Crecí viendo pintar a mi madre. Me quedaba mirando sus trazos, cómo llevaba al lienzo el paisaje que tenía delante sin dejarse ni un detalle. De ahí me viene el arte.',
+    'Hace dos años empecé a hacer lo mismo con la cámara. Creo que hay que valorar cada cosa que tenemos, y fotografiar es mi forma de hacerlo: mirarlo con calma y quedármelo.',
+    'Cuando hago una foto no busco solo una imagen bonita. Quiero que quien la mire vea lo que pensé o lo que sentí en ese momento: la historia que hay detrás.'
   ],
   instagram: 'https://www.instagram.com/sa_draftstudio/'
 };
