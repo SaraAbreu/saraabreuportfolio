@@ -63,15 +63,15 @@ export const SALAS = [
     portada: '/images/galeria/paisajes/02.webp',
     intro: 'Tenerife a la hora en que la luz se despide.',
     fotos: [
-      {
-        titulo: 'La ciudad se apaga',
-        src: '/images/galeria/paisajes/01.webp',
-        alt: 'Atardecer sobre la ciudad desde una barandilla',
-        width: 1126,
-        height: 2000,
-        blurDataURL:
-          'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoHAAwAAgA0JQBOgB6XcZcANgAA/uuhx3MuIT5UfK3iWqfCvdpOjy6P1AJMvinKJ3dZe0q2fFyvl5/UUfaBtvctur21qEWy8epUB20AAAA='
-      },
+      // {
+      //   titulo: 'La ciudad se apaga',
+      //   src: '/images/galeria/paisajes/01.webp',
+      //   alt: 'Atardecer sobre la ciudad desde una barandilla',
+      //   width: 1126,
+      //   height: 2000,
+      //   blurDataURL:
+      //     'data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoHAAwAAgA0JQBOgB6XcZcANgAA/uuhx3MuIT5UfK3iWqfCvdpOjy6P1AJMvinKJ3dZe0q2fFyvl5/UUfaBtvctur21qEWy8epUB20AAAA='
+      // },
       {
         titulo: 'Mirador',
         src: '/images/galeria/paisajes/02.webp',
@@ -81,24 +81,24 @@ export const SALAS = [
         blurDataURL:
           'data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoMAAcAAgA0JZwCw7Db0shagAD+3h8bJsoyzb1vb/JuMOBYjZAfP9Hvh6H+vuSPsh42fMAW4rGaAfAkWInQFdqLAAA='
       },
-      {
-        titulo: 'Barandilla',
-        src: '/images/galeria/paisajes/03.webp',
-        alt: 'Barandilla de un mirador con la montaña al fondo y cielo azul',
-        width: 1126,
-        height: 2000,
-        blurDataURL:
-          'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoHAAwAAgA0JYwCdADzcvbQAAD+9v4wlVOrZL2F/L7yUn3UHmmbo6JvOvvkq+hkPg93K4Re/qnSNI+wAt97LwX9vkaY/7WAAAA='
-      },
-      {
-        titulo: 'Último sol',
-        src: '/images/galeria/paisajes/04.webp',
-        alt: 'Sol sobre la silueta de un edificio en un cielo dorado',
-        width: 1126,
-        height: 2000,
-        blurDataURL:
-          'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoHAAwAAgA0JbACdAD5jUMzB+qAAP70B36YlH636+h6y6Nn/XLElNHpLYnUoXYuV77Z/5phP62pfzDPK+RQge9ayZgzgAAA'
-      },
+      // {
+      //   titulo: 'Barandilla',
+      //   src: '/images/galeria/paisajes/03.webp',
+      //   alt: 'Barandilla de un mirador con la montaña al fondo y cielo azul',
+      //   width: 1126,
+      //   height: 2000,
+      //   blurDataURL:
+      //     'data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoHAAwAAgA0JYwCdADzcvbQAAD+9v4wlVOrZL2F/L7yUn3UHmmbo6JvOvvkq+hkPg93K4Re/qnSNI+wAt97LwX9vkaY/7WAAAA='
+      // },
+      // {
+      //   titulo: 'Último sol',
+      //   src: '/images/galeria/paisajes/04.webp',
+      //   alt: 'Sol sobre la silueta de un edificio en un cielo dorado',
+      //   width: 1126,
+      //   height: 2000,
+      //   blurDataURL:
+      //     'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoHAAwAAgA0JbACdAD5jUMzB+qAAP70B36YlH636+h6y6Nn/XLElNHpLYnUoXYuV77Z/5phP62pfzDPK+RQge9ayZgzgAAA'
+      // },
       {
         titulo: 'Entre ramas',
         src: '/images/galeria/paisajes/05.webp',
@@ -125,6 +125,15 @@ export const SALAS = [
         height: 1918,
         blurDataURL:
           'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAQCdASoJAAwAAgA0JZQCdADcomXrIAD+8YI6wpHsbmVFjL7v1gY01B8XH+/ILPNKokhCwEN94KAt0umcEvj1Z9jVkiaPvmp/ODzShZtT80L9jufGFsv+gVT8AGvgAAA='
+      },
+      {
+        titulo: 'Lo que queda',
+        src: '/images/galeria/paisajes/08.webp',
+        alt: 'Flor silvestre a contraluz sobre un cielo de atardecer rosa y naranja, campo desenfocado',
+        width: 1116,
+        height: 2000,
+        blurDataURL:
+          'data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoHAAwAA4BaJbACdAD0K+SDAAD811nYv12gDb2xCg/DwTJkXYJXD7Hu7TCFi/JVud+Y9cYAAAA='
       }
     ]
   }
