@@ -17,10 +17,10 @@ export const SALAS = [
     // titulo, lugar, anio, creditos: ficha de la serie en la pared (rellena con los tuyos).
     // texto: 2–3 líneas en tu voz sobre qué buscabas.
     categorias: [
-      { id: 'urbana', titulo: '', lugar: '', anio: '', creditos: '', label: 'Urbana', texto: 'La ciudad como escenario: asfalto, grafiti y gente que no se detiene.' },
-      { id: 'bosque', titulo: '', lugar: '', anio: '', creditos: '', label: 'Bosque', texto: 'Un pinar a última hora de la tarde. Luz filtrada, troncos ennegrecidos y silencio.' },
-      { id: 'artistico', titulo: '', lugar: '', anio: '', creditos: '', label: 'Artístico', texto: 'Retratos que no intentan parecerse a nadie. Gesto, textura y luz como materia.' },
-      { id: 'deportes', titulo: '', lugar: '', anio: '', creditos: '', label: 'Deportes', texto: 'Una sesión de kickboxing. Sudor, cuerdas y la concentración antes del golpe.' }
+      { id: 'urbana', titulo: 'Su terreno', lugar: '', anio: '', creditos: '', label: 'Urbana', texto: 'Un encargo con una idea clara: retratarlo en el estilo en el que se siente él mismo. La calle, el grafiti y la ropa como forma de decir quién es.' },
+      { id: 'bosque', titulo: 'Claridad', lugar: '', anio: '', creditos: '', label: 'Bosque', texto: 'Vuelvo a sitios así porque en ellos uno se calma. Un pinar, poca luz y silencio: el lugar donde se puede pensar con claridad.' },
+      { id: 'artistico', titulo: 'Lo que no se ve', lugar: '', anio: '', creditos: '', label: 'Artístico', texto: 'Aquí voy más allá de la foto. No busco el retrato, busco la sensación: un pensamiento, un estado, algo que no se puede decir de otra forma.' },
+      { id: 'deportes', titulo: 'En construcción', lugar: '', anio: '', creditos: '', label: 'Deportes', texto: 'Un amigo quería mostrar que estaba trabajando en sí mismo. Lo acompañé al gimnasio: el esfuerzo, la disciplina y la concentración antes del golpe.' }
     ],
     // Fotos en WebP en public/images/galeria/retratos/<categoria>/ con width/height reales y blurDataURL.
     fotos: [
