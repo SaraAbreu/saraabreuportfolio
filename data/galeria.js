@@ -9,17 +9,18 @@ export const SALAS = [
     slug: 'retratos',
     numero: 'I',
     titulo: 'Retratos',
-    // Esculturas antes de la salida de la sala
-    final: ['cesar'],
     // Foto que cuelga en la puerta de la sala, en el hall
     portada: '/images/galeria/retratos/artistico/viento.webp',
     intro: 'Cuatro miradas: la ciudad, el bosque, el ring y lo que solo cabe en una imagen.',
-    // Filtros de la sala. Cada foto lleva su `categoria` (debe coincidir con un id).
+    // Series de la sala. Cada foto lleva su `categoria` (debe coincidir con un id).
+    // label: nombre corto para el plano de la sala.
+    // titulo, lugar, anio, creditos: ficha de la serie en la pared (rellena con los tuyos).
+    // texto: 2–3 líneas en tu voz sobre qué buscabas.
     categorias: [
-      { id: 'urbana', antes: ['apolo'], label: 'Urbana', texto: 'La ciudad como escenario: asfalto, grafiti y gente que no se detiene.' },
-      { id: 'bosque', antes: ['venus'], label: 'Bosque', texto: 'Un pinar a última hora de la tarde. Luz filtrada, troncos ennegrecidos y silencio.' },
-      { id: 'artistico', antes: ['pensador'], label: 'Artístico', texto: 'Retratos que no intentan parecerse a nadie. Gesto, textura y luz como materia.' },
-      { id: 'deportes', antes: ['discobolo'], label: 'Deportes', texto: 'Una sesión de kickboxing. Sudor, cuerdas y la concentración antes del golpe.' }
+      { id: 'urbana', titulo: '', lugar: '', anio: '', creditos: '', label: 'Urbana', texto: 'La ciudad como escenario: asfalto, grafiti y gente que no se detiene.' },
+      { id: 'bosque', titulo: '', lugar: '', anio: '', creditos: '', label: 'Bosque', texto: 'Un pinar a última hora de la tarde. Luz filtrada, troncos ennegrecidos y silencio.' },
+      { id: 'artistico', titulo: '', lugar: '', anio: '', creditos: '', label: 'Artístico', texto: 'Retratos que no intentan parecerse a nadie. Gesto, textura y luz como materia.' },
+      { id: 'deportes', titulo: '', lugar: '', anio: '', creditos: '', label: 'Deportes', texto: 'Una sesión de kickboxing. Sudor, cuerdas y la concentración antes del golpe.' }
     ],
     // Fotos en WebP en public/images/galeria/retratos/<categoria>/ con width/height reales y blurDataURL.
     fotos: [
@@ -56,9 +57,9 @@ export const SALAS = [
   },
   {
     slug: 'paisajes',
-    inicio: ['socrates'],
     numero: 'II',
     titulo: 'Paisajes',
+    portada: '/images/galeria/paisajes/02.webp',
     intro: 'Tenerife a la hora en que la luz se despide.',
     fotos: [
       {

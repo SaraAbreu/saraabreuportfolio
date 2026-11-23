@@ -6,12 +6,6 @@ import { useLuz } from './luz';
 
 export const SIZES_OBRA = '(min-width: 768px) 45vw, 80vw';
 
-// Vetas de mármol: ruido turbulento convertido en líneas grises finas.
-// Vetas de mármol de Carrara: dos capas de ruido turbulento recortadas en líneas finas.
-const VETAS = [
-  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='v7'><feTurbulence type='fractalNoise' baseFrequency='0.006 0.022' numOctaves='5' seed='7' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.4  0 0 0 0 0.4  0 0 0 0 0.4  1 0 0 0 0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0.5 0 0 0 0 0'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23v7)'/></svg>\")",
-  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='v3'><feTurbulence type='fractalNoise' baseFrequency='0.02 0.05' numOctaves='4' seed='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  1 0 0 0 0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0 0.28 0 0 0 0 0 0'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23v3)'/></svg>\")"
-].join(', ');
 
 // Motas de polvo flotando en el haz de luz (posiciones fijas para que el SSR coincida).
 const MOTAS = [
@@ -185,38 +179,17 @@ const Cuadro = forwardRef(function Cuadro({ foto, numero, serie, onOpen, oculto,
             </Marco>
           </motion.button>
 
-          {/* Cartela de mármol, a la altura de los ojos, junto al marco */}
+          {/* Cartela: tarjeta impresa junto al marco */}
           <motion.figcaption
-            className="hidden sm:block absolute left-full top-1/2 ml-9 translate-y-[-12%] w-[134px] p-[2px]"
-            style={{
-              filter: brilloCartela,
-              // Canto biselado: arista clara arriba, sombra abajo
-              background: 'linear-gradient(160deg, #ffffff 0%, #e4e0d8 40%, #a9a397 100%)',
-              // Grosor de la losa + sombra sobre la pared
-              boxShadow:
-                '0 1px 0 #b7b1a5, 0 2px 0 #a39d91, 0 3px 0 #8f897e, 0 4px 1px rgba(0,0,0,0.45), 0 14px 18px -10px rgba(0,0,0,0.9)'
-            }}
+            className="hidden sm:block absolute left-full top-1/2 ml-9 translate-y-[-12%] w-[134px]"
+            style={{ filter: brilloCartela }}
           >
             <span
-              className="relative block overflow-hidden px-3.5 py-3"
+              className="relative block px-3.5 py-3"
               style={{
-                backgroundColor: '#efece6',
-                backgroundImage: [
-                  // brillo pulido
-                  'linear-gradient(120deg, rgba(255,255,255,0.55) 0%, transparent 35%, transparent 70%, rgba(255,255,255,0.25) 100%)',
-                  // vetas
-                  VETAS,
-                  // fondo de mármol de Carrara
-                  'radial-gradient(ellipse at 20% 15%, #fbfaf7, #ebe7df 55%, #ddd8ce 100%)'
-                ].join(', '),
-                backgroundSize: 'auto, 260px 260px, 260px 260px, auto',
-                backgroundPosition: `0 0, -${(numero * 47) % 110}px -${(numero * 83) % 120}px, -${(numero * 29) % 110}px -${(numero * 61) % 120}px, 0 0`,
-                backgroundRepeat: 'no-repeat',
-                boxShadow:
-                  'inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(120,112,98,0.45), inset 1px 0 0 rgba(255,255,255,0.6), inset -1px 0 0 rgba(120,112,98,0.3)',
+                backgroundColor: '#ECE8E0',
                 color: '#2a2722',
-                // Letra grabada en la piedra
-                textShadow: '0 1px 0 rgba(255,255,255,0.85), 0 -0.5px 0 rgba(0,0,0,0.25)'
+                boxShadow: '0 1px 2px rgba(0,0,0,0.4), 0 10px 16px -10px rgba(0,0,0,0.8)'
               }}
             >
               <span className="relative block font-mono text-[8.5px] tracking-[0.22em] opacity-60">

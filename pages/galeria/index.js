@@ -5,9 +5,8 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import GaleriaLayout, { GOLD } from '../../components/galeria/GaleriaLayout';
 import Pared, { FONDO_PARED, Foco, Lampara, Marco, Placa } from '../../components/galeria/Pared';
-import Escultura from '../../components/galeria/Escultura';
 import Taquilla from '../../components/galeria/Taquilla';
-import { SALAS, ARTISTA, FRASE, ESCULTURAS } from '../../data/galeria';
+import { SALAS, ARTISTA, FRASE } from '../../data/galeria';
 
 const fade = {
   hidden: { opacity: 0, y: 12 },
@@ -55,7 +54,7 @@ export default function GaleriaHall() {
     <GaleriaLayout>
       {/* Vestíbulo */}
       <section
-        className="relative -mt-24 min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-[18vh] text-center overflow-hidden"
+        className="relative -mt-24 min-h-[70vh] flex flex-col items-center justify-center px-6 pt-32 pb-[14vh] text-center overflow-hidden"
         style={{ background: FONDO_PARED }}
       >
         <Pared alturaSuelo="13vh" />
@@ -63,19 +62,6 @@ export default function GaleriaHall() {
           <Foco intensidad={0.2} />
         </div>
 
-        {/* Esculturas que flanquean la entrada */}
-        {['nike', 'david'].map((k, i) =>
-          ESCULTURAS[k] ? (
-            <div
-              key={k}
-              className={`hidden lg:block absolute bottom-0 h-full ${
-                i === 0 ? 'left-[4vw]' : 'right-[4vw]'
-              }`}
-            >
-              <Escultura pieza={ESCULTURAS[k]} alto="min(46vh,460px)" suelo="13vh" />
-            </div>
-          ) : null
-        )}
 
         <motion.div variants={fade} initial="hidden" animate="visible" className="relative">
           <Image
@@ -97,61 +83,13 @@ export default function GaleriaHall() {
           {FRASE}
         </motion.h1>
 
-        {/* Directorio del museo */}
-        <motion.div
-          variants={fade}
-          custom={2}
-          initial="hidden"
-          animate="visible"
-          className="relative mt-14 w-full max-w-sm px-7 py-6 text-left"
-          style={{
-            background: 'linear-gradient(160deg, #1c1814, #100e0c)',
-            boxShadow: 'inset 0 0 0 1px rgba(201,169,110,0.35), 0 30px 50px -30px rgba(0,0,0,0.9)'
-          }}
-        >
-          <p
-            className="text-[10px] uppercase tracking-[0.4em] mb-5 text-center"
-            style={{ color: GOLD }}
-          >
-            Directorio
-          </p>
-          <ul className="space-y-3">
-            {puertas.map((p) => (
-              <li key={p.href}>
-                <Link
-                  href={p.href}
-                  className="group flex items-baseline gap-3 text-sm text-white/65 hover:text-white transition-colors"
-                >
-                  <span className="shrink-0">{p.etiqueta}</span>
-                  <span
-                    aria-hidden
-                    className="flex-1 border-b border-dotted border-white/15 translate-y-[-3px]"
-                  />
-                  <span className="shrink-0 font-serif italic text-white/55 group-hover:text-[#C9A96E] transition-colors">
-                    {p.titulo}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
 
-        <motion.a
-          href="#salas"
-          variants={fade}
-          custom={3}
-          initial="hidden"
-          animate="visible"
-          className="relative mt-12 text-[10px] uppercase tracking-[0.35em] text-white/35 hover:text-white/70"
-        >
-          Desliza para entrar ↓
-        </motion.a>
       </section>
 
       {/* Las puertas: cada sala cuelga como un cuadro */}
       <section
         id="salas"
-        className="relative min-h-screen flex flex-col justify-center pt-24 pb-[22vh] overflow-hidden"
+        className="relative flex flex-col justify-center pt-16 pb-[20vh] overflow-hidden"
         style={{ background: FONDO_PARED }}
       >
         <Pared alturaSuelo="16vh" />
@@ -160,7 +98,7 @@ export default function GaleriaHall() {
           Elige una sala
         </p>
 
-        <div className="relative mt-[17vh] max-w-6xl w-full mx-auto px-6 grid gap-x-16 gap-y-[22vh] md:grid-cols-3 justify-items-center">
+        <div className="relative mt-[14vh] max-w-6xl w-full mx-auto px-6 grid gap-x-16 gap-y-[18vh] md:grid-cols-3 justify-items-center">
           {puertas.map((p, i) => (
             <motion.div
               key={p.href}

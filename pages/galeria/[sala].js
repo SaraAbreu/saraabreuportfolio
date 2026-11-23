@@ -10,12 +10,15 @@ function montarAlas(sala) {
     ? sala.categorias.map((c) => ({
         id: c.id,
         label: c.label,
+        titulo: c.titulo || c.label,
         texto: c.texto,
-        antes: c.antes,
-        serie: `Serie ${c.label}`,
+        lugar: c.lugar || null,
+        anio: c.anio || null,
+        creditos: c.creditos || null,
+        serie: c.titulo || `Serie ${c.label}`,
         fotos: sala.fotos.filter((f) => f.categoria === c.id)
       }))
-    : [{ id: sala.slug, label: sala.titulo, texto: null, antes: sala.inicio, serie: sala.titulo, fotos: sala.fotos }];
+    : [{ id: sala.slug, label: sala.titulo, titulo: sala.titulo, texto: null, lugar: null, anio: null, creditos: null, serie: sala.titulo, fotos: sala.fotos }];
 
   let n = 0;
   return grupos

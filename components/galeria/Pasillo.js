@@ -2,26 +2,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import Cuadro from './Cuadro';
-import Escultura from './Escultura';
 import { Banco, Carril, CursorSala } from './Ambiente';
-import { ESCULTURAS } from '../../data/galeria';
 import { GOLD } from './GaleriaLayout';
 import Pared, { FONDO_PARED } from './Pared';
 
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
-
-// Una o varias piezas seguidas (acepta una clave o una lista de claves).
-function Esculturas({ claves, x }) {
-  const lista = (Array.isArray(claves) ? claves : [claves]).filter((k) => k && ESCULTURAS[k]);
-  if (!lista.length) return null;
-  return lista.map((k) => (
-    <div key={k} className="shrink-0 h-full px-[12vw] sm:px-[5.5vw]">
-      <Escultura pieza={ESCULTURAS[k]} x={x} />
-    </div>
-  ));
-}
 
 // El pasillo: el scroll vertical se convierte en un paseo horizontal a lo largo de la pared.
 export default function Pasillo({ sala, alas, siguiente, onOpen, obraRefs, oculta }) {
@@ -158,8 +145,6 @@ export default function Pasillo({ sala, alas, siguiente, onOpen, obraRefs, ocult
           {alas.map((ala, a) => (
             <div key={ala.id} className="relative shrink-0 h-full flex items-stretch">
               <Banco x={x} className="left-[2vw]" />
-              {/* Esculturas entre alas */}
-              <Esculturas claves={ala.antes} x={x} />
               {/* Texto de pared de cada ala */}
               <div
                 ref={(el) => (alaRefs.current[a] = el)}
@@ -167,16 +152,26 @@ export default function Pasillo({ sala, alas, siguiente, onOpen, obraRefs, ocult
               >
                 {alas.length > 1 && (
                   <p className="text-[10px] uppercase tracking-[0.45em] text-white/35">
-                    Ala {ROMANOS[a]}
+                    Serie {ROMANOS[a]}
                   </p>
                 )}
                 <h2 className="mt-3 font-serif italic text-4xl sm:text-5xl !text-[#EDEAE3]">
-                  {ala.label}
+                  {ala.titulo}
                 </h2>
+                {(ala.lugar || ala.anio) && (
+                  <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-white/40">
+                    {[ala.lugar, ala.anio].filter(Boolean).join(' · ')}
+                  </p>
+                )}
                 <span className="block mt-5 w-10 h-px" style={{ background: GOLD }} />
                 {ala.texto && (
                   <p className="mt-5 text-sm text-white/50 leading-relaxed max-w-[30ch]">
                     {ala.texto}
+                  </p>
+                )}
+                {ala.creditos && (
+                  <p className="mt-4 text-[11px] text-white/35 leading-relaxed max-w-[30ch]">
+                    {ala.creditos}
                   </p>
                 )}
                 <p className="mt-6 font-mono text-[10px] tracking-[0.2em] text-white/30">
@@ -202,9 +197,6 @@ export default function Pasillo({ sala, alas, siguiente, onOpen, obraRefs, ocult
               ))}
             </div>
           ))}
-
-          {/* Esculturas antes de la salida */}
-          <Esculturas claves={sala.final} x={x} />
 
           {/* Salida */}
           <div className="shrink-0 w-[80vw] sm:w-[420px] h-full flex flex-col justify-center pl-10 sm:pl-20">
